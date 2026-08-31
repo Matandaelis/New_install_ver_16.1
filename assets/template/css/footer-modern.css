@@ -1,0 +1,167 @@
+/* ================================================================
+   ADMIN FOOTER — slim professional bar
+   ================================================================ */
+.admin-footer {
+    background: var(--admin-footer-bg, #1e293b);
+    color: var(--admin-footer-text, rgba(255,255,255,.7));
+    padding: 0 24px;
+    margin-top: auto;
+    margin-left: 0;
+    width: 100%;
+    font-size: .76rem;
+    letter-spacing: .01em;
+    border-top: 1px solid rgba(128,128,128,.1);
+}
+
+.admin-footer .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.admin-footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 40px;
+}
+
+.admin-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.admin-footer-copy {
+    color: inherit;
+    opacity: .65;
+}
+
+.admin-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.admin-footer-version {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: inherit;
+    opacity: .5;
+    text-decoration: none;
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .02em;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(128,128,128,.15);
+    transition: opacity .2s, background .2s;
+}
+.admin-footer-version:hover {
+    color: inherit;
+    opacity: .85;
+    text-decoration: none;
+    background: rgba(128,128,128,.1);
+}
+.admin-footer-version i {
+    font-size: .62rem;
+    opacity: .7;
+}
+
+/* ── JS-error badge — inline footer variant ── */
+.js-err-footer-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: .7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: background .15s, opacity .15s;
+    white-space: nowrap;
+}
+.js-err-footer-btn:hover {
+    background: rgba(128,128,128,.15);
+}
+.js-err-footer-btn i {
+    font-size: .64rem;
+    opacity: 1;
+}
+.js-err-footer-btn span {
+    opacity: .8;
+}
+
+.js-err-footer-btn--ok {
+    color: rgba(var(--bs-success-rgb, 25,135,84), .65);
+}
+.js-err-footer-btn--ok:hover {
+    color: rgba(var(--bs-success-rgb, 25,135,84), 1);
+}
+
+.js-err-footer-btn--warn {
+    color: #c59a08;
+}
+.js-err-footer-btn--warn:hover {
+    color: #a17d00;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .admin-footer {
+        padding: 0 16px;
+        font-size: .7rem;
+    }
+
+    .admin-footer-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        min-height: unset;
+        padding: 10px 0;
+    }
+
+    .admin-footer-left {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .admin-footer-copy {
+        text-align: center;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Tabler Design System — Footer Overrides
+   ════════════════════════════════════════════════════════════════ */
+.admin-footer {
+    background: var(--tblr-footer-bg, #0f172a) !important;
+    border-top: 1px solid var(--tblr-border-color, #e2e8f0) !important;
+    font-size: 0.75rem;
+}
+.admin-footer-copy {
+    color: var(--tblr-text-muted, #64748b) !important;
+}
+.admin-footer-version {
+    border-color: rgba(255,255,255,0.1) !important;
+    color: var(--tblr-text-muted, #64748b) !important;
+}
+.admin-footer-version:hover {
+    background: rgba(255,255,255,0.06) !important;
+    color: var(--tblr-text, #1e293b) !important;
+}
+.js-err-footer-btn {
+    color: var(--tblr-text-muted, #64748b) !important;
+}
+.js-err-footer-btn--ok {
+    color: var(--tblr-success, #10b981) !important;
+}
+.js-err-footer-btn--warn {
+    color: var(--tblr-warning, #f59e0b) !important;
+}

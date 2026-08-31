@@ -1,0 +1,17 @@
+{
+    "_readme": "This file registers the theme with the store. Do NOT remove it. Safe to customize name/description/tags.",
+    "id": "0",
+    "name": "Theme 1",
+    "description": "Clean, traditional cart store. Solid foundation, fully documented, Bootstrap 5.",
+    "version": "1.0.0",
+    "author": "System",
+    "mode": "cart",
+    "api_version": "v1",
+    "sort": 1,
+    "tags": ["Bootstrap 5", "Responsive", "Free"],
+    "preview": {
+        "gradient": "linear-gradient(135deg,#1e3a5f 0%,#0d6efd 100%)",
+        "emoji": "\ud83d\uded2",
+        "label": "Traditional E-commerce"
+    }
+}

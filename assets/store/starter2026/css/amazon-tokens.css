@@ -1,0 +1,64 @@
+/* ================================================================
+   Amazon Design Tokens — Starter 2026 Variant
+   Softer navy (#1A2332), larger border-radius (6px), warm accents
+   ================================================================ */
+:root {
+    /* ── Colors ── */
+    --amz-navy-dark: #1A2332;
+    --amz-navy: #2A3A4E;
+    --amz-orange: #FF9900;
+    --amz-orange-hover: #E68A00;
+    --amz-text: #0F1111;
+    --amz-text-muted: #565959;
+    --amz-link: #2162A1;
+    --amz-link-hover: #C7511F;
+    --amz-bg-page: #EAEDED;
+    --amz-bg-card: #FFFFFF;
+    --amz-bg-selector: #F0F2F2;
+    --amz-border-light: #E7E7E7;
+    --amz-border-input: #A7ACB2;
+    --amz-star: #FFA41C;
+    --amz-nav-text: #FFFFFF;
+    --amz-nav-text-muted: #CCCCCC;
+
+    /* ── Button Gradients ── */
+    --amz-btn-yellow: #FFD814;
+    --amz-btn-yellow-hover: #FFCE12;
+    --amz-btn-orange: #FEBD69;
+    --amz-btn-orange-hover: #FF8400;
+
+    /* ── Typography ── */
+    --amz-font: 'Inter', Arial, Helvetica, sans-serif;
+    --amz-font-size-xs: 12px;
+    --amz-font-size-sm: 13px;
+    --amz-font-size-base: 14px;
+    --amz-font-size-lg: 16px;
+
+    /* ── Border Radius (larger than default) ── */
+    --amz-radius-xs: 4px;
+    --amz-radius-sm: 6px;
+    --amz-radius-md: 8px;
+    --amz-radius-lg: 12px;
+    --amz-radius-pill: 20px;
+
+    /* ── Shadows ── */
+    --amz-shadow-btn: 0 2px 5px rgba(0,0,0,0.1);
+    --amz-shadow-card: 0 2px 8px rgba(0,0,0,0.08);
+    --amz-shadow-dropdown: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ── Dark Mode ── */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --amz-bg-page: #131A22;
+        --amz-bg-card: #1D252C;
+        --amz-bg-selector: #232F3E;
+        --amz-text: #E3E6E8;
+        --amz-text-muted: #A6ACAF;
+        --amz-link: #4CA6EA;
+        --amz-link-hover: #6BB5FF;
+        --amz-border-light: #3A4550;
+        --amz-border-input: #8D9498;
+        --amz-nav-text: #FFFFFF;
+    }
+}

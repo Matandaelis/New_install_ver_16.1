@@ -1,0 +1,125 @@
+/* ============================================================
+   Admin — Login Page Blocks Panel (offcanvas + settings modal)
+   ============================================================ */
+
+/* --- "Customize Content" hero button --- */
+.aff-customize-content-btn {
+	background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+	color: #fff;
+	font-weight: 600;
+	font-size: 0.875rem;
+	padding: 0.55rem 1.35rem;
+	border: none;
+	border-radius: 0.65rem;
+	box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35), 0 0 0 0 rgba(139, 92, 246, 0);
+	transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.3s ease;
+	letter-spacing: 0.015em;
+}
+.aff-customize-content-btn:hover,
+.aff-customize-content-btn:focus-visible {
+	color: #fff;
+	background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #8b5cf6 100%);
+	transform: translateY(-1px);
+	box-shadow: 0 8px 22px rgba(99, 102, 241, 0.4), 0 0 0 3px rgba(139, 92, 246, 0.18);
+}
+.aff-customize-content-btn:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+.aff-customize-content-btn i {
+	filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+#affiliate-page-content-offcanvas { --bs-offcanvas-width: min(420px, 100vw); }
+.login-page-block-settings-gear { width: 2.25rem; height: 2.25rem; padding: 0; }
+#login-page-block-settings-modal .modal-content {
+	border: none;
+	border-radius: 0.85rem;
+	box-shadow: 0 20px 50px rgba(15, 23, 42, 0.14);
+}
+#login-page-block-settings-modal .modal-header {
+	border-bottom: 1px solid var(--bs-border-color-translucent, rgba(0, 0, 0, 0.08));
+	padding: 1rem 1.25rem;
+}
+#login-page-block-settings-feature-icons .aff-fi-lead,
+#login-page-block-settings-video .aff-fi-lead {
+	line-height: 1.5;
+	max-width: 42rem;
+}
+#login-page-block-settings-feature-icons .aff-fi-section-label,
+#login-page-block-settings-faq .aff-fi-section-label,
+#login-page-block-settings-video .aff-fi-section-label {
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--bs-secondary-color);
+	margin-bottom: 0.5rem;
+}
+#login-page-block-settings-feature-icons .aff-fi-card,
+#login-page-block-settings-faq .aff-fi-card,
+#login-page-block-settings-video .aff-fi-card {
+	margin-bottom: 0.75rem;
+	border: 1px solid var(--bs-border-color-translucent, rgba(0, 0, 0, 0.08));
+	border-radius: 0.65rem;
+	background: var(--bs-body-bg, #fff);
+}
+#login-page-block-settings-feature-icons .aff-fi-card-inner,
+#login-page-block-settings-faq .aff-fi-card-inner,
+#login-page-block-settings-video .aff-fi-card-inner {
+	padding: 0.85rem 1rem 0.95rem;
+}
+#login-page-block-settings-feature-icons .aff-fi-card-kicker,
+#login-page-block-settings-faq .aff-fi-card-kicker,
+#login-page-block-settings-video .aff-fi-card-kicker {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--bs-secondary-color);
+}
+#login-page-block-settings-feature-icons .aff-fi-field-label,
+#login-page-block-settings-faq .aff-fi-field-label,
+#login-page-block-settings-video .aff-fi-field-label {
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--bs-secondary-color);
+	margin-bottom: 0.25rem;
+}
+#login-page-block-settings-feature-icons .aff-feature-icon-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.5rem;
+	max-height: 252px;
+	overflow-y: auto;
+	padding: 2px;
+}
+#login-page-block-settings-feature-icons .aff-fi-opt {
+	min-height: 3.75rem;
+	border: 1px solid var(--bs-border-color-translucent, rgba(0, 0, 0, 0.08)) !important;
+	border-radius: 0.45rem !important;
+	background: var(--bs-body-bg) !important;
+	padding: 0.4rem 0.25rem !important;
+}
+#login-page-block-settings-feature-icons .aff-fi-opt.active {
+	border-color: rgba(var(--bs-primary-rgb), 0.55) !important;
+	background: rgba(var(--bs-primary-rgb), 0.07) !important;
+}
+#login-page-block-settings-faq .aff-faq-switch-row {
+	border: 1px solid var(--bs-border-color-translucent, rgba(0, 0, 0, 0.1));
+	background: var(--bs-tertiary-bg, rgba(0, 0, 0, 0.04));
+}
+#login-page-block-settings-faq .aff-faq-switch-only {
+	padding-left: 0;
+	margin-bottom: 0;
+	min-height: 1.5rem;
+}
+#login-page-block-settings-faq .aff-faq-switch-only .form-check-input {
+	margin-left: 0;
+	float: none;
+	cursor: pointer;
+}
+#feature-icons-add-btn,
+#faq-repeater-add-btn,
+#video-repeater-add-btn {
+	border-radius: 0.5rem;
+	border-style: dashed;
+}

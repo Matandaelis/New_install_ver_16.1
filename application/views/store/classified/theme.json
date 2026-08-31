@@ -1,0 +1,17 @@
+{
+    "_readme": "This file registers the theme with the store. Do NOT remove it. Safe to customize name/description/tags.",
+    "id": "classified",
+    "name": "Classified",
+    "description": "Modern classified ads layout — ideal for selling without a full cart.",
+    "version": "1.0.0",
+    "author": "System",
+    "mode": "sales",
+    "api_version": "v1",
+    "sort": 1,
+    "tags": ["Classified", "Listings", "Sales Pages"],
+    "preview": {
+        "gradient": "linear-gradient(135deg,#064e3b 0%,#10b981 100%)",
+        "emoji": "\ud83c\udfe5",
+        "label": "Classified Sales Layout"
+    }
+}

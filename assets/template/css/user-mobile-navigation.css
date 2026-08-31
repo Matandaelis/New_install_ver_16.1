@@ -1,0 +1,105 @@
+/* ========================================
+   USER MOBILE NAVIGATION STYLES
+   Bootstrap 5 Design - Static Styles Only
+   Dynamic colors applied via utility_helper.php
+   ======================================== */
+
+/* Mobile Menu Container */
+.mobile-nav-menu {
+    padding: 1rem 0;
+}
+
+/* Mobile Menu Items */
+.mobile-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    margin: 0.25rem 0;
+}
+
+.mobile-nav-item i {
+    width: 1.5rem;
+    text-align: center;
+}
+
+/* Mobile Menu Section Headers (Collapsible) */
+.mobile-nav-section-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-left: 3px solid transparent;
+    text-align: left;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin: 0.25rem 0;
+}
+
+.mobile-nav-section-header i {
+    width: 1.5rem;
+    text-align: center;
+}
+
+.mobile-nav-section-header span {
+    flex: 1;
+}
+
+.mobile-nav-section-header:after {
+    content: '\f078';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav-section-header[aria-expanded="true"]:after {
+    transform: rotate(180deg);
+}
+
+/* Mobile Menu Sub-items */
+.mobile-nav-subitem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 1.25rem 0.625rem 2.5rem;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.mobile-nav-subitem i {
+    width: 1.25rem;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* Mobile Menu Section Items Container */
+.mobile-nav-section-items {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Menu Scrollable Sections */
+.mobile-nav-section-items[style*="max-height"] {
+    overflow-y: auto;
+}
+
+/* Responsive - Hide on Desktop */
+@media (min-width: 992px) {
+    #mobileNavMenu {
+        display: none !important;
+    }
+}
+
+/* Integration Tools Form - usercontrol/integration_tools/integration_tools_form */
+.integration_css-banner-thumb {
+    width: 100px;
+}
+

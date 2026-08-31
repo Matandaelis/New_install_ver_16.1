@@ -1,0 +1,70 @@
+# ════════════════════════════════════════════════════════════════
+# .gitignore — Affiliate Management System v16.1
+# ════════════════════════════════════════════════════════════════
+
+# ── Environment & Config ──
+.env
+.env.*
+application/config/database.php
+application/config/hooks.php
+application/config/smtp.php
+
+# ── License & Secrets ──
+application/license-easy-data-*.json
+application/config/*license*
+*.license
+license*.json
+license*.txt
+
+# ── Session Files ──
+application/session/*
+!application/session/index.html
+
+# ── Cache ──
+application/cache/*
+!application/cache/index.html
+application/logs/*
+!application/logs/index.html
+
+# ── Backup Files ──
+application/backup/*
+!application/backup/index.html
+
+# ── Uploads (user content) ──
+assets/images/product/upload/*
+!assets/images/product/upload/index.html
+assets/images/users/*
+!assets/images/users/index.html
+assets/images/site/*
+!assets/images/site/index.html
+
+# ── System & IDE ──
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ── Node (if used for frontend assets) ──
+node_modules/
+package-lock.json
+
+# ── Installer (should be removed post-install) ──
+# Uncomment after first installation:
+# install/
+
+# ── Debug / Info Files ──
+info.php
+phpinfo.php
+debug.php
+
+# ── Vendor (Composer) ──
+vendor/
+composer.lock
+
+# ── Logs ──
+*.log

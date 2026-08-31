@@ -1,0 +1,17 @@
+{
+    "_readme": "This file registers the theme with the store. Do NOT remove it. Safe to customize name/description/tags.",
+    "id": "starter2026",
+    "name": "Starter 2026",
+    "description": "Modern premium design, LMS support, dark-mode ready, RTL compatible.",
+    "version": "1.0.0",
+    "author": "System",
+    "mode": "cart",
+    "api_version": "v1",
+    "sort": 2,
+    "tags": ["Bootstrap 5", "RTL", "LMS", "API v1", "Premium"],
+    "preview": {
+        "gradient": "linear-gradient(135deg,#0f172a 0%,#7c3aed 60%,#f59e0b 100%)",
+        "emoji": "\u26a1",
+        "label": "Modern Premium Design"
+    }
+}

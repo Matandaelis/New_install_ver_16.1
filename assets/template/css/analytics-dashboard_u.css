@@ -1,0 +1,568 @@
+.analytics-dashboard-wrapper {
+    background: #f8fafc;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+/* Card Styles */
+.card {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+}
+
+.card-header {
+    border-radius: 12px 12px 0 0 !important;
+    border: none;
+    font-weight: 600;
+}
+
+/* Gradient Header */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%) !important;
+}
+
+/* Earnings Breakdown Styles */
+.earnings-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.earning-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.earning-row:hover {
+    background: #ffffff;
+    border-color: #e9ecef;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.earning-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.earning-icon i {
+    font-size: 1.25rem;
+}
+
+.earning-details {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.earning-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.earning-value {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Color Variations */
+.bg-primary-subtle { background-color: rgba(13, 110, 253, 0.1) !important; }
+.bg-success-subtle { background-color: rgba(25, 135, 84, 0.1) !important; }
+.bg-info-subtle { background-color: rgba(13, 202, 240, 0.1) !important; }
+.bg-warning-subtle { background-color: rgba(255, 193, 7, 0.1) !important; }
+.bg-danger-subtle { background-color: rgba(220, 53, 69, 0.1) !important; }
+.bg-secondary-subtle { background-color: rgba(108, 117, 125, 0.1) !important; }
+.bg-purple-subtle { background-color: rgba(111, 66, 193, 0.1) !important; }
+
+.text-purple { color: #6f42c1 !important; }
+
+/* Alert Styles */
+.alert {
+    border-radius: 12px;
+    border: none;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    color: #856404;
+}
+
+/* Vendor Deposit Alert Styles */
+.vendor-deposit-alert {
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 50%, #ff5722 100%);
+    color: #ffffff;
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3), 0 4px 10px rgba(255, 107, 53, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.vendor-deposit-alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.vendor-deposit-alert:hover::before {
+    left: 100%;
+}
+
+.vendor-deposit-alert:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(255, 140, 66, 0.4), 0 6px 15px rgba(255, 107, 53, 0.3);
+}
+
+.vendor-deposit-alert .alert-icon-wrapper {
+    width: 52px;
+    height: 52px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.vendor-deposit-alert .alert-icon-wrapper i {
+    font-size: 1.6rem;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.vendor-deposit-alert .alert-heading {
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+}
+
+.vendor-deposit-alert .alert-message {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.vendor-deposit-alert .alert-actions .btn {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.vendor-deposit-alert .alert-actions .btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Deposit Alert Animation */
+@keyframes slideOutUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .analytics-dashboard-wrapper {
+        padding: 1rem 0;
+    }
+    
+    .card-body {
+        padding: 1rem !important;
+    }
+    
+    .vendor-deposit-alert {
+        padding: 1rem;
+    }
+    
+    .vendor-deposit-alert .alert-icon-wrapper {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .vendor-deposit-alert .alert-icon-wrapper i {
+        font-size: 1.25rem;
+    }
+    
+    .vendor-deposit-alert .alert-actions {
+        margin-top: 1rem;
+        margin-left: 0 !important;
+    }
+    
+    .vendor-deposit-alert .alert-actions .btn {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
+    }
+    
+    .earning-row {
+        padding: 0.75rem;
+    }
+    
+    .earning-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .earning-icon i {
+        font-size: 1rem;
+    }
+    
+    .earning-label {
+        font-size: 0.8rem;
+    }
+    
+    .earning-value {
+        font-size: 0.9rem;
+    }
+    
+    h1 {
+        font-size: 2rem !important;
+    }
+    
+    h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .earning-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    .card-header {
+        padding: 1rem !important;
+    }
+    
+    .card-header h5 {
+        font-size: 1rem;
+    }
+}
+
+/* Updated Analytics Dashboard Wrapper */
+.analytics-dashboard-wrapper {
+    background: #f8fafc;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.analytics-header-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    border: none !important;
+}
+
+/* Metric Cards */
+.analytics-metric-card {
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.analytics-metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.analytics-metric-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.analytics-metric-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.analytics-metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+/* Sparkline Mini Charts */
+.sparkline-mini {
+    width: 60px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+.sparkline-mini canvas {
+    border-radius: 2px;
+}
+
+/* Chart Cards */
+.analytics-chart-card {
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.analytics-chart-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.analytics-chart-card .card-header {
+    border-radius: 12px 12px 0 0;
+    border: none;
+    font-weight: 600;
+}
+
+/* Channel Cards */
+.analytics-channel-card {
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.analytics-channel-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.analytics-channel-card .card-header {
+    border-radius: 12px 12px 0 0;
+    border: none;
+    font-weight: 600;
+}
+
+/* Additional Responsive Design for Analytics */
+@media (max-width: 768px) {
+    .analytics-metric-value {
+        font-size: 1.1rem;
+    }
+    
+    .analytics-metric-icon-wrapper {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+    
+    .sparkline-mini {
+        width: 50px;
+        height: 16px;
+    }
+}
+
+/* Updated Legacy Support - Enhanced */
+.card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+/* Modern 2025 Section Headers */
+.modern-section-header {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.section-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0;
+}
+
+.section-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-icon:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+.section-content {
+    flex: 1;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* Section-specific styling */
+.vendor-section .section-icon {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+.vendor-section .section-icon:hover {
+    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
+}
+
+.sales-section .section-icon {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.sales-section .section-icon:hover {
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+}
+
+.management-section .section-icon {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+}
+
+.management-section .section-icon:hover {
+    box-shadow: 0 12px 35px rgba(245, 158, 11, 0.4);
+}
+
+.membership-section .section-icon {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.membership-section .section-icon:hover {
+    box-shadow: 0 12px 35px rgba(139, 92, 246, 0.4);
+}
+
+.actions-section .section-icon {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+.actions-section .section-icon:hover {
+    box-shadow: 0 12px 35px rgba(239, 68, 68, 0.4);
+}
+
+/* Additional Responsive design for sections */
+@media (max-width: 768px) {
+    .section-title-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .section-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Plan Description Styling */
+.plan-description-content {
+    line-height: 1.6;
+    color: #6c757d;
+}
+
+.plan-description-content p {
+    margin-bottom: 1rem;
+}
+
+.plan-description-content ul, 
+.plan-description-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.plan-description-content li {
+    margin-bottom: 0.5rem;
+}
+
+.plan-description-content h1,
+.plan-description-content h2,
+.plan-description-content h3,
+.plan-description-content h4,
+.plan-description-content h5,
+.plan-description-content h6 {
+    color: #495057;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.plan-description-content strong,
+.plan-description-content b {
+    color: #495057;
+}

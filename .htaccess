@@ -1,0 +1,29 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # RewriteBase could be necessary depending on your server setup
+    # RewriteBase /
+
+    # Force robots.txt to go through PHP controller
+    RewriteRule ^robots\.txt$ index.php/robots [L]
+
+    # Add this to handle requests to your CodeIgniter front controller
+    RewriteCond %{REQUEST_URI} !^/(index\.php|assets|favicon.ico)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+
+    # Existing rules
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule !.(js|css|eot|svg|ttf|woff|woff2|map)$ index.php [L]
+    RewriteCond $1 !^(index\.php|assets)
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+    # Deny access to .env file
+    <Files .env>
+        Order allow,deny
+        Deny from all
+    </Files>
+</IfModule>

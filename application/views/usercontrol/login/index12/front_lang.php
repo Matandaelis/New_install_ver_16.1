@@ -1,0 +1,21 @@
+<?php
+$lang['front.welcome_back_sign_in']    = 'Welcome back! Please sign in';
+$lang['front.password']                = 'Password';
+$lang['front.your_information_secure'] = 'Your information is secure and encrypted';
+$lang['front.need_help_contact_support'] = 'Need help? Contact our support team';
+$lang['front.enter_username_email']    = 'Enter your username or email';
+$lang['front.will_send_reset_link']    = 'We\'ll send you a reset link';
+$lang['front.still_trouble']           = 'Still having trouble?';
+$lang['front.contact_support']         = 'Contact Support';
+$lang['front.enter_email']             = 'Enter your email';
+$lang['front.reset_your_password']     = 'Reset Your Password';
+$lang['front.create_account']          = 'Create Account';
+$lang['front.join_us_get_started']     = 'Join us today and get started';
+$lang['front.already_have_account']    = 'Already have an account?';
+$lang['front.sign_in_here']            = 'Sign in here';
+$lang['front.username']                = 'Username';
+$lang['front.email']                   = 'Email';
+$lang['front.confirm_password']        = 'Confirm Password';
+$lang['front.enter_username']          = 'Enter your username';
+$lang['front.enter_password']          = 'Enter a password';
+$lang['front.confirm_your_password']   = 'Confirm your password';

@@ -1,0 +1,325 @@
+/* ===== LOCAL ADMIN FONTS - NO CDN REQUIRED ===== */
+
+/* Web-Safe Font Stack with System Fonts */
+@font-face {
+    font-family: 'PT Sans';
+    src: local('PT Sans'), local('PTSans-Regular');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    src: local('PT Sans Bold'), local('PTSans-Bold');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    src: local('PT Sans Italic'), local('PTSans-Italic');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* System Font Stack - Modern Approach */
+@font-face {
+    font-family: 'System UI';
+    src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto'), local('Helvetica Neue'), local('Arial'), local('sans-serif');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'System UI';
+    src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto'), local('Helvetica Neue'), local('Arial'), local('sans-serif');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Font Family Definitions */
+.font-pt-sans {
+    font-family: 'PT Sans', Arial, Helvetica, 'DejaVu Sans', 'Liberation Sans', sans-serif !important;
+}
+
+.font-system {
+    font-family: Arial, Helvetica, 'DejaVu Sans', 'Liberation Sans', sans-serif !important;
+}
+
+.font-arial {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.font-helvetica {
+    font-family: Helvetica, Arial, sans-serif !important;
+}
+
+.font-georgia {
+    font-family: Georgia, 'Times New Roman', serif !important;
+}
+
+.font-times {
+    font-family: 'Times New Roman', Times, serif !important;
+}
+
+.font-verdana {
+    font-family: Verdana, Geneva, sans-serif !important;
+}
+
+.font-tahoma {
+    font-family: Tahoma, Geneva, sans-serif !important;
+}
+
+.font-trebuchet {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+}
+
+.font-impact {
+    font-family: Impact, Charcoal, sans-serif !important;
+}
+
+.font-comic {
+    font-family: 'Comic Sans MS', cursive, sans-serif !important;
+}
+
+.font-courier {
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+.font-lucida {
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;
+}
+
+.font-palatino {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif !important;
+}
+
+.font-garamond {
+    font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif !important;
+}
+
+.font-bookman {
+    font-family: 'Bookman Old Style', serif !important;
+}
+
+.font-avant-garde {
+    font-family: 'Avant Garde', 'AvantGarde', 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+}
+
+.font-futura {
+    font-family: Futura, 'Trebuchet MS', Arial, sans-serif !important;
+}
+
+.font-optima {
+    font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif !important;
+}
+
+.font-gill-sans {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+
+.font-franklin {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+
+.font-arial-black {
+    font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif !important;
+}
+
+.font-arial-narrow {
+    font-family: 'Arial Narrow', Arial, sans-serif !important;
+}
+
+.font-arial-rounded {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif !important;
+}
+
+/* Modern System Font Stacks */
+.font-modern {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+.font-ui {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.font-monospace {
+    font-family: Monaco, Consolas, 'Courier New', 'DejaVu Sans Mono', 'Liberation Mono', 'Ubuntu Mono', monospace !important;
+}
+
+.font-serif {
+    font-family: Georgia, 'Times New Roman', 'DejaVu Serif', serif !important;
+}
+
+/* Font Weight Utilities */
+.font-light {
+    font-weight: 300 !important;
+}
+
+.font-normal {
+    font-weight: 400 !important;
+}
+
+.font-medium {
+    font-weight: 500 !important;
+}
+
+.font-semibold {
+    font-weight: 600 !important;
+}
+
+.font-bold {
+    font-weight: 700 !important;
+}
+
+.font-extrabold {
+    font-weight: 800 !important;
+}
+
+.font-black {
+    font-weight: 900 !important;
+}
+
+/* Font Style Utilities */
+.font-italic {
+    font-style: italic !important;
+}
+
+.font-normal-style {
+    font-style: normal !important;
+}
+
+/* Font Size Utilities */
+.text-xs {
+    font-size: 0.75rem !important;
+}
+
+.text-sm {
+    font-size: 0.875rem !important;
+}
+
+.text-base {
+    font-size: 1rem !important;
+}
+
+.text-lg {
+    font-size: 1.125rem !important;
+}
+
+.text-xl {
+    font-size: 1.25rem !important;
+}
+
+.text-2xl {
+    font-size: 1.5rem !important;
+}
+
+.text-3xl {
+    font-size: 1.875rem !important;
+}
+
+.text-4xl {
+    font-size: 2.25rem !important;
+}
+
+/* Line Height Utilities */
+.leading-none {
+    line-height: 1 !important;
+}
+
+.leading-tight {
+    line-height: 1.25 !important;
+}
+
+.leading-snug {
+    line-height: 1.375 !important;
+}
+
+.leading-normal {
+    line-height: 1.5 !important;
+}
+
+.leading-relaxed {
+    line-height: 1.625 !important;
+}
+
+.leading-loose {
+    line-height: 2 !important;
+}
+
+/* Letter Spacing Utilities */
+.tracking-tighter {
+    letter-spacing: -0.05em !important;
+}
+
+.tracking-tight {
+    letter-spacing: -0.025em !important;
+}
+
+.tracking-normal {
+    letter-spacing: 0em !important;
+}
+
+.tracking-wide {
+    letter-spacing: 0.025em !important;
+}
+
+.tracking-wider {
+    letter-spacing: 0.05em !important;
+}
+
+.tracking-widest {
+    letter-spacing: 0.1em !important;
+}
+
+/* Font Rendering Optimization */
+.font-smooth {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+/* Default Admin Font */
+body, 
+.admin-wrapper,
+.admin-topbar,
+.horizontal-nav,
+.admin-footer,
+.main-content,
+.content-area {
+    font-family: var(--admin-font-family, 'PT Sans'), Arial, Helvetica, 'DejaVu Sans', 'Liberation Sans', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Font Loading Performance */
+.font-display-swap {
+    font-display: swap;
+}
+
+.font-display-fallback {
+    font-display: fallback;
+}
+
+.font-display-optional {
+    font-display: optional;
+}
+
+/* Responsive Font Sizes */
+@media (max-width: 768px) {
+    .text-responsive {
+        font-size: 0.875rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .text-responsive {
+        font-size: 0.8rem !important;
+    }
+}

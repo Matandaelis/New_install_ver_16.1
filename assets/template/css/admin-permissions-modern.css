@@ -1,0 +1,450 @@
+/* ===================================================================
+   TOPBAR – Admin name + role badge
+   =================================================================== */
+
+.topbar-admin-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+}
+
+.topbar-role-badge {
+    display: inline-block;
+    margin-top: 1px;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+/* ===================================================================
+   ADMIN ROLES LIST PAGE
+   =================================================================== */
+
+/* Stats bar */
+.roles-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #fff;
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.roles-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+.roles-stat-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #0f172a;
+}
+.roles-stat-label {
+    font-size: 0.78rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+}
+
+/* Role card */
+.role-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    border-top: 5px solid var(--role-color, #3b82f6);
+    padding: 1.25rem 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    height: 100%;
+}
+.role-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.12);
+}
+.role-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+.role-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--role-color, #3b82f6);
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.role-card-actions {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+.role-card-body {
+    flex: 1;
+}
+.role-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.2rem;
+}
+.role-slug {
+    font-size: 0.78rem;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+}
+.role-card-footer {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 0.75rem;
+}
+.role-perm-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.role-perm-count {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--role-color, #3b82f6);
+}
+.role-perm-bar {
+    height: 6px;
+    background: #f1f5f9;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.role-perm-bar-fill {
+    height: 100%;
+    background: var(--role-color, #3b82f6);
+    border-radius: 50px;
+    transition: width 0.6s ease;
+}
+
+/* Add new role card */
+.role-card-add {
+    background: #fff;
+    border-radius: 16px;
+    border: 2.5px dashed #cbd5e1;
+    min-height: 160px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+.role-card-add:hover {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+.role-add-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: #eff6ff;
+    color: #3b82f6;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.role-card-add:hover .role-add-icon {
+    background: #3b82f6;
+    color: #fff;
+}
+
+/* Empty state */
+.roles-empty-state {
+    background: #fff;
+    border-radius: 20px;
+    padding: 4rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.roles-empty-icon {
+    width: 80px;
+    height: 80px;
+    background: #eff6ff;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: #3b82f6;
+}
+
+/* Admin users table */
+.admin-users-table thead th { border-top: none; }
+.admin-users-table tbody tr { border-bottom: 1px solid #f1f5f9; }
+.admin-users-table tbody tr:last-child { border-bottom: none; }
+.admin-users-table tbody tr:hover { background: #f8fafc; }
+
+.admin-filter-bar {
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* ===================================================================
+   ROLE FORM – sticky top bar
+   =================================================================== */
+.role-form-topbar {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    border-left: 5px solid #0d6efd;
+}
+.role-form-title-area {
+    min-width: 180px;
+}
+.role-topbar-field {
+    min-width: 220px;
+}
+
+/* ===================================================================
+   PERMISSION SELECTOR  –  Admin Roles & Admin Users
+   Modern 2025 design: clean white cards, per-group accent colors
+   Loads last → overrides all other admin styles
+   =================================================================== */
+
+/* ---- Action bar -------------------------------------------------- */
+.perm-selector-modern .perm-action-bar {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    border-left: 5px solid #0d6efd !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
+    border-radius: 14px !important;
+}
+
+.perm-selector-modern .perm-action-bar h5 {
+    font-size: 1.05rem !important;
+    letter-spacing: -0.01em;
+}
+
+/* Live badge */
+.perm-selector-modern #permCountBadge {
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    padding: 0.45rem 1rem !important;
+    background: linear-gradient(135deg, #0d6efd, #6610f2) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 3px 10px rgba(13,110,253,0.35) !important;
+    letter-spacing: 0.03em !important;
+}
+
+/* ---- Permission cards base --------------------------------------- */
+.perm-selector-modern .perm-group-card {
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07) !important;
+    border: none !important;
+    transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+    overflow: hidden !important;
+}
+.perm-selector-modern .perm-group-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.13) !important;
+}
+
+/* Card header area */
+.perm-selector-modern .perm-card-header {
+    border-bottom: 1.5px solid rgba(0,0,0,0.06);
+    background: #f8fafc !important;
+    border-radius: 16px 16px 0 0;
+}
+
+/* Group label in header */
+.perm-selector-modern .perm-group-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #1e293b;
+}
+
+/* ---- Icon wrapper ------------------------------------------------- */
+.perm-selector-modern .perm-icon-wrap {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+}
+.perm-selector-modern .perm-group-card:hover .perm-icon-wrap {
+    transform: scale(1.1) rotate(-4deg);
+}
+
+/* ---- Per-group accent colors ------------------------------------- */
+
+/* Blue – Dashboard */
+.perm-selector-modern .perm-color-blue {
+    border-top: 4px solid #3b82f6 !important;
+}
+.perm-selector-modern .perm-color-blue .perm-icon-wrap {
+    background: rgba(59,130,246,0.12);
+    color: #2563eb;
+}
+.perm-selector-modern .perm-color-blue .perm-group-label { color: #1d4ed8; }
+.perm-selector-modern .perm-color-blue .form-check-input.perm-checkbox:checked {
+    background-color: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+}
+.perm-selector-modern .perm-color-blue .perm-row:hover {
+    background: rgba(59,130,246,0.07) !important;
+}
+
+/* Purple – Users */
+.perm-selector-modern .perm-color-purple {
+    border-top: 4px solid #8b5cf6 !important;
+}
+.perm-selector-modern .perm-color-purple .perm-icon-wrap {
+    background: rgba(139,92,246,0.12);
+    color: #7c3aed;
+}
+.perm-selector-modern .perm-color-purple .perm-group-label { color: #6d28d9; }
+.perm-selector-modern .perm-color-purple .form-check-input.perm-checkbox:checked {
+    background-color: #8b5cf6 !important;
+    border-color: #8b5cf6 !important;
+}
+.perm-selector-modern .perm-color-purple .perm-row:hover {
+    background: rgba(139,92,246,0.07) !important;
+}
+
+/* Green – Reports */
+.perm-selector-modern .perm-color-green {
+    border-top: 4px solid #10b981 !important;
+}
+.perm-selector-modern .perm-color-green .perm-icon-wrap {
+    background: rgba(16,185,129,0.12);
+    color: #059669;
+}
+.perm-selector-modern .perm-color-green .perm-group-label { color: #047857; }
+.perm-selector-modern .perm-color-green .form-check-input.perm-checkbox:checked {
+    background-color: #10b981 !important;
+    border-color: #10b981 !important;
+}
+.perm-selector-modern .perm-color-green .perm-row:hover {
+    background: rgba(16,185,129,0.07) !important;
+}
+
+/* Amber – Marketing */
+.perm-selector-modern .perm-color-amber {
+    border-top: 4px solid #f59e0b !important;
+}
+.perm-selector-modern .perm-color-amber .perm-icon-wrap {
+    background: rgba(245,158,11,0.12);
+    color: #d97706;
+}
+.perm-selector-modern .perm-color-amber .perm-group-label { color: #b45309; }
+.perm-selector-modern .perm-color-amber .form-check-input.perm-checkbox:checked {
+    background-color: #f59e0b !important;
+    border-color: #f59e0b !important;
+}
+.perm-selector-modern .perm-color-amber .perm-row:hover {
+    background: rgba(245,158,11,0.07) !important;
+}
+
+/* Indigo – Settings */
+.perm-selector-modern .perm-color-indigo {
+    border-top: 4px solid #6366f1 !important;
+}
+.perm-selector-modern .perm-color-indigo .perm-icon-wrap {
+    background: rgba(99,102,241,0.12);
+    color: #4f46e5;
+}
+.perm-selector-modern .perm-color-indigo .perm-group-label { color: #4338ca; }
+.perm-selector-modern .perm-color-indigo .form-check-input.perm-checkbox:checked {
+    background-color: #6366f1 !important;
+    border-color: #6366f1 !important;
+}
+.perm-selector-modern .perm-color-indigo .perm-row:hover {
+    background: rgba(99,102,241,0.07) !important;
+}
+
+/* Red – System */
+.perm-selector-modern .perm-color-red {
+    border-top: 4px solid #ef4444 !important;
+}
+.perm-selector-modern .perm-color-red .perm-icon-wrap {
+    background: rgba(239,68,68,0.12);
+    color: #dc2626;
+}
+.perm-selector-modern .perm-color-red .perm-group-label { color: #b91c1c; }
+.perm-selector-modern .perm-color-red .form-check-input.perm-checkbox:checked {
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+}
+.perm-selector-modern .perm-color-red .perm-row:hover {
+    background: rgba(239,68,68,0.07) !important;
+}
+
+/* ---- Pill buttons (All / None per group) ------------------------- */
+.perm-selector-modern .perm-pill-btn {
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    padding: 0.25rem 0.65rem !important;
+    border-radius: 50px !important;
+    background: rgba(0,0,0,0.06) !important;
+    color: #475569 !important;
+    border: none !important;
+    transition: background 0.15s ease, color 0.15s ease !important;
+    line-height: 1.4 !important;
+}
+.perm-selector-modern .perm-pill-btn:hover {
+    background: rgba(0,0,0,0.14) !important;
+    color: #1e293b !important;
+}
+
+/* ---- Toggle switches --------------------------------------------- */
+.perm-selector-modern .form-check-input.perm-checkbox {
+    width: 2.75em !important;
+    height: 1.4em !important;
+    min-width: 2.75em !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+    transition: background-color 0.2s ease, border-color 0.2s ease !important;
+}
+.perm-selector-modern .form-check-label {
+    cursor: pointer !important;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+/* ---- Permission rows -------------------------------------------- */
+.perm-selector-modern .perm-row {
+    border-radius: 8px !important;
+    transition: background 0.15s ease !important;
+    margin-bottom: 2px;
+}
+
+/* ---- Disabled state (Full access selected on user form) ---------- */
+.perm-selector-modern.opacity-50 .perm-group-card {
+    pointer-events: none !important;
+}

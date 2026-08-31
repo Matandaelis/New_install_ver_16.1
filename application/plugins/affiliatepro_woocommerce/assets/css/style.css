@@ -1,0 +1,740 @@
+/* ==========================================================================
+   BASE STYLES & RESET
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   LAYOUT & CONTAINERS
+   ========================================================================== */
+
+.affi-container {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+}
+
+.affi-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 12px;
+    margin: 0 0 20px 0;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.affi-banner h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.affi-banner p {
+    font-size: 1.2rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.affi-banner::before {
+    content: '🚀';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15rem;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.affi-banner>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* Stats grid */
+.affi-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.affi-stat {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid;
+    width: 100%;
+}
+
+.affi-stat.success {
+    border-left-color: #28a745;
+}
+
+.affi-stat.primary {
+    border-left-color: #007bff;
+}
+
+.affi-stat.info {
+    border-left-color: #17a2b8;
+}
+
+.affi-stat.danger {
+    border-left-color: #dc3545;
+}
+
+.affi-stat-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.affi-stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.affi-stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Content sections */
+.affi-content {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    width: 100%;
+    overflow-x: hidden;
+    margin-top: 5px;
+}
+
+.affi-content.active {
+    display: block;
+}
+
+/* Content animation */
+.affi-content.active {
+    animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   NAVIGATION & TABS
+   ========================================================================== */
+
+.affi-tabs {
+    display: flex;
+    background: #f8f9fa;
+    padding: 5px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.affi-tab {
+    flex: 1;
+    padding: 12px 20px;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    position: relative;
+}
+
+.affi-tab.active {
+    background: white !important;
+    color: #007bff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-1px);
+    border: 2px solid #007bff;
+}
+
+/* ==========================================================================
+   FORM COMPONENTS
+   ========================================================================== */
+
+/* Form elements */
+.affi-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 10px 0;
+}
+
+.affi-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.affi-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.affi-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.affi-slider {
+    background-color: #007bff;
+}
+
+input:checked+.affi-slider:before {
+    transform: translateX(26px);
+}
+
+.affi-select, .affi-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.affi-select:focus, .affi-input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.affi-input-group {
+    display: flex;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.affi-input-group-text {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-right: none;
+    padding: 12px 16px;
+    border-radius: 8px 0 0 8px;
+    flex-shrink: 0;
+}
+
+.affi-input-group .affi-input {
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 0;
+    flex: 1;
+}
+
+/* Buttons */
+.affi-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.affi-btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.affi-btn-primary:hover {
+    background: #0056b3;
+}
+
+.affi-btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.affi-btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.affi-btn-lg {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   MODULE TAB
+   ========================================================================== */
+
+.affi-module {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.affi-module:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.affi-module.active {
+    border-left: 4px solid #28a745;
+}
+
+.affi-module-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.affi-module-icon {
+    font-size: 2rem;
+    margin-right: 15px;
+}
+
+.affi-module-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.affi-module-hint {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   DATA SYNC TAB
+   ========================================================================== */
+
+.affi-sync-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.affi-sync-badge {
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.affi-sync-spacer {
+    margin-bottom: 30px;
+}
+
+.affi-sync-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+.affi-sync-field {
+    padding: 12px;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.affi-sync-field:hover {
+    background: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.affi-sync-field input {
+    margin-right: 10px;
+}
+
+/* ==========================================================================
+   DISPLAY TAB
+   ========================================================================== */
+
+/* Full width display section */
+.affi-display-header {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    color: #495057;
+    padding: 20px;
+    margin: -30px -20px 30px -20px;
+    width: calc(100% + 40px);
+    border-bottom: 3px solid #6f42c1;
+}
+
+.affi-display-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.affi-display-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #495057;
+}
+
+.affi-display-title-icon {
+    font-size: 2rem;
+}
+
+.affi-display-badge {
+    background: #6f42c1;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+/* Display grid */
+.affi-display-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.affi-display-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.affi-display-card.warning {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 2px solid #ffc107;
+}
+
+.affi-display-card-hint {
+    margin-top: 15px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.affi-display-card-code-hint {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.affi-code-highlight {
+    background: #ffc107;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.affi-display-step {
+    background: #007bff;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 auto 20px;
+}
+
+.affi-display-step.success {
+    background: #28a745;
+}
+
+.affi-display-step.warning {
+    background: #ffc107;
+    color: #333;
+}
+
+.affi-display-card h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   INFO TAB
+   ========================================================================== */
+
+.affi-info-table {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.affi-info-row {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+}
+
+.affi-info-row-last {
+    border-bottom: none;
+}
+
+.affi-info-value {
+    font-weight: 500;
+}
+
+.affi-info-value.connected {
+    color: #28a745;
+}
+
+.affi-info-value.disconnected {
+    color: #dc3545;
+}
+
+.affi-info-status {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.affi-info-status.connected {
+    background: #d4edda;
+    color: #155724;
+}
+
+.affi-info-status.warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.affi-info-url {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   FLOATING ACTION BUTTON
+   ========================================================================== */
+
+.affi-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.affi-fab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 123, 255, 0.5);
+    background: linear-gradient(135deg, #0056b3, #004085);
+}
+
+.affi-fab:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 15px rgba(0, 123, 255, 0.4);
+}
+
+.affi-fab-icon {
+    font-size: 1.2rem;
+}
+
+.affi-fab-text {
+    font-weight: 600;
+}
+
+/* FAB Animation on page load */
+@keyframes fabSlideIn {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.affi-fab {
+    animation: fabSlideIn 0.5s ease-out 0.5s both;
+}
+
+/* Nice notification styling - bottom right position */
+.affi-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999999;
+    font-weight: 500;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    max-width: 350px;
+}
+
+.affi-notification.show {
+    transform: translateX(0);
+}
+
+.affi-notification-icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .affi-container {
+        padding: 15px;
+    }
+    
+    .affi-banner {
+        padding: 30px 15px;
+    }
+    
+    .affi-banner h1 {
+        font-size: 2rem;
+    }
+    
+    .affi-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .affi-display-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .affi-display-header {
+        padding: 20px 15px;
+        margin: -30px -20px 30px -20px;
+    }
+    
+    .affi-display-header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .affi-module {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .affi-tabs {
+        padding: 3px;
+    }
+    
+    .affi-tab {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        min-width: 100px;
+    }
+    
+    /* FAB mobile adjustments */
+    .affi-fab {
+        bottom: 20px;
+        right: 20px;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .affi-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .affi-sync-grid {
+        grid-template-columns: 1fr;
+    }
+}

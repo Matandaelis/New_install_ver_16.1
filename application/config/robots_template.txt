@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /application/
+Disallow: /system/
+Disallow: /admincontrol/
+Disallow: /usercontrol/
+Disallow: /assets/user_upload/
+Disallow: /assets/cache/
+Allow: /store/
+Allow: /sitemap.xml
+
+# Sitemap location - Auto-detected domain
+Sitemap: {DYNAMIC_SITEMAP_URL}
+
+# Crawl delay for better server performance
+Crawl-delay: 1 

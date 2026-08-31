@@ -1,0 +1,325 @@
+/* ============================================================
+   Front-End Dark Mode — Base Overrides
+   Applied to ALL front themes via [data-bs-theme="dark"]
+   ============================================================ */
+
+/* ---------- Bootstrap core resets ---------- */
+[data-bs-theme="dark"] body {
+    color-scheme: dark;
+}
+
+/* ---------- Cookie consent bar ---------- */
+[data-bs-theme="dark"] .cookies-consent-bar,
+[data-bs-theme="dark"] .cookie-preferences-panel {
+    background: #1e2130 !important;
+    color: #e0e0e0 !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
+[data-bs-theme="dark"] .cookies-consent-bar a {
+    color: #93c5fd !important;
+}
+
+/* ---------- Form controls ---------- */
+[data-bs-theme="dark"] .form-control:not(.glass-input),
+[data-bs-theme="dark"] .form-select {
+    background-color: #1a1d2e !important;
+    color: #e8eaed !important;
+    caret-color: #e8eaed !important;
+    border-color: rgba(255,255,255,0.12) !important;
+}
+/* Do not set -webkit-text-fill-color on empty inputs: it makes ::placeholder visible and doubles the floating label. */
+[data-bs-theme="dark"] .form-control:not(.glass-input):focus,
+[data-bs-theme="dark"] .form-control:not(.glass-input):not(:placeholder-shown),
+[data-bs-theme="dark"] .form-select:focus,
+[data-bs-theme="dark"] .form-select:not(:placeholder-shown) {
+    -webkit-text-fill-color: #e8eaed !important;
+}
+[data-bs-theme="dark"] .form-control:not(.glass-input)::placeholder {
+    color: #888 !important;
+}
+[data-bs-theme="dark"] .form-floating > .form-control:not(.glass-input)::placeholder,
+[data-bs-theme="dark"] .form-floating > .form-select::placeholder {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+/* Ensure form-floating labels look correct */
+[data-bs-theme="dark"] .form-floating > label {
+    color: #94a3b8 !important;
+}
+[data-bs-theme="dark"] .form-floating > .form-control:focus ~ label,
+[data-bs-theme="dark"] .form-floating > .form-control:not(:placeholder-shown) ~ label {
+    opacity: .65 !important;
+}
+[data-bs-theme="dark"] .form-control:focus:not(.glass-input),
+[data-bs-theme="dark"] .form-select:focus {
+    background-color: #1e2436 !important;
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+    caret-color: #f8fafc !important;
+    border-color: rgba(99,132,255,0.5) !important;
+    box-shadow: 0 0 0 0.2rem rgba(99,132,255,0.15) !important;
+}
+
+/* ---------- Bootstrap cards ---------- */
+[data-bs-theme="dark"] .card {
+    background: #1e2130 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+    color: #e0e0e0 !important;
+}
+
+/* ---------- Dropdown menus ---------- */
+[data-bs-theme="dark"] .dropdown-menu {
+    background: #1e2130 !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+}
+[data-bs-theme="dark"] .dropdown-item {
+    color: #d0d0d0 !important;
+}
+[data-bs-theme="dark"] .dropdown-item:hover,
+[data-bs-theme="dark"] .dropdown-item:focus {
+    background: rgba(255,255,255,0.06) !important;
+    color: #fff !important;
+}
+
+/* ---------- Tables ---------- */
+[data-bs-theme="dark"] .table {
+    color: #d0d0d0 !important;
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: rgba(255,255,255,0.03);
+    --bs-table-hover-bg: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* ---------- Modals ---------- */
+[data-bs-theme="dark"] .modal-content {
+    background: #1e2130 !important;
+    color: #e0e0e0 !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
+[data-bs-theme="dark"] .modal-header {
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* ---------- Alerts ---------- */
+[data-bs-theme="dark"] .alert-info {
+    background: rgba(56,189,248,0.1) !important;
+    color: #93c5fd !important;
+    border-color: rgba(56,189,248,0.15) !important;
+}
+
+/* ---------- Toggle button styling ---------- */
+.front-theme-toggle {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: inherit;
+    cursor: pointer;
+    padding: 0.35rem 0.55rem;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    line-height: 1;
+}
+.front-theme-toggle:hover {
+    background: rgba(255,255,255,0.1);
+}
+[data-bs-theme="dark"] .front-theme-toggle {
+    border-color: rgba(255,255,255,0.15);
+    color: #fbbf24;
+}
+[data-bs-theme="dark"] .front-theme-toggle:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+/* ---------- Text / link helpers ---------- */
+[data-bs-theme="dark"] .text-dark {
+    color: #e0e0e0 !important;
+}
+[data-bs-theme="dark"] .text-muted {
+    color: #9ca3af !important;
+}
+[data-bs-theme="dark"] a:not(.btn):not(.nav-link):not(.dropdown-item) {
+    color: #93c5fd;
+}
+[data-bs-theme="dark"] hr {
+    border-color: rgba(255,255,255,0.1);
+}
+
+/* ---------- Scrollbar (Webkit) ---------- */
+[data-bs-theme="dark"] ::-webkit-scrollbar {
+    width: 8px;
+}
+[data-bs-theme="dark"] ::-webkit-scrollbar-track {
+    background: #111322;
+}
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #3a3d50;
+    border-radius: 4px;
+}
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: #4a4d60;
+}
+
+/* ---------- Affiliate login / register / forgot (all front login themes) ---------- */
+[data-bs-theme="dark"] .invalid-feedback {
+    color: #fca5a5 !important;
+}
+[data-bs-theme="dark"] .valid-feedback {
+    color: #6ee7b7 !important;
+}
+[data-bs-theme="dark"] .form-text,
+[data-bs-theme="dark"] .form-text.text-muted {
+    color: #94a3b8 !important;
+}
+[data-bs-theme="dark"] .input-group-text {
+    background-color: rgba(255,255,255,0.06) !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: #cbd5e1 !important;
+}
+[data-bs-theme="dark"] textarea.form-control {
+    color: #e2e8f0 !important;
+}
+[data-bs-theme="dark"] .form-check-input {
+    background-color: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.22);
+}
+[data-bs-theme="dark"] .form-check-input:checked {
+    background-color: var(--bs-primary, #6366f1);
+    border-color: var(--bs-primary, #6366f1);
+}
+[data-bs-theme="dark"] .form-check-label {
+    color: #cbd5e1;
+}
+[data-bs-theme="dark"] .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+[data-bs-theme="dark"] .offcanvas {
+    color: #e2e8f0;
+}
+[data-bs-theme="dark"] .offcanvas-header {
+    border-bottom-color: rgba(255,255,255,0.08);
+}
+
+/* ---------- intl-tel-input (register phone) ----------
+   register_form.php adds .bg-white + .text-dark to the country list for light UI.
+   In dark mode, [data-bs-theme="dark"] .text-dark forces light text → unreadable on white.
+   These rules win over utilities and match all login / store pages using the plugin. */
+[data-bs-theme="dark"] .iti__country-list,
+[data-bs-theme="dark"] .iti__country-list.bg-white,
+[data-bs-theme="dark"] .iti__country-list.text-dark {
+    background-color: #1a1d2e !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(255,255,255,0.14) !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.55) !important;
+}
+[data-bs-theme="dark"] .iti__country,
+[data-bs-theme="dark"] .iti__country.text-dark {
+    color: #e2e8f0 !important;
+}
+[data-bs-theme="dark"] .iti__country.iti__highlight {
+    background-color: rgba(255,255,255,0.1) !important;
+}
+[data-bs-theme="dark"] .iti__dial-code {
+    color: #94a3b8 !important;
+}
+[data-bs-theme="dark"] .iti__divider {
+    border-bottom-color: rgba(255,255,255,0.12) !important;
+}
+[data-bs-theme="dark"] .iti__arrow {
+    border-top-color: #94a3b8 !important;
+}
+[data-bs-theme="dark"] .iti__arrow--up {
+    border-top-color: transparent !important;
+    border-bottom-color: #94a3b8 !important;
+}
+[data-bs-theme="dark"] .iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
+    background-color: rgba(255,255,255,0.08) !important;
+}
+[data-bs-theme="dark"] .iti--separate-dial-code .iti__selected-flag {
+    background-color: rgba(255,255,255,0.06) !important;
+}
+
+/* First phone field wrapper (register_form “system phone” block) */
+.reg-phone-field-wrap {
+    background-color: #f8f9fa;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+[data-bs-theme="dark"] .reg-phone-field-wrap {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    color: #e2e8f0 !important;
+}
+[data-bs-theme="dark"] .reg-phone-field-wrap .form-control,
+[data-bs-theme="dark"] .reg-phone-field-wrap .tel_input {
+    background-color: rgba(255,255,255,0.08) !important;
+    color: #e2e8f0 !important;
+    -webkit-text-fill-color: #e2e8f0 !important;
+    caret-color: #e2e8f0 !important;
+    border-color: rgba(255,255,255,0.12) !important;
+}
+
+/* ---------- Login / auth fields: readable typed text (all affiliate login themes) ----------
+   Themes often set :focus { background: #fff !important } on *-input; base must override in dark.
+   Light mode: force dark glyphs when focus fills with white/near-white (Safari -webkit-text-fill).
+   Avoid -webkit-text-fill on #login-form for empty :placeholder-shown (floating label vs placeholder). */
+[data-bs-theme="dark"] .form-floating > .form-control:not(.glass-input):focus,
+[data-bs-theme="dark"] .form-floating > .form-control:not(.glass-input):not(:placeholder-shown) {
+    background-color: #1e2436 !important;
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+    caret-color: #f8fafc !important;
+}
+[data-bs-theme="light"] .form-floating > .form-control:not(.glass-input):focus,
+[data-bs-theme="light"] .form-floating > .form-control:not(.glass-input):not(:placeholder-shown),
+html:not([data-bs-theme="dark"]) .form-floating > .form-control:not(.glass-input):focus,
+html:not([data-bs-theme="dark"]) .form-floating > .form-control:not(.glass-input):not(:placeholder-shown) {
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
+    caret-color: #0f172a !important;
+}
+[data-bs-theme="light"] #login-form .form-control:not(.glass-input):focus,
+html:not([data-bs-theme="dark"]) #login-form .form-control:not(.glass-input):focus {
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
+    caret-color: #0f172a !important;
+}
+[data-bs-theme="dark"] .mp-auth-form .form-control {
+    background-color: #1a1d2e !important;
+    color: #e8eaed !important;
+    -webkit-text-fill-color: #e8eaed !important;
+    caret-color: #e8eaed !important;
+}
+[data-bs-theme="dark"] .mp-auth-form .form-control:focus {
+    background-color: #1e2436 !important;
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+}
+[data-bs-theme="light"] .mp-auth-form .form-control:focus,
+html:not([data-bs-theme="dark"]) .mp-auth-form .form-control:focus {
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
+    caret-color: #0f172a !important;
+}
+
+/* Chrome / Edge autofill must not flash white with light text in dark mode */
+[data-bs-theme="dark"] input.form-control:not(.glass-input):-webkit-autofill,
+[data-bs-theme="dark"] input.form-control:not(.glass-input):-webkit-autofill:hover,
+[data-bs-theme="dark"] input.form-control:not(.glass-input):-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #1a1d2e inset !important;
+    box-shadow: 0 0 0 1000px #1a1d2e inset !important;
+    -webkit-text-fill-color: #e8eaed !important;
+    caret-color: #f1f5f9 !important;
+    transition: background-color 99999s ease-out 0s;
+}
+[data-bs-theme="dark"] .glass-input:-webkit-autofill,
+[data-bs-theme="dark"] .glass-input:-webkit-autofill:hover,
+[data-bs-theme="dark"] .glass-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px rgba(255,255,255,0.1) inset !important;
+    box-shadow: 0 0 0 1000px rgba(255,255,255,0.1) inset !important;
+    -webkit-text-fill-color: #fff !important;
+    caret-color: #fff !important;
+    transition: background-color 99999s ease-out 0s;
+}

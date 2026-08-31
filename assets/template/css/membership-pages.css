@@ -1,0 +1,539 @@
+/* ============================================================
+   V14 Membership Pages — Plan Expire, Purchase, Detail, History
+   Uses Bootstrap 5.3 + V14 theme variables
+   Optimised for single-viewport (no-scroll) layouts
+   ============================================================ */
+
+/* ---- Hero Status Strip (compact horizontal) ---- */
+.mship-hero {
+    color: #fff;
+}
+
+.mship-hero--pending {
+    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
+}
+
+.mship-hero--expired {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+}
+
+.mship-hero--inactive {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+}
+
+.mship-hero--lifetime {
+    background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #14b8a6 100%);
+}
+
+.mship-hero-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    flex-shrink: 0;
+}
+
+/* ---- Plan Detail Card ---- */
+.mship-card {
+    background: var(--v14-card-bg);
+    border: 1px solid var(--v14-card-border) !important;
+}
+
+.mship-card .card-header {
+    border-color: var(--v14-border-light) !important;
+}
+
+.mship-card-title {
+    color: var(--v14-text-primary);
+}
+
+.mship-card-subtitle {
+    color: var(--v14-text-secondary);
+}
+
+/* ---- Plan Icon Circle ---- */
+.mship-icon-circle {
+    width: 44px;
+    height: 44px;
+    background: var(--v14-stat-blue);
+}
+
+.mship-icon-circle.mship-icon-circle--sm {
+    width: 32px;
+    height: 32px;
+}
+
+.mship-icon-circle--green {
+    background: var(--v14-stat-green);
+}
+
+.mship-icon-circle--orange {
+    background: var(--v14-stat-orange);
+}
+
+.mship-icon-circle--purple {
+    background: var(--v14-stat-purple);
+}
+
+.mship-icon-circle--red {
+    background: var(--v14-stat-red);
+}
+
+/* ---- Remaining Days Section ---- */
+.mship-remain-box {
+    background: var(--v14-surface-2);
+}
+
+.mship-remain-label {
+    color: var(--v14-text-secondary);
+    letter-spacing: 0.08em;
+}
+
+/* ---- Remain Days Big Number ---- */
+.mship-remain-number {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+/* ---- Progress Bar ---- */
+.mship-progress {
+    height: 6px;
+    background: var(--v14-progress-bg);
+}
+
+.mship-progress .progress-bar {
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Detail List Items ---- */
+.mship-detail-list {
+    border: 1px solid var(--v14-border-light);
+}
+
+.mship-detail-item {
+    background: var(--v14-card-bg);
+    border-bottom: 1px solid var(--v14-border-light) !important;
+}
+
+.mship-detail-item:last-child {
+    border-bottom: none !important;
+}
+
+.mship-detail-label {
+    color: var(--v14-text-secondary);
+}
+
+.mship-detail-value {
+    color: var(--v14-text-primary);
+}
+
+/* ---- CTA Button ---- */
+.mship-cta-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    border: none;
+    letter-spacing: 0.02em;
+}
+
+.mship-cta-btn:hover,
+.mship-cta-btn:focus {
+    background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
+}
+
+/* ---- Plan Selection Cards ---- */
+.mship-plan-card {
+    background: var(--v14-card-bg);
+    border: 1px solid var(--v14-card-border) !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mship-plan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--v14-card-shadow-hover);
+}
+
+.mship-plan-card .card-header {
+    background: transparent !important;
+}
+
+.mship-plan-card .card-footer {
+    background: transparent !important;
+}
+
+.mship-plan-label {
+    z-index: 2;
+}
+
+.mship-plan-price {
+    font-size: 2.25rem;
+    line-height: 1.1;
+}
+
+.mship-plan-period {
+    letter-spacing: 0.06em;
+}
+
+.mship-plan-features-box {
+    background: var(--v14-surface-2);
+}
+
+.mship-plan-desc {
+    color: var(--v14-text-secondary);
+    max-height: 90px;
+    overflow-y: auto;
+}
+
+.mship-bonus-box {
+    background: var(--v14-stat-orange);
+}
+
+.mship-plan-btn {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mship-plan-btn:hover {
+    transform: scale(1.03);
+}
+
+.mship-plan-btn:active {
+    transform: scale(0.97);
+}
+
+/* ---- WIDE Horizontal Plan Card (1-2 plans) ---- */
+.mship-wide-price-col {
+    background: var(--v14-surface-2);
+    border-right: 1px solid var(--v14-border-light);
+    min-height: 180px;
+}
+
+.mship-wide-features-col {
+    border-color: var(--v14-border-light) !important;
+}
+
+.mship-plan-desc-wide {
+    color: var(--v14-text-secondary);
+    max-height: 120px;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+
+/* On wide cards disable the vertical lift — use a subtle glow instead */
+.mship-plan-card:has(.mship-wide-price-col):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.12);
+}
+
+/* Responsive: stack wide card on small screens */
+@media (max-width: 767.98px) {
+    .mship-wide-price-col {
+        border-right: none;
+        border-bottom: 1px solid var(--v14-border-light);
+        border-radius: 0 !important;
+        min-height: auto;
+    }
+    .mship-wide-features-col {
+        border-left: none !important;
+        border-right: none !important;
+    }
+}
+
+/* ---- Current Plan Banner ---- */
+.mship-current-plan {
+    background: var(--v14-card-bg);
+    border: 1px solid var(--v14-card-border) !important;
+}
+
+.mship-current-stat {
+    background: var(--v14-surface-2);
+    border: 1px solid var(--v14-border-light);
+}
+
+/* ---- Purchase Detail Page ---- */
+.mship-detail-card {
+    background: var(--v14-card-bg);
+    border: 1px solid var(--v14-card-border) !important;
+}
+
+.mship-detail-card .card-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--v14-border-light) !important;
+}
+
+.mship-detail-card .list-group-item {
+    background: var(--v14-card-bg);
+    border-color: var(--v14-border-light) !important;
+    color: var(--v14-text-primary);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* ---- Purchase History ---- */
+.mship-history-card {
+    background: var(--v14-card-bg);
+    border: 1px solid var(--v14-card-border) !important;
+}
+
+.mship-history-card .card-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--v14-border-light) !important;
+}
+
+.mship-history-card .table {
+    color: var(--v14-text-primary);
+}
+
+.mship-history-card .table thead th {
+    background: var(--v14-surface-2);
+    color: var(--v14-text-primary);
+    border-color: var(--v14-border-light);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.mship-history-card .table td {
+    vertical-align: middle;
+    border-color: var(--v14-border-light);
+}
+
+/* ---- Buy Plan (Checkout) Page ---- */
+.mship-checkout-card {
+    background: var(--v14-card-bg);
+    border: 1px solid var(--v14-card-border) !important;
+}
+
+.mship-checkout-header {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    color: #fff;
+}
+
+.mship-checkout-features {
+    background: var(--v14-surface-2);
+}
+
+/* ---- Payment Modal ---- */
+.mship-modal .modal-content {
+    background: var(--v14-card-bg);
+    border: 1px solid var(--v14-card-border) !important;
+}
+
+.mship-modal .modal-header {
+    border-bottom: 1px solid var(--v14-border-light) !important;
+}
+
+.mship-modal .list-group-item {
+    background: var(--v14-card-bg);
+    border-color: var(--v14-border-light) !important;
+    color: var(--v14-text-primary);
+}
+
+.mship-modal .list-group-item:hover {
+    background: var(--v14-surface-2);
+}
+
+/* ---- No Active Plan Alert ---- */
+.mship-no-plan {
+    background: var(--v14-stat-blue);
+    border: 1px solid var(--v14-card-border) !important;
+    color: var(--v14-text-primary);
+}
+
+/* ---- Tiny label text ---- */
+.mship-text-xs {
+    font-size: 0.7rem;
+}
+
+/* ---- Contact Us Page ---- */
+.contact-info-panel {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%);
+    min-height: 100%;
+}
+
+.contact-info-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+}
+
+.contact-info-badge {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 0.875rem;
+}
+
+.contact-info-divider {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.contact-mobile-header {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+}
+
+.contact-mobile-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+}
+
+/* ============================================================
+   Wallet Page
+   ============================================================ */
+
+/* ---- Gradient Stat Cards ---- */
+.wallet-grad {
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wallet-grad:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.wallet-grad--balance {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+}
+
+.wallet-grad--sales {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+}
+
+.wallet-grad--actions {
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+}
+
+.wallet-grad--clicks {
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+}
+
+.wallet-grad-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+}
+
+/* ---- Wallet Main Card ---- */
+.wallet-main-card {
+    background: var(--v14-card-bg);
+    border: 1px solid var(--v14-card-border) !important;
+}
+
+/* ---- Wallet Card Header ---- */
+.wallet-card-header {
+    background: var(--v14-card-bg) !important;
+    border-color: var(--v14-border-light) !important;
+}
+
+/* ---- Filter Labels ---- */
+.wallet-filter-label {
+    font-size: 0.75rem;
+    margin-bottom: 0.15rem !important;
+}
+
+/* ---- Empty State Icon ---- */
+.wallet-empty-icon {
+    width: 72px;
+    height: 72px;
+    background: var(--v14-surface-2);
+    color: var(--v14-text-secondary);
+}
+
+/* ---- Transaction Table Column Widths ---- */
+.wallet-th-auto {
+    width: 5px !important;
+    padding: 0 !important;
+}
+.wallet-th-checkbox {
+    width: 40px !important;
+}
+.wallet-th-expand {
+    width: 28px !important;
+}
+.wallet-th-more {
+    width: 35px !important;
+}
+
+/* ---- Transaction Table Styling ---- */
+.wallet-main-card .table-responsive {
+    overflow-x: auto !important;
+}
+
+.transaction-table thead.table-light {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+}
+
+.transaction-table thead.table-light th {
+    background: transparent !important;
+    color: #e2e8f0 !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 0.45rem !important;
+    border: none !important;
+    white-space: nowrap;
+}
+
+.transaction-table tbody td,
+.transaction-table tfoot td {
+    padding: 0.4rem 0.45rem !important;
+}
+
+.transaction-table thead.table-light th .bi {
+    color: #94a3b8;
+}
+
+.transaction-table thead.table-light th .form-check-input {
+    border-color: #64748b;
+}
+
+.transaction-table tbody tr:not(.child-row) {
+    transition: background-color 0.15s ease;
+}
+
+.transaction-table tbody tr:not(.child-row):hover {
+    background-color: rgba(59, 130, 246, 0.06) !important;
+}
+
+.transaction-table tbody td {
+    vertical-align: middle;
+    color: var(--v14-text-primary);
+}
+
+.transaction-table tfoot td {
+    background: var(--v14-surface-2) !important;
+    color: var(--v14-text-secondary);
+}
+
+/* ---- Wallet Table Row Hidden (replaces inline display:none) ---- */
+.wallet-row-hidden {
+    display: none;
+}
+
+/* ---- Wallet Child Indicator (replaces inline border-left) ---- */
+.wallet-child-indicator {
+    border-left: 3px solid #3b82f6;
+    padding-left: 1rem;
+}
+
+/* ---- Wallet Recurring Button (replaces inline color) ---- */
+.wallet-recurring-btn {
+    color: #EB940D !important;
+}
+
+/* ---- Animation Delay Utilities ---- */
+.mship-delay-1 { animation-delay: 0.08s; }
+.mship-delay-2 { animation-delay: 0.16s; }
+.mship-delay-3 { animation-delay: 0.24s; }
+.mship-delay-4 { animation-delay: 0.32s; }

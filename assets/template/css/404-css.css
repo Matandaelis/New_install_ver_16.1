@@ -1,0 +1,122 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap);
+
+/* ── Page ── */
+body {
+    background: linear-gradient(135deg, #1fc99a 0%, #0ea87e 55%, #0a7d60 100%);
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+/* ── Card ── */
+.c {
+    text-align: center;
+    padding: 2.5rem 2.75rem 2rem;
+    background: rgba(255,255,255,0.97);
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.08);
+    color: #333;
+    position: relative;
+    z-index: 10;
+    animation: popIn .45s cubic-bezier(.34,1.56,.64,1) both;
+    max-width: 420px;
+    width: 90vw;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(.84) translateY(20px); }
+    to   { opacity: 1; transform: scale(1)  translateY(0); }
+}
+
+/* ── error heading ── */
+._404 {
+    font-size: clamp(1.6rem, 5vw, 2.25rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #e63946;
+    letter-spacing: -0.5px;
+    text-shadow: 0 3px 10px rgba(230,57,70,.2);
+    margin-bottom: .25rem;
+    word-break: break-word;
+}
+
+/* ── Divider ── */
+hr {
+    border: none;
+    border-top: 2px solid #f0f0f0;
+    margin: .75rem 0;
+}
+
+/* ── Text lines ── */
+._1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: .25rem;
+}
+
+._2 {
+    font-size: .92rem;
+    color: #6b7280;
+    margin-bottom: 0;
+}
+
+/* ── Button ── */
+.back-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: .65rem 1.75rem;
+    background: linear-gradient(135deg, #1fc99a, #0ea87e);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: .9rem;
+    box-shadow: 0 4px 14px rgba(31,201,154,.38);
+    transition: filter .15s, transform .15s, box-shadow .15s;
+}
+
+.back-btn:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(31,201,154,.45);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* ── Clouds ── */
+.cloud {
+    width: 350px;
+    height: 120px;
+    background: rgba(255,255,255,.22);
+    border-radius: 100px;
+    position: absolute;
+    z-index: 1;
+}
+
+.cloud:after, .cloud:before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.cloud:after  { width:100px; height:100px; top:-50px; left:50px; border-radius:100px; }
+.cloud:before { width:180px; height:180px; top:-90px; right:50px; border-radius:200px; }
+
+.x1   { top:-50px;  left:100px;  transform:scale(0.3); opacity:.9;  animation:moveclouds 15s linear infinite; }
+.x1_5 { top:-80px;  left:250px;  transform:scale(0.3);              animation:moveclouds 17s linear infinite; }
+.x2   { top:30px;   left:250px;  transform:scale(0.6); opacity:.6;  animation:moveclouds 25s linear infinite; }
+.x3   { bottom:-70px; left:250px; transform:scale(0.6); opacity:.8; animation:moveclouds 25s linear infinite; }
+.x4   { left:470px; bottom:20px; transform:scale(0.75); opacity:.75; animation:moveclouds 18s linear infinite; }
+.x5   { top:300px;  left:200px;  transform:scale(0.5); opacity:.8;  animation:moveclouds 20s linear infinite; }
+
+@keyframes moveclouds {
+    0%   { margin-left: 1000px; }
+    100% { margin-left: -1000px; }
+}

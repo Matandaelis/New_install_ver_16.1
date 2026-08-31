@@ -1,0 +1,463 @@
+/* ============================================================
+   Multiple Pages Theme — Login/Register/Forgot — GAME CHANGER v2
+   Animated gradients, floating shapes, glassmorphism, glow effects
+   ============================================================ */
+
+/* --- Auth Page Layout --- */
+.mp-auth-page {
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* --- Left Banner — Animated Gradient + Floating Shapes --- */
+.mp-auth-page .mp-auth-banner {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.mp-auth-page .mp-auth-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(15, 23, 42, 0.93) 0%,
+        rgba(var(--mp-primary-rgb), 0.82) 35%,
+        rgba(var(--mp-secondary-rgb), 0.75) 65%,
+        rgba(15, 23, 42, 0.95) 100%);
+    background-size: 400% 400%;
+    animation: mpGradientShift 12s ease infinite;
+    z-index: -1;
+}
+
+/* Mesh light effect */
+.mp-auth-page .mp-auth-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 25% 75%, rgba(var(--mp-accent-rgb), 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 75% 25%, rgba(var(--mp-primary-rgb), 0.1) 0%, transparent 50%);
+    z-index: -1;
+}
+
+/* Floating shapes on banner side */
+.mp-auth-banner .mp-auth-shape {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+.mp-auth-banner .mp-auth-shape-1 {
+    width: 250px; height: 250px;
+    background: linear-gradient(135deg, rgba(var(--mp-primary-rgb), 0.1), rgba(var(--mp-accent-rgb), 0.08));
+    top: -8%; right: -5%;
+    animation: mpFloat1 20s ease-in-out infinite;
+    filter: blur(3px);
+}
+.mp-auth-banner .mp-auth-shape-2 {
+    width: 150px; height: 150px;
+    background: rgba(var(--mp-accent-rgb), 0.08);
+    bottom: 10%; left: -3%;
+    animation: mpFloat2 18s ease-in-out infinite;
+    filter: blur(2px);
+}
+.mp-auth-banner .mp-auth-shape-3 {
+    width: 80px; height: 80px;
+    background: rgba(var(--mp-primary-rgb), 0.12);
+    top: 35%; left: 20%;
+    animation: mpFloat5 14s ease-in-out infinite;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.mp-auth-page .mp-auth-banner-content {
+    text-align: center;
+    padding: 2.5rem;
+    max-width: 420px;
+    animation: mpFadeInUp 0.6s ease-out 0.2s both;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--mp-radius);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+}
+
+.mp-auth-page .mp-auth-banner-content i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+}
+
+.mp-auth-page .mp-auth-banner-content h1 {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.mp-auth-page .mp-auth-banner-content .mp-auth-banner-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.8rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    transition: all var(--mp-transition);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+.mp-auth-page .mp-auth-banner-content .mp-auth-banner-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+    animation: mpShimmer 3s ease-in-out infinite;
+}
+
+.mp-auth-page .mp-auth-banner-content .mp-auth-banner-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.3), 0 0 20px rgba(var(--mp-primary-rgb), 0.25);
+    color: #fff;
+}
+
+/* Auth description */
+.mp-auth-description {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-height: 160px;
+    overflow-y: auto;
+}
+.mp-auth-description p {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+.mp-auth-description::-webkit-scrollbar { width: 4px; }
+.mp-auth-description::-webkit-scrollbar-track { background: transparent; }
+.mp-auth-description::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2); border-radius: 10px;
+}
+
+/* --- Form Panel — Subtle Glass Texture --- */
+.mp-auth-page .mp-auth-form-panel {
+    background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 50%, #f8fafc 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+/* Subtle decorative circles on form side */
+.mp-auth-form-panel::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(var(--mp-primary-rgb), 0.04);
+    pointer-events: none;
+}
+.mp-auth-form-panel::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: rgba(var(--mp-accent-rgb), 0.03);
+    pointer-events: none;
+}
+
+.mp-auth-form-panel > .mp-auth-form-inner {
+    width: 100%;
+    margin: auto 0;
+}
+.mp-auth-form-inner { width: 100%; }
+.mp-auth-form-inner .mp-auth-form-wrap {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo */
+.mp-auth-form-inner .mp-auth-logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.mp-auth-form-inner .mp-auth-logo img {
+    max-width: 220px; max-height: 80px;
+    width: auto; height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.06));
+}
+
+/* Form Title */
+.mp-auth-form-inner .mp-auth-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.mp-auth-form-inner .mp-auth-title h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+    background: linear-gradient(135deg, var(--mp-text) 0%, var(--mp-primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.mp-auth-form-inner .mp-auth-title p {
+    color: var(--mp-text-muted);
+    font-size: 0.9rem;
+}
+
+/* Form Inputs — Glow Focus */
+.mp-auth-form .form-group { margin-bottom: 1.25rem; }
+.mp-auth-form .input-group {
+    border-radius: var(--mp-radius-sm);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+.mp-auth-form .input-group:focus-within {
+    box-shadow: 0 0 0 3px rgba(var(--mp-primary-rgb), 0.12), 0 4px 16px rgba(var(--mp-primary-rgb), 0.08);
+    border-color: rgba(var(--mp-primary-rgb), 0.3);
+}
+.mp-auth-form .input-group .input-group-text {
+    background: #fff;
+    border: 1px solid var(--mp-border);
+    border-right: none;
+    padding: 0 1rem;
+    color: var(--mp-text-muted);
+}
+.mp-auth-form .input-group .input-group-text .user-icon,
+.mp-auth-form .input-group .input-group-text .password-icon {
+    background: url(../img/user.png) no-repeat scroll 0 0;
+    height: 18px; width: 18px;
+    display: inline-block;
+    opacity: 0.5;
+}
+.mp-auth-form .input-group .input-group-text .password-icon {
+    background-image: url(../img/password.png);
+}
+.mp-auth-form .input-group .form-control,
+.mp-auth-form .form-group .form-control {
+    height: 52px;
+    border: 1px solid var(--mp-border);
+    border-radius: var(--mp-radius-sm);
+    color: var(--mp-text);
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+.mp-auth-form .input-group .form-control {
+    border-left: none;
+    border-radius: 0 var(--mp-radius-sm) var(--mp-radius-sm) 0;
+}
+.mp-auth-form .form-control:focus {
+    border-color: var(--mp-primary);
+    box-shadow: none;
+    background: #fff;
+}
+
+/* Register form */
+.mp-auth-form.register-form .form-group .form-control {
+    border-radius: var(--mp-radius-sm);
+    border: 1px solid var(--mp-border);
+}
+.mp-auth-form.register-form .form-group .form-control:focus {
+    border-color: var(--mp-primary);
+    box-shadow: 0 0 0 3px rgba(var(--mp-primary-rgb), 0.1);
+}
+
+/* Submit Button — Gradient + Glow */
+.mp-auth-form .mp-btn-submit {
+    display: block;
+    width: 100%;
+    border: 0;
+    height: 52px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 1.5rem;
+    transition: all var(--mp-transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(var(--mp-primary-rgb), 0.25);
+}
+.mp-auth-form .mp-btn-submit::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+    animation: mpShimmer 3s ease-in-out infinite;
+}
+.mp-auth-form .mp-btn-submit:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 8px 30px rgba(var(--mp-primary-rgb), 0.4), 0 0 20px rgba(var(--mp-primary-rgb), 0.15);
+}
+
+/* Links */
+.mp-auth-form a {
+    color: var(--mp-text-muted);
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+.mp-auth-form a:hover { color: var(--mp-primary); }
+
+/* Form bottom description */
+.mp-auth-form-description {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--mp-border);
+    max-height: 180px;
+    overflow-y: auto;
+}
+.mp-auth-form-description p {
+    color: var(--mp-text-muted); font-size: 0.88rem; line-height: 1.6;
+}
+
+/* Phone input */
+.mp-auth-form.register-form .form-group .iti { width: 100%; }
+.mp-auth-form.register-form .iti--separate-dial-code .iti__selected-flag { background: transparent; }
+
+/* Registration type tabs */
+#registartion_type {
+    display: flex;
+    border-radius: 50px;
+    overflow: hidden;
+    border: 2px solid rgba(var(--mp-primary-rgb), 0.15);
+    margin-bottom: 1.5rem;
+    background: rgba(var(--mp-primary-rgb), 0.04);
+}
+#registartion_type li { flex: 1; }
+#registartion_type li a,
+#registartion_type li button {
+    display: block; width: 100%; text-align: center;
+    padding: 0.65rem 0.5rem;
+    font-weight: 600; font-size: 0.9rem;
+    border: none; background: transparent;
+    color: var(--mp-text-muted);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 50px;
+}
+#registartion_type li a.active,
+#registartion_type li button.active,
+#registartion_type li a:hover,
+#registartion_type li button:hover {
+    background: var(--mp-primary);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(var(--mp-primary-rgb), 0.3);
+}
+
+/* Checkbox */
+.mp-auth-form.register-form .checkbox {
+    position: relative; text-align: left; margin-top: 1rem;
+}
+.mp-auth-form.register-form .checkbox label {
+    padding-left: 2rem; font-size: 0.88rem;
+    color: var(--mp-text-muted); cursor: pointer;
+}
+.mp-auth-form.register-form .checkbox input[type="checkbox"] { display: none; }
+.mp-auth-form.register-form .checkbox input[type="checkbox"] + .box:after {
+    position: absolute; left: 0; top: 3px;
+    content: ''; width: 20px; height: 20px;
+    border: 2px solid var(--mp-border); border-radius: 6px;
+    background: #fff; z-index: 1;
+    transition: all 0.2s ease;
+}
+.mp-auth-form.register-form .checkbox input[type="checkbox"]:checked + .box:after {
+    border-color: var(--mp-primary);
+    background: var(--mp-primary);
+    box-shadow: 0 2px 8px rgba(var(--mp-primary-rgb), 0.3);
+}
+.mp-auth-form.register-form .checkbox input[type="checkbox"]:checked + .box:before {
+    content: ''; position: absolute; left: 3px; top: 0px;
+    width: 6px; height: 12px;
+    border: 2px solid #fff; border-top: 0; border-left: 0;
+    transform: rotate(45deg); z-index: 2;
+}
+
+/* Radio */
+.mp-auth-form.register-form .radio label,
+.mp-auth-form.register-form .radio-inline label {
+    margin-top: 5px; margin-bottom: 5px; cursor: pointer;
+}
+.mp-auth-form.register-form .radio input,
+.mp-auth-form.register-form .radio-inline input { opacity: 0; position: absolute; }
+.mp-auth-form.register-form .radio .indicator:before,
+.mp-auth-form.register-form .radio-inline .indicator:before {
+    content: '';
+    border: 2px solid var(--mp-border);
+    display: inline-block; vertical-align: middle;
+    width: 22px; height: 22px;
+    margin-top: -1px; margin-right: 6px;
+    text-align: center; border-radius: 50%;
+    transition: all 0.2s ease;
+}
+.mp-auth-form.register-form .radio input:checked + .indicator:before,
+.mp-auth-form.register-form .radio-inline input:checked + .indicator:before {
+    border-color: var(--mp-primary);
+    background: var(--mp-primary);
+    box-shadow: inset 0 0 0 4px #fff, 0 2px 8px rgba(var(--mp-primary-rgb), 0.2);
+}
+
+/* Alert */
+.mp-auth-form .alert { border-radius: var(--mp-radius-sm); font-size: 0.9rem; }
+
+/* --- Responsive --- */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .mp-auth-form-inner .mp-auth-form-wrap { max-width: 380px; }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .mp-auth-page .mp-auth-banner { display: none; }
+    .mp-auth-page .mp-auth-form-panel { min-height: 100vh; }
+    .mp-auth-form-inner .mp-auth-form-wrap { max-width: 420px; }
+}
+@media (max-width: 767px) {
+    .mp-auth-page { min-height: auto; }
+    .mp-auth-page .mp-auth-banner { min-height: auto; padding: 4rem 1.5rem; }
+    .mp-auth-page .mp-auth-form-panel { min-height: auto; padding: 2rem 1rem; }
+    .mp-auth-form-inner .mp-auth-form-wrap { max-width: 100%; }
+    .mp-auth-page .mp-auth-banner-content { padding: 2rem; }
+    .mp-auth-page .mp-auth-banner-content h1 { font-size: 1.5rem; }
+    .mp-auth-page .mp-auth-banner-content .mp-auth-banner-btn { width: 100%; justify-content: center; }
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+    .mp-auth-page .mp-auth-form-panel { padding-top: 2rem; }
+}
+
+.mp-auth-page .mp-auth-logo img {
+    max-width: 220px; max-height: 80px;
+    width: auto; height: auto;
+    object-fit: contain;
+}

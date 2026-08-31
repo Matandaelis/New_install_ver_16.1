@@ -1,0 +1,538 @@
+/* =======================================================
+   Form Checkout — 2026 Custom Styles
+   Layered on top of the store Bootstrap 4 + style.css
+   ======================================================= */
+
+/* ── Base ── */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !important;
+  background: #f4f6f9 !important;
+  padding-top: 0 !important;
+}
+
+/* Hide legacy container-fluid top bar (replaced by fc-header) */
+body > .container-fluid:first-of-type { display: none !important; }
+
+/* ── Header ── */
+.fc-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 8px rgba(0,0,0,.06);
+}
+.fc-header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.fc-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none !important;
+}
+.fc-logo img { height: 36px; width: auto; object-fit: contain; }
+
+/* Header controls — language / currency / user */
+.fc-header-controls { display: flex; align-items: center; gap: 8px; }
+.fc-header-controls .dropdown { position: relative; }
+.fc-header-controls .nav-link {
+  font-size: .8rem !important;
+  font-weight: 500;
+  color: #555 !important;
+  padding: 6px 10px !important;
+  border-radius: 8px;
+  display: flex !important;
+  align-items: center;
+  gap: 5px;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.fc-header-controls .nav-link:hover { background: #f3f4f6; color: #111 !important; }
+.fc-header-controls .dropdown-menu {
+  position: absolute !important;
+  right: 0;
+  top: calc(100% + 6px) !important;
+  left: auto !important;
+  background: #fff;
+  border-radius: 10px;
+  min-width: 160px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  border: 1px solid #e5e7eb;
+  padding: 6px;
+  z-index: 9999;
+  display: none;
+  transform: none !important;
+  float: none !important;
+}
+.fc-header-controls .dropdown-menu.show { display: block; }
+.fc-header-controls .dropdown-item {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px !important;
+  border-radius: 7px;
+  font-size: .82rem;
+  color: #374151;
+  text-decoration: none;
+  transition: background .1s;
+}
+.fc-header-controls .dropdown-item:hover { background: #f3f4f6 !important; color: #111; }
+.fc-secure-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .75rem;
+  color: #6b7280;
+  padding: 5px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  background: #f9fafb;
+  white-space: nowrap;
+}
+.fc-secure-badge i { color: #10b981; font-size: .7rem; }
+
+/* ── Progress Bar ── */
+.fc-progress {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+}
+.fc-progress-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fc-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  font-size: .78rem;
+  color: #9ca3af;
+}
+.fc-step.active { color: #2563eb; font-weight: 600; }
+.fc-step.done   { color: #10b981; }
+.fc-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .72rem;
+  font-weight: 700;
+  background: #e5e7eb;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+.fc-step.active .fc-step-num { background: #2563eb; color: #fff; }
+.fc-step.done   .fc-step-num { background: #10b981; color: #fff; }
+.fc-step-divider { width: 32px; height: 1px; background: #e5e7eb; flex-shrink: 0; }
+
+/* ── Main wrapper ── */
+.fc-main {
+  max-width: 720px;
+  margin: 32px auto;
+  padding: 0 16px 80px;
+}
+
+/* ── Hero ── */
+.fc-hero { text-align: center; margin-bottom: 28px; }
+.fc-hero h1 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #111;
+  margin: 0 0 10px;
+  line-height: 1.25;
+}
+.fc-hero-desc { font-size: .9rem; color: #6b7280; line-height: 1.6; }
+
+/* ── Cards ── */
+.fc-card {
+  background: #fff;
+  border-radius: 16px !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+  margin-bottom: 20px;
+  overflow: visible !important; /* allow inner dropdowns to overflow */
+  transition: box-shadow .2s;
+}
+.fc-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+.fc-card-header {
+  padding: 16px 22px;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 16px 16px 0 0;
+}
+.fc-card-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .88rem;
+  flex-shrink: 0;
+}
+.fc-card-icon.green  { background: #ecfdf5; color: #10b981; }
+.fc-card-icon.amber  { background: #fff7ed; color: #f59e0b; }
+.fc-card-icon.purple { background: #f5f3ff; color: #7c3aed; }
+.fc-card-header h4,
+.fc-card-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+}
+.fc-card-body { padding: 20px 22px; }
+
+/* ── Form inputs (scoped) ── */
+.fc-main .form-group { margin-bottom: 16px; }
+.fc-main .form-group > label {
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 5px;
+}
+.fc-main .form-control {
+  border: 1.5px solid #d1d5db !important;
+  border-radius: 9px !important;
+  font-size: .875rem !important;
+  transition: border-color .15s, box-shadow .15s;
+}
+.fc-main .form-control:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.12) !important;
+  outline: none;
+}
+.fc-main .form-control::placeholder { color: #9ca3af; }
+.fc-main .has-error .form-control { border-color: #ef4444 !important; }
+.fc-main .text-danger { font-size: .78rem !important; color: #ef4444; margin-top: 3px; display: block; }
+
+/* ── Auth tab nav ── */
+.fc-auth-nav {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+  background: #f3f4f6;
+  padding: 4px;
+  border-radius: 12px;
+}
+.fc-auth-nav .fc-tab-btn {
+  flex: 1;
+  text-align: center;
+  padding: 9px 12px;
+  border-radius: 9px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-decoration: none !important;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.fc-auth-nav .fc-tab-btn.active {
+  background: #fff;
+  color: #2563eb;
+  box-shadow: 0 1px 4px rgba(0,0,0,.1);
+}
+.fc-auth-nav .fc-tab-btn:not(.active):hover { color: #374151; }
+
+/* ── Auth forms ── */
+.fc-auth-pane { display: none; padding-top: 4px; }
+.fc-auth-pane.active { display: block; }
+
+/* ── Buttons (scoped to fc-card to avoid breaking payment buttons) ── */
+.fc-card .btn-submit,
+.fc-card .fc-btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(37,99,235,.3);
+  transition: all .18s;
+}
+.fc-card .btn-submit:hover,
+.fc-card .fc-btn-primary:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37,99,235,.4);
+}
+
+/* ── Confirm & Pay button ── */
+.confirm-order {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100% !important;
+  padding: 14px 28px !important;
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: .95rem !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(16,185,129,.35);
+  transition: all .18s;
+  margin-top: 4px;
+}
+.confirm-order:hover {
+  background: linear-gradient(135deg, #059669, #047857) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(16,185,129,.45);
+}
+.confirm-order:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+
+/* ── Payment methods — normalize conflicting float vs flex layout ── */
+.fc-card .payment-list,
+.fc-card .checkout-payments-wrapper {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 6px 0 !important;
+  background: transparent !important;
+  /* clear float-based layout from shop-homepage.css */
+  overflow: visible !important;
+}
+/* clearfix override — not needed when parent is flex */
+.fc-card .payment-list::after { display: none !important; }
+
+/* Each payment tile */
+.fc-card .payment-gateway-step {
+  float: none !important;       /* override shop-homepage.css float:left */
+  width: 140px !important;
+  height: 88px !important;
+  margin: 0 !important;         /* gap handles spacing */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+  background: #fff;
+  box-shadow: 0 1px 5px rgba(0,0,0,.12);
+  border: 2px solid transparent !important;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s;
+  flex-shrink: 0;
+}
+.fc-card .payment-gateway-step.active {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.15) !important;
+}
+.fc-card .payment-gateway-step:hover {
+  border-color: #93c5fd !important;
+}
+/* Images inside payment tiles — let max-width fit tile */
+.fc-card .payment-gateway-step img {
+  max-width: 90px !important;
+  max-height: 36px !important;
+  height: auto !important;
+  width: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+.fc-card .payment-gateway-step h3,
+.fc-card .payment-gateway-step p {
+  font-size: .72rem !important;
+  color: #6b7280 !important;
+  margin: 4px 0 0 !important;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+
+/* ── Checkbox (agree) ── */
+.fc-checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+}
+.fc-checkbox-row input[type=checkbox] {
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+.fc-checkbox-row label { font-size: .83rem; color: #4b5563; line-height: 1.5; margin: 0; cursor: pointer; }
+
+/* ── Warning / alert (scoped) ── */
+.fc-main .warning-div .alert { border-radius: 10px; font-size: .83rem; margin-top: 10px; }
+
+/* ── File upload ── */
+.fc-upload-area {
+  border: 1.5px dashed #d1d5db;
+  border-radius: 10px;
+  padding: 14px;
+  background: #f9fafb;
+  margin-bottom: 14px;
+}
+.fc-upload-area .file-preview-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  font-size: .83rem;
+  color: #374151;
+  cursor: pointer;
+  border: none;
+}
+.fc-upload-area .downloadable_file_input {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* ── Trust badges ── */
+.fc-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 18px 0;
+  flex-wrap: wrap;
+}
+.fc-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .75rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+.fc-trust-item i { color: #6b7280; font-size: .82rem; }
+
+/* ── Footer ── */
+.fc-footer {
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  padding: 20px;
+  text-align: center;
+}
+.fc-footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.fc-footer-copy { font-size: .78rem; color: #9ca3af; margin: 0; }
+.fc-footer-copy a { color: #9ca3af; }
+.fc-footer-copy a:hover { color: #6b7280; }
+.fc-footer-payments { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center; }
+.fc-footer-payments img { height: 22px; opacity: .6; filter: grayscale(20%); }
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+  .fc-main { margin: 16px auto; }
+  .fc-card-body { padding: 16px; }
+  .fc-card-header { padding: 14px 16px; }
+  .fc-hero h1 { font-size: 1.3rem; }
+  .fc-step .label { display: none; }
+  .fc-step { padding: 12px 8px; }
+  .fc-step-divider { width: 16px; }
+  .fc-header-inner { height: 56px; }
+  .fc-trust { gap: 12px; }
+  .d-none-mobile { display: none !important; }
+}
+@media (min-width: 768px) {
+  .d-none { display: none !important; }
+  .d-md-flex { display: flex !important; }
+}
+
+/* ── Coupon section ── */
+.fc-coupon-section {
+  margin-top: 14px;
+}
+.fc-coupon-input .form-control {
+  border-radius: 9px 0 0 9px !important;
+}
+.fc-coupon-input .input-group-append .btn {
+  border-radius: 0 9px 9px 0 !important;
+}
+
+/* Applied coupon badge */
+.fc-coupon-applied {
+  margin-top: 4px;
+}
+.fc-coupon-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border: 1.5px solid #6ee7b7;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+.fc-coupon-icon {
+  width: 36px;
+  height: 36px;
+  background: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: .9rem;
+  flex-shrink: 0;
+}
+.fc-coupon-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.fc-coupon-name {
+  font-size: .88rem;
+  font-weight: 700;
+  color: #065f46;
+}
+.fc-coupon-saving {
+  font-size: .78rem;
+  color: #059669;
+  font-weight: 500;
+}
+.fc-coupon-check {
+  font-size: 1.3rem;
+  color: #10b981;
+  flex-shrink: 0;
+}

@@ -1,0 +1,248 @@
+# Translation template for AffiliateProSaaS Integration
+# Copyright (C) 2025 All4Business
+# This file is distributed under the same license as the AffiliateProSaaS Integration package.
+msgid ""
+msgstr ""
+"Project-Id-Version: AffiliateProSaaS Integration 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: index.php:15
+msgid "Settings"
+msgstr ""
+
+#: index.php:20
+msgid "AffiliateProSaaS Settings"
+msgstr ""
+
+#: index.php:21
+msgid "AffiliateProSaaS"
+msgstr ""
+
+#: index.php:67
+msgid "Plugin not downloaded from affiliate system yet"
+msgstr ""
+
+#: index.php:96
+msgid "Cannot connect to affiliate system"
+msgstr ""
+
+#: index.php:138
+msgid "Client Name"
+msgstr ""
+
+#: index.php:140
+msgid "Client Email"
+msgstr ""
+
+#: index.php:142
+msgid "Client Phone"
+msgstr ""
+
+#: index.php:145
+msgid "Billing Address"
+msgstr ""
+
+#: index.php:147
+msgid "Billing City"
+msgstr ""
+
+#: index.php:149
+msgid "Billing State"
+msgstr ""
+
+#: index.php:151
+msgid "Billing Postcode"
+msgstr ""
+
+#: index.php:153
+msgid "Billing Country"
+msgstr ""
+
+#: index.php:156
+msgid "Shipping Address"
+msgstr ""
+
+#: index.php:158
+msgid "Shipping City"
+msgstr ""
+
+#: index.php:160
+msgid "Shipping State"
+msgstr ""
+
+#: index.php:162
+msgid "Shipping Postcode"
+msgstr ""
+
+#: index.php:164
+msgid "Shipping Country"
+msgstr ""
+
+#: index.php:167
+msgid "Payment Method"
+msgstr ""
+
+#: index.php:169
+msgid "Customer Note"
+msgstr ""
+
+#: index.php:171
+msgid "User ID"
+msgstr ""
+
+#: index.php:173
+msgid "User Email"
+msgstr ""
+
+#: index.php:175
+msgid "Profile URL"
+msgstr ""
+
+#: option.php:12
+msgid "Settings saved successfully!"
+msgstr ""
+
+#: option.php:47
+msgid "AffiliateProSaaS Integration"
+msgstr ""
+
+#: option.php:48
+msgid "Manage your affiliate integration settings and monitor connection status"
+msgstr ""
+
+#: option.php:56
+msgid "Plugin Status"
+msgstr ""
+
+#: option.php:64
+msgid "Synced Fields"
+msgstr ""
+
+#: option.php:72
+msgid "Active Integrations"
+msgstr ""
+
+#: option.php:80
+msgid "Connection Status"
+msgstr ""
+
+#: option.php:91
+msgid "Module Configuration"
+msgstr ""
+
+#: option.php:98
+msgid "Plugin Core"
+msgstr ""
+
+#: option.php:99
+msgid "Enable main functionality"
+msgstr ""
+
+#: option.php:106
+msgid "WooCommerce"
+msgstr ""
+
+#: option.php:107
+msgid "Sync orders & customers"
+msgstr ""
+
+#: option.php:114
+msgid "CartFlows"
+msgstr ""
+
+#: option.php:115
+msgid "Enable funnel tracking"
+msgstr ""
+
+#: option.php:127
+msgid "Data Synchronization"
+msgstr ""
+
+#: option.php:131
+msgid "Select data to sync with AffiliatePro"
+msgstr ""
+
+#: option.php:136
+msgid "All"
+msgstr ""
+
+#: option.php:139
+msgid "None"
+msgstr ""
+
+#: option.php:142
+msgid "Selected:"
+msgstr ""
+
+#: option.php:166
+msgid "Connected"
+msgstr ""
+
+#: option.php:166
+msgid "Not Setup"
+msgstr ""
+
+#: option.php:166
+msgid "Disconnected"
+msgstr ""
+
+#: option.php:172
+msgid "Status:"
+msgstr ""
+
+#: option.php:176
+msgid "Message:"
+msgstr ""
+
+#: option.php:180
+msgid "Base URL:"
+msgstr ""
+
+#: option.php:184
+msgid "Click to open"
+msgstr ""
+
+#: option.php:197
+msgid "Quick Stats"
+msgstr ""
+
+#: option.php:203
+msgid "WordPress:"
+msgstr ""
+
+#: option.php:207
+msgid "Plugin:"
+msgstr ""
+
+#: option.php:211
+msgid "Plugin Core:"
+msgstr ""
+
+#: option.php:212
+msgid "On"
+msgstr ""
+
+#: option.php:212
+msgid "Off"
+msgstr ""
+
+#: option.php:215
+msgid "WooCommerce:"
+msgstr ""
+
+#: option.php:219
+msgid "CartFlows:"
+msgstr ""
+
+#: option.php:228
+msgid "Save Configuration"
+msgstr ""

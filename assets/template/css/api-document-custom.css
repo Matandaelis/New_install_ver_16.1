@@ -1,0 +1,180 @@
+/* API Document Custom Styles - Unified across User API and Admin API */
+
+/* Response view - dark VS Code style */
+.response-view {
+	background-color: #1e1e1e !important;
+	color: #d4d4d4 !important;
+	padding: 1.25rem !important;
+	border-radius: 0.5rem !important;
+	overflow-x: auto !important;
+	font-size: 0.8rem !important;
+	line-height: 1.6 !important;
+	border: 1px solid #333 !important;
+	position: relative !important;
+}
+
+.response-view .json-key {
+	color: #9cdcfe !important;
+}
+
+.response-view .json-string {
+	color: #ce9178 !important;
+}
+
+.response-view .json-number {
+	color: #b5cea8 !important;
+}
+
+.response-view .json-boolean {
+	color: #569cd6 !important;
+}
+
+.response-view .json-null {
+	color: #6c757d !important;
+}
+
+.response-view .json-mark {
+	background: transparent !important;
+}
+
+/* Section titles */
+.page-title {
+	font-weight: 700 !important;
+	font-size: 1.4rem !important;
+	position: relative !important;
+	padding-bottom: 0.5rem !important;
+	margin-bottom: 1rem !important;
+	color: #1a1a2e !important;
+	border-bottom: 2px solid #e9ecef !important;
+}
+
+.page-title::after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 50px;
+	height: 2px;
+	background: #0d6efd;
+}
+
+/* Section containers */
+.top-content {
+	padding: 1.25rem 0 !important;
+	margin-bottom: 0.5rem !important;
+}
+
+/* Card header enhancements */
+.card-header.bg-primary {
+	background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 50%, #0f3460 100%) !important;
+	border-bottom: 3px solid #0d6efd !important;
+}
+
+.card-header.bg-success {
+	background: linear-gradient(135deg, #0d2818 0%, #14452f 50%, #1a5c3a 100%) !important;
+	border-bottom: 3px solid #198754 !important;
+}
+
+.card-header.bg-danger {
+	background: linear-gradient(135deg, #2a0d0d 0%, #3a1b1b 50%, #5c1a1a 100%) !important;
+	border-bottom: 3px solid #dc3545 !important;
+}
+
+/* Table styling */
+.table-hover tbody tr:hover {
+	background-color: rgba(13, 110, 253, 0.04) !important;
+}
+
+.table th {
+	background-color: #f8f9fa !important;
+	font-weight: 600 !important;
+	font-size: 0.85rem !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.03em !important;
+	color: #495057 !important;
+	padding: 0.65rem !important;
+}
+
+.table td {
+	vertical-align: middle !important;
+	font-size: 0.875rem !important;
+	padding: 0.6rem !important;
+}
+
+.table td code {
+	background: #e8f4fd !important;
+	padding: 0.15rem 0.4rem !important;
+	border-radius: 0.25rem !important;
+	font-size: 0.8rem !important;
+	color: #0d6efd !important;
+}
+
+/* Back to top button */
+#backToTop {
+	transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+#backToTop:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Copy button on response blocks */
+.copy-btn {
+	opacity: 0;
+	transition: opacity 0.2s ease-in-out;
+	font-size: 0.75rem !important;
+	z-index: 10;
+}
+
+.response-view:hover .copy-btn {
+	opacity: 1;
+}
+
+/* Alert cards */
+.alert-info {
+	border-left: 4px solid #0dcaf0 !important;
+	border-radius: 0.5rem !important;
+}
+
+/* Smooth scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Cards in API docs */
+.api-content .card {
+	border-radius: 0.5rem !important;
+	overflow: hidden;
+	transition: box-shadow 0.2s ease-in-out;
+}
+
+.api-content .card:hover {
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Sidebar active states */
+#sidebar-nav .nav-link.active:not([data-bs-toggle]) {
+	font-weight: 600 !important;
+}
+
+/* Progress bar animation */
+#readingProgress {
+	transition: width 0.15s linear;
+}
+
+/* Code in text */
+code {
+	font-size: 0.85em;
+}
+
+/* Hover-lift for overview cards */
+.hover-lift {
+	transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.hover-lift:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+}

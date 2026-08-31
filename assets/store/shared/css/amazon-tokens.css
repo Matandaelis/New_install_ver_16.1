@@ -1,0 +1,121 @@
+/* ════════════════════════════════════════════════════════════════
+   Amazon-Style Design Tokens
+   Based on Amazon's production CSS (May 2026)
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Brand Colors ── */
+  --amz-navy-dark: #131921;
+  --amz-navy: #232F3E;
+  --amz-orange: #FF9900;
+  --amz-btn-yellow: #FFD814;
+  --amz-btn-yellow-hover: #FFCE12;
+  --amz-btn-orange: #FEBD69;
+  --amz-btn-orange-hover: #FF8400;
+
+  /* ── Text Colors ── */
+  --amz-text: #0F1111;
+  --amz-text-secondary: #565959;
+  --amz-link: #2162A1;
+  --amz-link-hover: #0C3353;
+  --amz-nav-text: #FFFFFF;
+  --amz-nav-muted: #DDDDDD;
+
+  /* ── Background Colors ── */
+  --amz-bg-page: #EAEDED;
+  --amz-bg-card: #FFFFFF;
+  --amz-bg-hover: #F7FAFA;
+  --amz-bg-input: #FFFFFF;
+
+  /* ── Border Colors ── */
+  --amz-border: #E6E6E6;
+  --amz-border-input: #A7ACB2;
+  --amz-border-focus: #FFD814;
+
+  /* ── Rating Colors ── */
+  --amz-star: #FEBD69;
+  --amz-star-empty: #E6E6E6;
+
+  /* ── Status Colors ── */
+  --amz-success: #067D62;
+  --amz-danger: #CC0C39;
+  --amz-info: #2162A1;
+  --amz-warning: #E77600;
+
+  /* ── Prime Badge ── */
+  --amz-prime: #2162A1;
+
+  /* ── Typography ── */
+  --amz-font: Arial, Helvetica, sans-serif;
+  --amz-font-size-xs: 12px;
+  --amz-font-size-sm: 13px;
+  --amz-font-size-base: 14px;
+  --amz-font-size-lg: 16px;
+  --amz-font-size-xl: 21px;
+  --amz-font-size-xxl: 25px;
+  --amz-font-size-display: 28px;
+  --amz-font-weight-normal: 400;
+  --amz-font-weight-bold: 700;
+  --amz-line-height: 1.5;
+
+  /* ── Spacing (4px base) ── */
+  --amz-space-1: 4px;
+  --amz-space-2: 8px;
+  --amz-space-3: 12px;
+  --amz-space-4: 16px;
+  --amz-space-5: 20px;
+  --amz-space-6: 24px;
+  --amz-space-7: 28px;
+  --amz-space-8: 32px;
+  --amz-space-10: 40px;
+  --amz-space-12: 48px;
+  --amz-space-16: 64px;
+
+  /* ── Border Radius ── */
+  --amz-radius-sm: 3px;
+  --amz-radius-md: 4px;
+  --amz-radius-lg: 8px;
+  --amz-radius-pill: 100px;
+
+  /* ── Elevation / Shadows ── */
+  --amz-shadow-flat: none;
+  --amz-shadow-card: rgb(136, 136, 136) 0px 1px 3px 0px;
+  --amz-shadow-card-hover: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --amz-shadow-btn: rgba(0, 0, 0, 0.13) 0px 2px 4px 0px;
+  --amz-shadow-flyout: rgba(15, 17, 17, 0.5) 0px 0px 14px 0px;
+
+  /* ── Transitions ── */
+  --amz-transition-fast: 0.1s linear;
+  --amz-transition-normal: 0.15s ease;
+  --amz-transition-slow: 0.2s ease;
+
+  /* ── Z-Index Scale ── */
+  --amz-z-base: 0;
+  --amz-z-card: 1;
+  --amz-z-dropdown: 100;
+  --amz-z-sticky: 101;
+  --amz-z-overlay: 200;
+  --amz-z-modal: 300;
+
+  /* ── Container ── */
+  --amz-container-max: 1500px;
+  --amz-container-padding: 16px;
+
+  /* ── Header ── */
+  --amz-header-height: 60px;
+  --amz-nav-secondary-height: 40px;
+  --amz-search-height: 40px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Dark Mode Overrides
+   ════════════════════════════════════════════════════════════════ */
+[data-bs-theme="dark"] {
+  --amz-bg-page: #1A1A1A;
+  --amz-bg-card: #232323;
+  --amz-bg-hover: #2D2D2D;
+  --amz-text: #E3E3E3;
+  --amz-text-secondary: #A0A0A0;
+  --amz-border: #3A3A3A;
+  --amz-border-input: #5A5A5A;
+}
