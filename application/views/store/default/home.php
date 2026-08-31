@@ -128,7 +128,7 @@ $homepage_features = (isset($store_setting['homepage_features']) && !empty($stor
 			?>
 			<div class="amz-feature-card">
 				<div class="amz-feature-icon">
-					<img src="<?= $feat_img ?>" alt="">
+					<img src="<?= $feat_img ?>" alt="<?= $hf->title ?>" loading="lazy" width="80" height="80">
 				</div>
 				<div class="amz-feature-text">
 					<h4><?= $hf->title ?></h4>
@@ -219,7 +219,7 @@ $homepage_features = (isset($store_setting['homepage_features']) && !empty($stor
 			?>
 			<a href="<?= base_url('store/category/' . $cat_value['slug']) ?>" class="amz-category-tile">
 				<div class="amz-category-tile-img">
-					<img src="<?= $cat_img ?>" alt="<?= htmlspecialchars($cat_value['name']) ?>">
+					<img src="<?= $cat_img ?>" alt="<?= htmlspecialchars($cat_value['name']) ?>" loading="lazy" width="300" height="300">
 				</div>
 				<span class="amz-category-tile-name"><?= htmlspecialchars($cat_value['name']) ?></span>
 			</a>
@@ -241,7 +241,7 @@ if (!empty($bs_cards)):
 				$card_img = !empty($hf->feature_image) ? base_url('assets/images/site/' . $hf->feature_image) : base_url('assets/store/default/img/blog1.png');
 			?>
 			<a href="<?= $card_link ?>" class="amz-promo-tile <?= $hf->link_target === 'true' ? 'target="_blank"' : '' ?>" <?= !empty($hf->bg_color) ? 'style="background-color:' . $hf->bg_color . '"' : '' ?>>
-				<img src="<?= $card_img ?>" alt="<?= htmlspecialchars($hf->title) ?>" class="amz-promo-tile-img">
+				<img src="<?= $card_img ?>" alt="<?= htmlspecialchars($hf->title) ?>" class="amz-promo-tile-img" loading="lazy" width="400" height="300">
 				<div class="amz-promo-tile-content">
 					<h4><?= $hf->title ?></h4>
 					<p><?= $hf->sub_title ?></p>

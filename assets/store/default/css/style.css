@@ -1,3 +1,198 @@
+/* ════════════════════════════════════════════════════════════════
+   Accessibility: Skip Navigation Link
+   ════════════════════════════════════════════════════════════════ */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--amz-navy-dark, #131921);
+    color: #FFFFFF;
+    padding: 12px 24px;
+    z-index: 9999;
+    font-size: var(--amz-font-size-base, 14px);
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid var(--amz-orange, #FF9900);
+    outline-offset: 2px;
+}
+
+/* Screen reader only - visually hidden but accessible */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Accessibility: Focus States
+   ════════════════════════════════════════════════════════════════ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--amz-orange, #FF9900);
+    outline-offset: 2px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Accessibility: Reduced Motion
+   ════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Skeleton Loading States
+   ════════════════════════════════════════════════════════════════ */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--amz-radius-sm, 3px);
+}
+
+@keyframes skeleton-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-card {
+    background: var(--amz-bg-card, #fff);
+    border-radius: var(--amz-radius-md, 4px);
+    padding: var(--amz-space-4, 16px);
+    box-shadow: var(--amz-shadow-card);
+}
+
+.skeleton-image {
+    height: 200px;
+    margin-bottom: 12px;
+}
+
+.skeleton-title {
+    height: 20px;
+    width: 80%;
+    margin-bottom: 8px;
+}
+
+.skeleton-text {
+    height: 14px;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+.skeleton-text.short {
+    width: 60%;
+}
+
+.skeleton-price {
+    height: 24px;
+    width: 40%;
+    margin-top: 12px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Button Loading States
+   ════════════════════════════════════════════════════════════════ */
+.amz-btn-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.amz-btn-loading::after {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: btn-spin 0.8s linear infinite;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+@keyframes btn-spin {
+    to { transform: rotate(360deg); }
+}
+
+.amz-btn-loading:disabled {
+    cursor: not-allowed;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Form Validation States
+   ════════════════════════════════════════════════════════════════ */
+.amz-input-error {
+    border-color: var(--amz-danger, #CC0C39) !important;
+}
+
+.amz-input-success {
+    border-color: var(--amz-success, #067D62) !important;
+}
+
+.amz-error-message {
+    color: var(--amz-danger, #CC0C39);
+    font-size: var(--amz-font-size-sm, 13px);
+    margin-top: 4px;
+    display: block;
+}
+
+.amz-success-message {
+    color: var(--amz-success, #067D62);
+    font-size: var(--amz-font-size-sm, 13px);
+    margin-top: 4px;
+    display: block;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Image Lazy Loading
+   ════════════════════════════════════════════════════════════════ */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"].loaded,
+img[loading="lazy"]:not([data-src]) {
+    opacity: 1;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Sticky Header
+   ════════════════════════════════════════════════════════════════ */
+#myHeader {
+    position: sticky;
+    top: 0;
+    z-index: var(--amz-z-sticky, 101);
+}
+
+/* Hide secondary nav on scroll down, show on scroll up */
+.amz-header-secondary {
+    transition: transform var(--amz-transition-normal, 0.15s ease);
+}
+
+#myHeader.amz-header--scrolled .amz-header-secondary {
+    transform: translateY(-100%);
+}
+
 * {
     font-family: var(--amz-font, Arial, Helvetica, sans-serif);
 }

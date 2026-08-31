@@ -204,6 +204,9 @@
 </head>
 
 <body style="font-family: <?= $cart_store_side_font ?> !important;">
+    <!-- Skip Navigation Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <?php 
     $fbmessager_status = (array)json_decode($SiteSetting['fbmessager_status'],1);
     if(in_array('store', $fbmessager_status)){
@@ -391,9 +394,9 @@
             </div>
         </header>
 
-      <div class="page-wrapper">
+      <main id="main-content" class="page-wrapper" tabindex="-1">
           <?php echo $content; ?>
-      </div>
+      </main>
 
     <!-- Recently Viewed Container (rendered by JS) - must be above footer -->
     <div class="container recently-viewed-section py-4">
@@ -909,6 +912,75 @@ if(is_array($_notif2) && count($_notif2) > 0) {
     	}
     	return item.value
     }
+</script>
+
+<!-- Accessibility: Lazy Loading for Images -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mark lazy images as loaded when they finish loading
+    var lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    lazyImages.forEach(function(img) {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', function() {
+                this.classList.add('loaded');
+            });
+        }
+    });
+
+    // Add ARIA labels to icon-only buttons
+    var iconButtons = document.querySelectorAll('button:not([aria-label])');
+    iconButtons.forEach(function(btn) {
+        var text = btn.textContent.trim();
+        var icon = btn.querySelector('i, svg');
+        if (icon && !text) {
+            // Button has icon but no text - add aria-label based on nearby context
+            var parent = btn.closest('a, div, form');
+            if (parent) {
+                var label = parent.getAttribute('aria-label') || parent.getAttribute('title') || 'Button';
+                btn.setAttribute('aria-label', label);
+            }
+        }
+    });
+
+    // Form validation on blur
+    var forms = document.querySelectorAll('form');
+    forms.forEach(function(form) {
+        var inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+        inputs.forEach(function(input) {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+            input.addEventListener('input', function() {
+                if (this.classList.contains('amz-input-error')) {
+                    validateField(this);
+                }
+            });
+        });
+    });
+
+    function validateField(field) {
+        var isValid = field.checkValidity();
+        var errorEl = document.getElementById('error-' + field.id);
+        
+        if (isValid) {
+            field.classList.remove('amz-input-error');
+            field.classList.add('amz-input-success');
+            field.removeAttribute('aria-invalid');
+            if (errorEl) {
+                errorEl.style.display = 'none';
+            }
+        } else {
+            field.classList.remove('amz-input-success');
+            field.classList.add('amz-input-error');
+            field.setAttribute('aria-invalid', 'true');
+            if (errorEl) {
+                errorEl.style.display = 'block';
+            }
+        }
+    }
+});
 </script>
 
 <?= $page_custom_script; ?>
