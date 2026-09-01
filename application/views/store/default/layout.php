@@ -1274,9 +1274,15 @@ document.addEventListener('alpine:init', function() {
             }
             this.loading = true;
             try {
-                const resp = await fetch('<?= base_url("store/api/v1/search") ?>?q=' + encodeURIComponent(this.query));
+                const resp = await fetch('<?= base_url("store/instant_search") ?>?q=' + encodeURIComponent(this.query));
                 const data = await resp.json();
-                this.results = (data.products || []).slice(0, 5);
+                this.results = (Array.isArray(data) ? data : []).slice(0, 5).map(p => ({
+                    id: p.id,
+                    name: p.name,
+                    price: '$' + parseFloat(p.price).toFixed(2),
+                    image: p.image,
+                    link: p.url
+                }));
                 this.showResults = true;
             } catch(e) {
                 this.results = [];

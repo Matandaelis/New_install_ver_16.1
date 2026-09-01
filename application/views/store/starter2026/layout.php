@@ -1179,7 +1179,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
 
             searchTimer = setTimeout(function() {
                 $.ajax({
-                    url: store_base_url + 'search',
+                    url: store_base_url + 'instant_search',
                     type: 'GET',
                     data: { q: query },
                     dataType: 'json',
@@ -1209,7 +1209,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
             if (e.which === 13) {
                 var query = $(this).val().trim();
                 if (query.length > 0) {
-                    window.location.href = store_base_url + 'search?q=' + encodeURIComponent(query);
+                    window.location.href = store_base_url + 'category?search=' + encodeURIComponent(query);
                 }
             }
         });
@@ -1443,9 +1443,15 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                 }
                 this.loading = true;
                 try {
-                    const resp = await fetch('<?= base_url("store/api/v1/search") ?>?q=' + encodeURIComponent(this.query));
+                    const resp = await fetch('<?= base_url("store/instant_search") ?>?q=' + encodeURIComponent(this.query));
                     const data = await resp.json();
-                    this.results = (data.products || []).slice(0, 5);
+                    this.results = (Array.isArray(data) ? data : []).slice(0, 5).map(p => ({
+                        id: p.id,
+                        name: p.name,
+                        price: '$' + parseFloat(p.price).toFixed(2),
+                        image: p.image,
+                        link: p.url
+                    }));
                     this.showResults = true;
                 } catch(e) {
                     this.results = [];
