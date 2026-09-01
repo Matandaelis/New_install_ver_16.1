@@ -763,7 +763,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Hero collage images
-        gsap.utils.toArray('.s26-hero__collage-img').forEach((img, i) => {
+        gsap.utils.toArray('.s26-hero__collage-item').forEach((img, i) => {
             gsap.from(img, {
                 opacity: 0,
                 scale: 0.8,
@@ -808,7 +808,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ═══ FEATURE CARDS — Slide In ═══
-    gsap.utils.toArray('.s26-feature-card').forEach((card, i) => {
+    gsap.utils.toArray('.s26-feature-item').forEach((card, i) => {
         gsap.from(card, {
             scrollTrigger: {
                 trigger: card,
@@ -836,53 +836,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: 'power3.out'
         });
     });
-    
-    // ═══ PROMO BANNERS — Parallax ═══
-    gsap.utils.toArray('.s26-promo-banner').forEach(banner => {
-        gsap.from(banner, {
-            scrollTrigger: {
-                trigger: banner,
-                start: 'top 80%',
-                end: 'bottom 20%',
-                scrub: 1
-            },
-            opacity: 0,
-            y: 80,
-            scale: 0.95,
-            ease: 'none'
-        });
-    });
-    
-    // ═══ TESTIMONIALS — Stagger ═══
-    gsap.utils.toArray('.s26-testimonial-card').forEach((card, i) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 85%'
-            },
-            opacity: 0,
-            y: 40,
-            rotation: -2,
-            duration: 0.6,
-            delay: i * 0.12,
-            ease: 'power2.out'
-        });
-    });
-    
-    // ═══ NEWSLETTER — Scale Up ═══
-    const newsletter = document.querySelector('.s26-newsletter');
-    if (newsletter) {
-        gsap.from(newsletter, {
-            scrollTrigger: {
-                trigger: newsletter,
-                start: 'top 85%'
-            },
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
-    }
     
     // ═══ FOOTER — Slide Up ═══
     gsap.from('footer', {

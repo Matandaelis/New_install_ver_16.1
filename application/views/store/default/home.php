@@ -341,6 +341,16 @@ function load_Product(search, postData) {
 		}
 	});
 }
+
+MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+var _productObserver = new MutationObserver(function() {
+    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+});
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.product-list-trending, .product-list-new').forEach(function(el) {
+        _productObserver.observe(el, { childList: true });
+    });
+});
 </script>
 
 <!-- ═══════════ GSAP ANIMATIONS ═══════════ -->
