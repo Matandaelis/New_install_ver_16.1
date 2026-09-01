@@ -263,7 +263,7 @@
 
                         <!-- Deliver To -->
                         <div class="amz-deliver-to">
-                            <i class="fa-solid fa-location-dot"></i>
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                             <div>
                                 <span class="amz-deliver-label"><?= __('store.deliver_to') ?: 'Deliver to' ?></span>
                                 <span class="amz-deliver-location"><?= $store_setting['address'] ? htmlspecialchars(substr($store_setting['address'], 0, 20)) : 'Select Location' ?></span>
@@ -280,7 +280,7 @@
                             </select>
                             <input type="search" class="amz-search-input" name="search" placeholder="<?= __('store.search_products') ?: 'Search products...' ?>" aria-label="Search" />
                             <button type="submit" class="amz-search-btn" aria-label="Search">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                             </button>
                         </form>
 
@@ -299,13 +299,13 @@
                                         <span class="amz-nav-bold"><?= __('store.account_list') ?: 'Account & Lists' ?></span>
                                     </a>
                                     <ul class="js-dropdown-list2 amz-dropdown">
-                                        <li><a href="<?= $base_url ?>profile"><i class="fa fa-user"></i> <?= __('store.profile') ?></a></li>
-                                        <li><a href="<?= $base_url ?>order"><i class="fa fa-box"></i> <?= __('store.order') ?></a></li>
-                                        <li><a href="<?= $base_url ?>my_courses"><i class="fa fa-graduation-cap"></i> <?= __('store.my_courses') ?></a></li>
-                                        <li><a href="<?= $base_url ?>shipping"><i class="fa fa-truck"></i> <?= __('store.shipping') ?></a></li>
-                                        <li><a href="<?= $base_url ?>wishlist"><i class="fa fa-heart"></i> <?= __('store.wishlist') ?></a></li>
+                                        <li><a href="<?= $base_url ?>profile"><i class="fas fa-user" aria-hidden="true"></i> <?= __('store.profile') ?></a></li>
+                                        <li><a href="<?= $base_url ?>order"><i class="fas fa-box" aria-hidden="true"></i> <?= __('store.order') ?></a></li>
+                                        <li><a href="<?= $base_url ?>my_courses"><i class="fas fa-graduation-cap" aria-hidden="true"></i> <?= __('store.my_courses') ?></a></li>
+                                        <li><a href="<?= $base_url ?>shipping"><i class="fas fa-truck" aria-hidden="true"></i> <?= __('store.shipping') ?></a></li>
+                                        <li><a href="<?= $base_url ?>wishlist"><i class="fas fa-heart" aria-hidden="true"></i> <?= __('store.wishlist') ?></a></li>
                                         <li class="amz-dropdown-divider"></li>
-                                        <li><a href="<?= $base_url ?>logout"><i class="fa fa-power-off"></i> <?= __('store.logout') ?></a></li>
+                                        <li><a href="<?= $base_url ?>logout"><i class="fas fa-right-from-bracket" aria-hidden="true"></i> <?= __('store.logout') ?></a></li>
                                     </ul>
                                 </div>
                             <?php } else { ?>
@@ -323,9 +323,9 @@
                         </a>
 
                         <!-- Cart -->
-                        <a href="javascript:void(0);" class="amz-cart cart-top position-relative">
+                        <a href="javascript:void(0);" class="amz-cart cart-top position-relative" aria-label="Shopping cart">
                             <span class="amz-cart-count cart-count">0</span>
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                             <span class="amz-cart-text"><?= __('store.cart') ?: 'Cart' ?></span>
                             <div class="cart-dropdown amz-cart-dropdown">
                                 <div class="cart-empty">
@@ -343,8 +343,8 @@
                 <div class="container-fluid">
                     <div class="amz-secondary-nav">
                         <!-- All / Hamburger -->
-                        <a href="#" class="amz-nav-all" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                            <i class="fa-solid fa-bars"></i> <?= __('store.all') ?: 'All' ?>
+                        <a href="#" class="amz-nav-all" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-label="Menu">
+                            <i class="fa-solid fa-bars" aria-hidden="true"></i> <?= __('store.all') ?: 'All' ?>
                         </a>
 
                         <!-- Category Links -->
@@ -400,7 +400,7 @@
 
     <!-- Recently Viewed Container (rendered by JS) - must be above footer -->
     <div class="container recently-viewed-section py-4">
-        <h5><i class="fas fa-history me-2"></i><?= __('store.recently_viewed') ?></h5>
+        <h5><i class="fas fa-history me-2" aria-hidden="true"></i><?= __('store.recently_viewed') ?></h5>
         <div id="recently-viewed-container"></div>
     </div>
       

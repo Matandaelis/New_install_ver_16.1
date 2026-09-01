@@ -142,8 +142,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
     <link rel="stylesheet" href="<?= base_url('assets/store/shared/css/placeholder-loading.css') ?>?v=<?= av() ?>">
     <link rel="stylesheet" href="<?= base_url('assets/template/css/sweetalert2.min.css') ?>?v=<?= av() ?>">
     <link rel="stylesheet" href="<?= base_url('assets/store/shared/css/nouislider.css') ?>?v=<?= av() ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/template/css/bootstrap-icons.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/store/shared/fontawesome/css/all.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/template/css/all.min.css') ?>?v=<?= av() ?>">
     <link rel="stylesheet" href="<?= base_url('assets/store/default/slick/slick.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/store/default/slick/slick-theme.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/store/starter2026/css/amazon-tokens.css') ?>?v=<?= av() ?>">
@@ -270,12 +269,12 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
     <div class="s26-announcement-bar" id="s26-announcement">
         <div class="container">
             <div class="d-flex align-items-center justify-content-center gap-2">
-                <i class="fas fa-bullhorn" style="font-size:12px;opacity:0.8"></i>
+                <i class="fas fa-bullhorn" style="font-size:12px;opacity:0.8" aria-hidden="true"></i>
                 <span class="s26-announcement-text"><?= $notification_items[0]; ?></span>
             </div>
         </div>
-        <button type="button" class="s26-announcement-close" onclick="document.getElementById('s26-announcement').style.display='none'" aria-label="Close">
-            <i class="fas fa-times"></i>
+        <button type="button" class="s26-announcement-close" onclick="document.getElementById('s26-announcement').style.display='none'" aria-label="Close notification">
+            <i class="fas fa-times" aria-hidden="true"></i>
         </button>
     </div>
     <?php endif; ?>
@@ -300,7 +299,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
 
                 <!-- Deliver To -->
                 <div class="amz-deliver-to d-none d-md-flex">
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                     <div>
                         <small><?= __('store.deliver_to') ?? 'Deliver to' ?></small>
                         <strong><?= htmlspecialchars($store_setting['store_country'] ?? 'United States') ?></strong>
@@ -309,7 +308,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
 
                 <!-- Search -->
                 <div class="amz-search">
-                    <select class="amz-search-select d-none d-lg-block" id="amzSearchCat">
+                    <select class="amz-search-select d-none d-lg-block" id="amzSearchCat" aria-label="Search category">
                         <option value=""><?= __('store.all') ?? 'All' ?></option>
                         <?php if (!empty($category_tree)): ?>
                             <?php foreach ($category_tree as $cat): ?>
@@ -322,9 +321,10 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                                class="amz-search-input store-search-input"
                                placeholder="<?= __('store.search_products') ?? 'Search products' ?>"
                                id="s26-search-input"
-                               autocomplete="off">
-                        <button class="amz-search-btn" type="button">
-                            <i class="fas fa-search"></i>
+                               autocomplete="off"
+                               aria-label="Search products">
+                        <button class="amz-search-btn" type="button" aria-label="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
                         </button>
                         <div id="s26-search-results" class="s26-search-dropdown" style="display:none"></div>
                     </div>
@@ -340,17 +340,17 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                 <div class="amz-nav-item amz-dropdown d-none d-lg-block" id="amzAccountDropdown">
                     <a href="javascript:void(0)">
                         <small><?= __('store.hello') ?? 'Hello' ?>, <?= htmlspecialchars($client['firstname'] ?? __('store.sign_in') ?? 'Sign in') ?></small>
-                        <strong><?= __('store.account') ?? 'Account & Lists' ?> <i class="fas fa-caret-down"></i></strong>
+                        <strong><?= __('store.account') ?? 'Account & Lists' ?> <i class="fas fa-caret-down" aria-hidden="true"></i></strong>
                     </a>
                     <div class="amz-dropdown-menu">
                         <?php if ($is_logged): ?>
-                            <a href="<?= $base_url ?>profile"><i class="fas fa-user me-2"></i><?= __('store.profile') ?></a>
-                            <a href="<?= $base_url ?>order"><i class="fas fa-gift me-2"></i><?= __('store.order') ?></a>
-                            <a href="<?= $base_url ?>my_courses"><i class="fas fa-graduation-cap me-2"></i><?= __('store.my_courses') ?></a>
-                            <a href="<?= $base_url ?>shipping"><i class="fas fa-truck me-2"></i><?= __('store.shipping') ?></a>
-                            <a href="<?= $base_url ?>wishlist"><i class="fas fa-heart me-2"></i><?= __('store.wishlist') ?></a>
+                            <a href="<?= $base_url ?>profile"><i class="fas fa-user me-2" aria-hidden="true"></i><?= __('store.profile') ?></a>
+                            <a href="<?= $base_url ?>order"><i class="fas fa-box me-2" aria-hidden="true"></i><?= __('store.order') ?></a>
+                            <a href="<?= $base_url ?>my_courses"><i class="fas fa-graduation-cap me-2" aria-hidden="true"></i><?= __('store.my_courses') ?></a>
+                            <a href="<?= $base_url ?>shipping"><i class="fas fa-truck me-2" aria-hidden="true"></i><?= __('store.shipping') ?></a>
+                            <a href="<?= $base_url ?>wishlist"><i class="fas fa-heart me-2" aria-hidden="true"></i><?= __('store.wishlist') ?></a>
                             <hr>
-                            <a href="<?= $base_url ?>logout" class="text-danger"><i class="fas fa-power-off me-2"></i><?= __('store.logout') ?></a>
+                            <a href="<?= $base_url ?>logout" class="text-danger"><i class="fas fa-right-from-bracket me-2" aria-hidden="true"></i><?= __('store.logout') ?></a>
                         <?php else: ?>
                             <a href="<?= $base_url ?>login" class="amz-btn amz-btn-cart" style="width:100%;text-align:center"><?= __('store.sign_in') ?? 'Sign in' ?></a>
                             <small class="d-block text-center mt-2"><?= __('store.new_customer') ?? 'New customer?' ?> <a href="<?= $base_url ?>register"><?= __('store.start_here') ?? 'Start here' ?></a></small>
@@ -360,7 +360,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                 <?php else: ?>
                 <a href="<?= $base_url ?>login" class="amz-nav-item d-none d-lg-block">
                     <small><?= __('store.hello') ?? 'Hello' ?>, <?= __('store.sign_in') ?? 'Sign in' ?></small>
-                    <strong><?= __('store.account') ?? 'Account & Lists' ?> <i class="fas fa-caret-down"></i></strong>
+                    <strong><?= __('store.account') ?? 'Account & Lists' ?> <i class="fas fa-caret-down" aria-hidden="true"></i></strong>
                 </a>
                 <?php endif; ?>
 
@@ -373,17 +373,17 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                 <?php endif; ?>
 
                 <!-- Cart -->
-                <div class="amz-cart position-relative cart-top" style="cursor:pointer">
+                <div class="amz-cart position-relative cart-top" style="cursor:pointer" aria-label="Shopping cart">
                     <div class="amz-cart-count">
                         <span class="cart-count" style="display:none">0</span>
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                     </div>
                     <strong><?= __('store.cart') ?? 'Cart' ?></strong>
                     <small id="cart-sub-total" class="d-none"></small>
                     <!-- Cart Dropdown -->
                     <div class="cart-dropdown amz-dropdown-menu" style="display:none;right:0;left:auto;min-width:320px">
                         <div class="cart-empty text-center py-4">
-                            <i class="fas fa-shopping-cart" style="font-size:36px;color:var(--amz-border-input);margin-bottom:12px;display:block"></i>
+                            <i class="fas fa-shopping-cart" style="font-size:36px;color:var(--amz-border-input);margin-bottom:12px;display:block" aria-hidden="true"></i>
                             <p class="text-muted mb-0"><?= __('store.cart_is_blank') ?></p>
                         </div>
                     </div>
@@ -393,7 +393,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                 <button class="amz-mobile-toggle d-lg-none" type="button"
                         data-bs-toggle="offcanvas" data-bs-target="#s26MobileMenu"
                         aria-label="<?= __('store.menu') ?>">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -404,8 +404,8 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
         <div class="container">
             <div class="amz-nav-inner">
                 <a href="javascript:void(0);" class="amz-nav-item amz-all-btn d-none d-lg-block"
-                   data-bs-toggle="offcanvas" data-bs-target="#s26MobileMenu">
-                    <i class="fas fa-bars"></i> <?= __('store.all') ?? 'All' ?>
+                   data-bs-toggle="offcanvas" data-bs-target="#s26MobileMenu" aria-label="Menu">
+                    <i class="fas fa-bars" aria-hidden="true"></i> <?= __('store.all') ?? 'All' ?>
                 </a>
                 <?php if (!empty($category_tree)): ?>
                     <?php foreach (array_slice($category_tree, 0, 7) as $cat): ?>
@@ -438,9 +438,9 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
             <!-- Mobile Search -->
             <div class="mb-3">
                 <div class="instant-search-wrapper position-relative">
-                    <i class="fas fa-search search-icon"></i>
+                    <i class="fas fa-search search-icon" aria-hidden="true"></i>
                     <input type="text" class="form-control rounded-pill store-search-input"
-                           placeholder="<?= __('store.search_products') ?? 'Search...' ?>">
+                           placeholder="<?= __('store.search_products') ?? 'Search...' ?>" aria-label="Search products">
                 </div>
             </div>
 
