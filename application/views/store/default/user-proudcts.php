@@ -611,6 +611,14 @@ if($store_details['type']=='admin')
 			var ele = c[c.length-1];
 		<?php } ?>
 
+		// Refresh ScrollTrigger after AJAX product inject (mirrors category.php/home.php)
+		if (typeof MutationObserver !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+			var _upObserver = new MutationObserver(function() { ScrollTrigger.refresh(); });
+			document.addEventListener('DOMContentLoaded', function() {
+				document.querySelectorAll('.product-list').forEach(function(el) { _upObserver.observe(el, {childList:true}); });
+			});
+		}
+
 		$(document).ready(function() {
 		$('.noUi-handle').on('click', function() {
 			$(this).width(50);

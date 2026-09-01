@@ -17,12 +17,13 @@
  *                         Empty array if no lookup performed yet
  */
 ?>
+<section class="amz-auth" style="padding:30px 0;">
 <div class="container py-5">
 	<div class="row justify-content-center">
 		<div class="col-md-6">
-			<div class="card shadow-sm border-top-card">
-				<div class="card-body p-md-5">
-					<h5 class="sub-title display-5 mb-4"><?= __('store.track_your_order') ?></h5>
+			<div class="amz-card card shadow-sm border-top-card" style="border-radius:8px;">
+				<div class="amz-card__body card-body p-md-5">
+					<h5 class="amz-auth__title sub-title display-5 mb-4"><?= __('store.track_your_order') ?></h5>
 					<p class="text-muted mb-4"><?= __('store.track_order_description') ?></p>
 
 					<?php if (!empty($error)): ?>
@@ -40,10 +41,11 @@
 							<label for="email" class="form-label"><?= __('store.email_address') ?></label>
 							<input type="email" class="form-control" id="email" name="email" placeholder="<?= __('store.enter_email_address') ?>" value="<?= $track_form_values['email'] ?? '' ?>" required>
 						</div>
-						<button type="submit" class="btn btn-primary w-100"><?= __('store.view_order') ?></button>
+						<button type="submit" class="amz-btn amz-btn-primary w-100 btn btn-primary"><?= __('store.view_order') ?></button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+</section>

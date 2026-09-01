@@ -17,23 +17,20 @@
  *   $policy_image    string  Hero image URL (empty if not set)
  */
 ?>
-<section class="about-page">
+<section class="amz-about about-page">
   <div class="container">
-     <div class="row">
-	   <div class="col-12 col-md-12 col-lg-4 col-xl-6">
-	   	<?php 
+     <h1 class="amz-about__title"><?= __('store.privacy_policy') ?></h1>
+     <div class="amz-about__grid row">
+	   <div class="amz-about__image col-12 col-md-12 col-lg-4 col-xl-6">
+	   	<?php
 	   		$policyimage = $store_setting['policyimage'] ? base_url('assets/images/site/'. $store_setting['policyimage']) : base_url('assets/store/default/img/about-img.png');
 	   		?>
-	     <img src="<?=$policyimage;?>" class="img-fluid img-about-main mt-4" alt="<?= __('store.image') ?>">
+	     <img src="<?=$policyimage;?>" class="img-fluid img-about-main mt-4" alt="<?= __('store.image') ?>" loading="lazy">
 	   </div>
-	   <div class="col-12 col-md-12 col-lg-8 col-xl-6">
-	      <div class="about-top-text">
-		    <h2><?= __('store.privacy_policy') ?></h2>
-			<img src="<?= base_url('assets/store/default/'); ?>img/popline.png" class="cn-titlebar mx-0"  alt="<?= __('store.image') ?>">
-			<?= !empty($content['policy_content']) ? $content['policy_content'] : __('store.privacy_if_not_exist'); ?>
-			<a href="<?= $base_url ?>contact"><?= __('store.contact_us') ?></a>
-		  </div>
+	   <div class="amz-about__content col-12 col-md-12 col-lg-8 col-xl-6">
+		    <?= !empty($content['policy_content']) ? $content['policy_content'] : __('store.privacy_if_not_exist'); ?>
+			<a href="<?= $base_url ?>contact" class="amz-btn amz-btn-details"><?= __('store.contact_us') ?></a>
 	   </div>
-	 </div> 
+	 </div>
   </div>
 </section>
