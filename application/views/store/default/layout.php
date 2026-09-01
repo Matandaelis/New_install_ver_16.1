@@ -294,17 +294,34 @@
                         </div>
 
                         <!-- Search Bar -->
-                        <form class="amz-search" action="<?= $base_url ?>category" method="GET">
+                        <form class="amz-search" action="<?= $base_url ?>category" method="GET" x-data="amzSearch()">
                             <select class="amz-search-select" name="cat" aria-label="Search category">
                                 <option value="all"><?= __('store.all') ?: 'All' ?></option>
                                 <?php if(!empty($category_tree)) { foreach($category_tree as $cat) { ?>
                                     <option value="<?= $cat['slug'] ?>"><?= $cat['name'] ?></option>
                                 <?php } } ?>
                             </select>
-                            <input type="search" class="amz-search-input" name="search" placeholder="<?= __('store.search_products') ?: 'Search products...' ?>" aria-label="Search" />
-                            <button type="submit" class="amz-search-btn" aria-label="Search">
-                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                            </button>
+                            <div class="amz-search-input-wrap" @click.outside="showResults = false">
+                                <input type="search" class="amz-search-input" name="search" placeholder="<?= __('store.search_products') ?: 'Search products...' ?>" aria-label="Search" x-model="query" @input.debounce.300ms="search()" @focus="if(results.length) showResults = true" @blur="close()" autocomplete="off" />
+                                <button type="submit" class="amz-search-btn" aria-label="Search">
+                                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                                </button>
+                                <!-- Live search dropdown -->
+                                <div class="amz-search-dropdown" x-show="showResults && results.length > 0" x-transition x-cloak>
+                                    <template x-for="item in results" :key="item.id">
+                                        <a :href="item.link" class="amz-search-result-item">
+                                            <img :src="item.image" :alt="item.name" class="amz-search-result-img" onerror="this.src='<?= base_url('assets/store/default/img/no-image.png') ?>'">
+                                            <div class="amz-search-result-info">
+                                                <div class="amz-search-result-name" x-text="item.name"></div>
+                                                <div class="amz-search-result-price" x-text="item.price"></div>
+                                            </div>
+                                        </a>
+                                    </template>
+                                    <a :href="'<?= $base_url ?>category?search=' + encodeURIComponent(query)" class="amz-search-result-more">
+                                        View all results <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </form>
 
                         <!-- Language -->

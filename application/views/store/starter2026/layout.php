@@ -328,7 +328,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                 </div>
 
                 <!-- Search -->
-                <div class="amz-search">
+                <div class="amz-search" x-data="amzSearch()">
                     <select class="amz-search-select d-none d-lg-block" id="amzSearchCat" aria-label="Search category">
                         <option value=""><?= __('store.all') ?? 'All' ?></option>
                         <?php if (!empty($category_tree)): ?>
@@ -343,11 +343,29 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                                placeholder="<?= __('store.search_products') ?? 'Search products' ?>"
                                id="s26-search-input"
                                autocomplete="off"
-                               aria-label="Search products">
+                               aria-label="Search products"
+                               x-model="query"
+                               @input.debounce.300ms="search()"
+                               @focus="if(results.length) showResults = true"
+                               @blur="close()">
                         <button class="amz-search-btn" type="button" aria-label="Search">
                             <i class="fas fa-search" aria-hidden="true"></i>
                         </button>
-                        <div id="s26-search-results" class="s26-search-dropdown" style="display:none"></div>
+                        <!-- Live search dropdown -->
+                        <div class="s26-search-dropdown amz-search-dropdown" x-show="showResults && results.length > 0" x-transition x-cloak>
+                            <template x-for="item in results" :key="item.id">
+                                <a :href="item.link" class="amz-search-result-item">
+                                    <img :src="item.image" :alt="item.name" class="amz-search-result-img" onerror="this.src='<?= base_url('assets/store/default/img/no-image.png') ?>'">
+                                    <div class="amz-search-result-info">
+                                        <div class="amz-search-result-name" x-text="item.name"></div>
+                                        <div class="amz-search-result-price" x-text="item.price"></div>
+                                    </div>
+                                </a>
+                            </template>
+                            <a :href="'<?= $base_url ?>category?search=' + encodeURIComponent(query)" class="amz-search-result-more">
+                                View all results <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -1364,6 +1382,34 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                 let val = parseInt(this.qty) || 1;
                 this.qty = Math.max(this.min, Math.min(this.max, val));
                 this.$dispatch('qty-change', { qty: this.qty });
+            }
+        }));
+        
+        // Search with live suggestions
+        Alpine.data('amzSearch', () => ({
+            query: '',
+            results: [],
+            loading: false,
+            showResults: false,
+            async search() {
+                if (this.query.length < 2) {
+                    this.results = [];
+                    this.showResults = false;
+                    return;
+                }
+                this.loading = true;
+                try {
+                    const resp = await fetch('<?= base_url("store/api/v1/search") ?>?q=' + encodeURIComponent(this.query));
+                    const data = await resp.json();
+                    this.results = (data.products || []).slice(0, 5);
+                    this.showResults = true;
+                } catch(e) {
+                    this.results = [];
+                }
+                this.loading = false;
+            },
+            close() {
+                setTimeout(() => { this.showResults = false; }, 200);
             }
         }));
     });
