@@ -543,3 +543,124 @@ input#phone {
     }
 }
 /*FOR TESTING RTL*/
+
+/* ════════════════════════════════════════════════════════════════
+   RTL Overrides — Amazon-Style Components
+   ════════════════════════════════════════════════════════════════ */
+
+/* Header */
+.amz-header-row {
+    direction: rtl;
+}
+.amz-logo {
+    margin-right: 0;
+    margin-left: auto;
+}
+.amz-deliver-to {
+    margin-right: 16px;
+    margin-left: 0;
+}
+.amz-search {
+    flex-direction: row-reverse;
+}
+.amz-search-select {
+    border-radius: 0 var(--amz-radius-sm) var(--amz-radius-sm) 0;
+    border-left: none;
+    border-right: 1px solid #cdcdcd;
+}
+.amz-search-btn {
+    border-radius: var(--amz-radius-sm) 0 0 var(--amz-radius-sm);
+}
+.amz-account {
+    margin-right: 0;
+    margin-left: 16px;
+}
+.amz-orders-link {
+    margin-right: 0;
+    margin-left: 16px;
+}
+.amz-cart {
+    margin-right: 0;
+    margin-left: 16px;
+}
+
+/* Secondary Nav */
+.amz-secondary-nav {
+    direction: rtl;
+}
+.amz-nav-all {
+    margin-right: 0;
+    margin-left: 12px;
+}
+.amz-promo-banner {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Product Page */
+.amz-product-gallery {
+    direction: rtl;
+}
+.amz-gallery-thumbs {
+    margin-right: 0;
+    margin-left: 12px;
+    order: 2;
+}
+.amz-gallery-main {
+    order: 1;
+}
+.amz-product-info {
+    text-align: right;
+}
+.amz-sku-row .amz-sep {
+    margin: 0 8px;
+}
+.amz-variation-row {
+    text-align: right;
+}
+.amz-qty-row {
+    direction: rtl;
+}
+
+/* Cart Page */
+.amz-cart-table th,
+.amz-cart-table td {
+    text-align: right;
+}
+
+/* Search Dropdown */
+.amz-search-dropdown {
+    direction: rtl;
+}
+
+/* Footer */
+.amz-footer-cols {
+    direction: rtl;
+}
+.amz-footer-col h5 {
+    text-align: right;
+}
+.amz-footer-col ul li {
+    text-align: right;
+}
+
+/* Checkout */
+.amz-checkout-form {
+    direction: rtl;
+}
+
+/* Swiper RTL */
+.amz-hero-swiper .amz-hero-prev {
+    right: auto;
+    left: 16px;
+}
+.amz-hero-swiper .amz-hero-next {
+    left: auto;
+    right: 16px;
+}
+
+/* Dark Mode Toggle RTL */
+.amz-theme-toggle {
+    margin-right: 0;
+    margin-left: 12px;
+}
