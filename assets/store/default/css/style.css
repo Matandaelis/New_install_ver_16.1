@@ -6763,3 +6763,46 @@ textarea.acc-input.form-control { height: auto; }
     .amz-form__row { flex-direction: column; }
     .amz-form__row .amz-form__group:only-child { width: 100%; }
 }
+
+/* ════════════════════════════════════════════════════════════════
+   Thanks / Confirmation Page
+   ════════════════════════════════════════════════════════════════ */
+.amz-thanks { padding: 30px 0; }
+.amz-thanks__header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    background: var(--amz-bg-card, #FFF);
+    border: 1px solid var(--amz-border, #DDD);
+    border-radius: var(--amz-radius-md, 4px);
+}
+.amz-thanks__icon {
+    font-size: 64px;
+    color: #27ae60;
+    margin-bottom: 12px;
+}
+.amz-thanks__header h1 {
+    font-size: 24px;
+    font-weight: var(--amz-font-weight-bold, 700);
+    color: var(--amz-text-heading, #0F1111);
+    margin: 0 0 8px;
+}
+.amz-thanks__subtitle {
+    font-size: var(--amz-font-size-md, 15px);
+    color: var(--amz-text-muted, #565959);
+    margin: 0 0 8px;
+}
+.amz-thanks__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+.amz-thanks__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 16px;
+}
+@media (max-width: 768px) {
+    .amz-thanks__grid { grid-template-columns: 1fr; }
+}

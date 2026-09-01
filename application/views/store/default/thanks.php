@@ -16,310 +16,225 @@
  *   $meta_title string  Page title suffix
  */
 ?>
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <meta content="Mannatthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.ico">
-        <link href="<?php echo base_url(); ?>assets/plugins/morris/morris.css?v=<?= av() ?>" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/template/css/bootstrap.min.css?v=<?= av() ?>" rel="stylesheet" type="text/css">
-        <link href="<?php echo base_url(); ?>assets/template/css/all.min.css?v=<?= av() ?>" rel="stylesheet" type="text/css">
-        <link href="<?php echo base_url(); ?>assets/template/css/vertical-style.css?v=<?= av() ?>" rel="stylesheet" type="text/css">
-		
 
-	</head>
-	<body class="fixed-left">
-        <!-- Loader -->
-        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
-		<div class="page-content-wrapper ">
-			<div class="container">
-				<div class="no-print">
-					<button class="btn btn-primary print"><?= __('store.print') ?></button>
-					<a href="<?= base_url('store/order') ?>" class="btn btn-outline-secondary"><?= __('store.back_to_dashboard') ?></a>
-				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="page-title-box">
-							<div class="card m-b-30">
-								<div class="card-body">
-									<center>
-										<h1> <?= __('store.order_number') ?> (#<?php echo orderId($order['id']); ?>)</h1>
-										<h4><?= __('store.thank_you_for_purchasing_an_order') ?><h4>
-									</center>
-								</div>
-							</div>
-							</div>
-						</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="card m-b-30">
-									<div class="card-body">
-										<h5 class="header-title pb-3 mt-0"><?= __('store.product_info') ?></h5>
-										<div class="table-responsive">
-										<table class="table table-striped">
-											<thead>
-												<tr>
-													<th colspan="2"><?= __('store.name') ?></th>
-													<th><?= __('store.unit_price') ?></th>
-													<th><?= __('store.quantity') ?></th>
-													<th><?= __('store.discount') ?></th>
-													<th><?= __('store.total') ?></th>
-												</tr>
-												<?php foreach ($products as $key => $product) { ?>
-													<tr>
-														<td><img src="<?= $product['image'] ?>" style="width: 50px;height: 50px"></td>
-														<td>
-															<?php
-																$combinationString = "";
-																if(isset($product['variation']) && !empty($product['variation'])) {
-																	$variation = json_decode($product['variation']);
-																	foreach ($variation as $key => $value) {
-																		if($key == 'colors') {
-																			$combinationString .= ($combinationString == "") ? explode("-",$value)[1] : ",".explode("-",$value)[1];
-																		} else {
-																			$combinationString .= ($combinationString == "") ? $value : ",".$value;
-																		}
-																	}
-																}
-															?>
-															<?= $product['product_name'] ?> <?= ($combinationString != "") ? "(".$combinationString.")" : "" ?>
-															<?php if($product['coupon_discount'] > 0){ ?>
-								                                <p class="couopn-code-text">
-								                                	Code : <span class="c-name"> <?= $product['coupon_code'] ?></span> Applied
-								                                </p>
-							                                <?php } ?>
-							                                <?php if($order['status'] == 1 && $product['product_type'] == 'downloadable' && $product['downloadable_files']) { ?>
-																<div class="download">	
-																<?php foreach ($product['downloadable_files'] as $downloadable_filess) { ?>
-																	<a href="<?php echo base_url('store/downloadable_file/'. $downloadable_filess['name'] . '/' .$downloadable_filess['mask']) ?>" class="btn btn-link btn-sm" target="_blank"><?php echo $downloadable_filess['mask'] ?></a>
-																<?php } ?>
-																</div>
-															<?php } ?>
-														</td>
-														<td><?php echo c_format($product['price'] + $product['variation_price']); ?></td>
-														<td><?php echo $product['quantity']; ?></td>
-														<td><?php echo c_format($product['coupon_discount']); ?></td>
-														<td><?php echo c_format($product['total']); ?></td>
-													</tr>
-												<?php } ?>
-												<?php foreach ($totals as $key => $total) { ?>
-												<tr>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td><?= $total['text'] ?></td>
-													<td><?php echo c_format($total['value']); ?></td>
-												</tr>
-												<?php } ?>
-											</thead>
-										</table>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="row">
-							<div class="col-lg-8 col-md-8">
-								<div class="card m-b-30">
-									<div class="card-body">
-										<h5 class="header-title pb-3 mt-0"><?= __('store.order_payment_info') ?></h5>
-										<div class="table-responsive">
-											<table class="table table-striped">
-												<thead>
-													<th class="border-top-0"><?= __('store.mode') ?></th>
-													<th class="border-top-0"><?= __('store.transaction_id') ?></th>
-													<th class="border-top-0"><?= __('store.payment_status') ?></th>
-												</thead>
-												<tbody>
-													<?php if($order['status'] == 0){ ?>
-														<tr>
-															<td colspan="100%">
-																<p class="text-muted text-center"> <?= __('store.waiting_for_payment_status') ?> </p>
-															</td>
-														</tr>
-													<?php } ?>
-													<?php foreach ($payment_history as $key => $value) { ?>
-													<tr>
-														<td><?php echo str_replace("_", " ", $value['payment_mode']) ?></td>
-														<td><?php echo $order['txn_id'];?></td>
-														<td><?php echo $value['paypal_status'] ?></td>
-													</tr>
-													<?php } ?>
-												</tbody>
-											</table>
-										</div>
-										<?php if($order['payment_method'] == 'bank_transfer'){ ?>
-											<div class="mb-3">
-												<label class="control-label"><b><?= __('store.bank_transfer_instruction') ?></b></label>
-												<pre class="well"><?php echo $paymentsetting['bank_transfer_instruction'] ?></pre>
-											</div>
-										<?php } ?>
+<section class="amz-thanks">
+    <div class="container">
+        <!-- Header -->
+        <div class="amz-thanks__header no-print">
+            <div class="amz-thanks__icon">
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
+            </div>
+            <h1><?= __('store.order_number') ?> #<?= orderId($order['id']) ?></h1>
+            <p class="amz-thanks__subtitle"><?= __('store.thank_you_for_purchasing_an_order') ?></p>
+            <?php if($order['order_country']): ?>
+                <span class="amz-text-muted">
+                    <?= __('store.order_done_from') ?> <?= $order['order_country'] ?> <?= $order['order_country_flag'] ?>
+                </span>
+            <?php endif; ?>
+        </div>
 
-										<?php if($order['comment']){ ?>
-											<div class="mb-3">
-												<label class="control-label"><b><?= __('store.order_view_comment') ?></b></label>
-												<pre class="well"><?php echo $order['comment'] ?></pre>
-											</div>
-										<?php } ?>
+        <!-- Actions -->
+        <div class="amz-thanks__actions no-print">
+            <button class="amz-btn amz-btn-primary print-btn"><?= __('store.print') ?></button>
+            <a href="<?= base_url('store/order') ?>" class="amz-btn amz-btn-details"><?= __('store.back_to_dashboard') ?></a>
+        </div>
 
-										<?php if($order['files']){ ?>
-											<div class="mb-3">
-												<label class="control-label"><b><?= __('store.order_attechments_download') ?></b></label>
-												<div><?php echo $order['files'] ?></div>
-											</div>
-										<?php } ?>
-										<?php if($order['order_country']){ ?>
-											<div class="mb-3">
-												<label class="control-label"><b><?= __('store.order_done_from') ?></b></label>
-												<div>
-													<?php echo $order['order_country'];?><?php echo $order['order_country_flag'];?>
-												</div>
-											</div>
-										<?php  } ?>
-									</div>
-								</div>
-							</div>
-							<?php if($order['allow_shipping']){ ?>
-								<div class="col-lg-4 col-md-4">
-									<div class="card m-b-30">
-										<div class="card-body">
-											<h5 class="header-title pb-3 mt-0"><?= __('store.shipping_details') ?></h5>
-												<div class="table-responsive">
-													<table class="table table-hover">
-														<thead>
-															<tr>
-																<th><?= __('store.address') ?></th>
-																<td><?php echo $order['address'] ?></td>
-															</tr>
-															<tr>
-																<th><?= __('store.country') ?></th>
-																<td><?php echo $order['country_name'] ?></td>
-															</tr>
-															<tr>
-																<th><?= __('store.state') ?></th>
-																<td><?php echo $order['state_name'] ?></td>
-															</tr>
-															<tr>
-																<th><?= __('store.city') ?></th>
-																<td><?php echo $order['city'] ?></td>
-															</tr>
-															<tr>
-																<th><?= __('store.postal_code') ?></th>
-																<td><?php echo $order['zip_code'] ?></td>
-															</tr>
-														</thead>
-													</table>
-												</div>
-										</div>
-									</div>
-								</div>
-							<?php }  ?>
-						</div>
-						<div class="row">
-							<div class="col-lg-12 col-sm-12 align-self-center">
-								<div class="card bg-white m-b-30">
-									<div class="card-body new-user">
-										<h5 class="header-title mb-4 mt-0"><?= __('store.update_order_status') ?></h5>
-										<div class="table-responsive">
-										<table class="table table-striped">
-											<thead>
-												<tr>
-													<th width="50px">#</th>
-													<th width="150px"><?= __('store.status') ?></th>
-													<th><?= __('store.comment') ?></th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php if(!$order_history){ ?>
-													<tr>
-														<td colspan="100%">
-															<p class="text-muted text-center"><?= __('store.no_any_order_status') ?> </p>
-														</td>
-													</tr>
-												<?php } ?>
-												<?php foreach ($order_history as $key => $value) { ?>
-												<tr>
-													<td>#<?= $key ?></td>
-													<td><?= $status[$value['order_status_id']] ?></td>
-													<td><?= $value['comment'] ?></td>
-												</tr>
-												<?php } ?>
-											</tbody>
-										</table>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div><!-- container -->
-				</div><!-- container -->
-				<div class="no-print">
-					<button class="btn btn-primary print"><?= __('store.print') ?></button>
-					<a href="<?= base_url('store/order') ?>" class="btn btn-outline-secondary"><?= __('store.back_to_dashboard') ?></a>
-				</div>
-				<!-- jQuery  -->
-				<script src="<?php echo base_url(); ?>assets/template/js/jquery-3.7.1.min.js?v=<?= av() ?>"></script>
-				<script src="<?php echo base_url(); ?>assets/template/js/bootstrap.bundle.min.js?v=<?= av() ?>"></script>
-				<script src="<?php echo base_url('assets/template/js/modernizr.min.js'); ?>"></script>
-				<script src="<?php echo base_url('assets/template/js/detect.js'); ?>"></script>
-				<script src="<?php echo base_url('assets/template/js/fastclick.js'); ?>"></script>
-				<script src="<?php echo base_url('assets/template/js/jquery.slimscroll.js'); ?>"></script>
-				<script src="<?php echo base_url('assets/template/js/jquery.blockUI.js'); ?>"></script>
-				<script src="<?php echo base_url('assets/template/js/waves.js'); ?>"></script>
-				<script src="<?php echo base_url('assets/template/js/jquery.nicescroll.js'); ?>"></script>
-				<script src="<?php echo base_url('assets/template/js/jquery.scrollTo.min.js'); ?>"></script>
-				<script src="<?php echo base_url(); ?>assets/plugins/skycons/skycons.min.js"></script>
-				<script src="<?php echo base_url(); ?>assets/plugins/raphael/raphael-min.js"></script>
-				<script src="<?php echo base_url(); ?>assets/plugins/morris/morris.min.js"></script>
-				<!-- App js -->
-				<script>
-					/* BEGIN SVG WEATHER ICON */
-					if (typeof Skycons !== 'undefined'){
-						var icons = new Skycons(
-						{"color": "#fff"},
-						{"resizeClear": true}
-						),
-						list  = [
-						"clear-day", "clear-night", "partly-cloudy-day",
-						"partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-						"fog"
-						],
-						i;
-						for(i = list.length; i--; )
-						icons.set(list[i], list[i]);
-						icons.play();
-					};
-					// scroll
-					$( document ).ready(function() {
-						if($("#boxscroll").length > 0){
-							$("#boxscroll").niceScroll({cursorborder:"",cursorcolor:"#cecece",boxzoom:true});
-						}
-						if($("#boxscroll2").length > 0){
-							$("#boxscroll2").niceScroll({cursorborder:"",cursorcolor:"#cecece",boxzoom:true});
-						}
-					});
-					$(document).ready(function($) {
-						if($(".clickable-row").length > 0){
-							$(".clickable-row").click(function() {
-								window.location = $(this).data("href");
-							});
-						}
-					});
-				</script>
-				<!-- Responsive-table-->
-				
-				<script>
-					$(".print").on('click',function(){
-						window.print();
-					})
-				</script>
-			</body>
-		</html>
-		
+        <!-- Product Info -->
+        <div class="amz-card">
+            <div class="amz-card__header">
+                <h5><?= __('store.product_info') ?></h5>
+            </div>
+            <div class="amz-table-wrap">
+                <table class="amz-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><?= __('store.name') ?></th>
+                            <th><?= __('store.unit_price') ?></th>
+                            <th><?= __('store.quantity') ?></th>
+                            <th><?= __('store.discount') ?></th>
+                            <th><?= __('store.total') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($products as $product) { ?>
+                        <tr>
+                            <td>
+                                <img class="amz-order-item-img" src="<?= $product['image'] ?>" alt="<?= $product['product_name'] ?>" loading="lazy">
+                            </td>
+                            <td>
+                                <?php
+                                    $combinationString = "";
+                                    if(isset($product['variation']) && !empty($product['variation'])) {
+                                        $variation = json_decode($product['variation']);
+                                        foreach ($variation as $key => $value) {
+                                            if($key == 'colors') {
+                                                $combinationString .= ($combinationString == "") ? explode("-",$value)[1] : ",".explode("-",$value)[1];
+                                            } else {
+                                                $combinationString .= ($combinationString == "") ? $value : ",".$value;
+                                            }
+                                        }
+                                    }
+                                ?>
+                                <?= $product['product_name'] ?> <?= ($combinationString != "") ? "(".$combinationString.")" : "" ?>
+                                <?php if($product['coupon_discount'] > 0): ?>
+                                    <div class="amz-coupon-tag">
+                                        <i class="fas fa-tag" aria-hidden="true"></i>
+                                        <?= $product['coupon_code'] ?> <?= __('store.applied') ?>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if($order['status'] == 1 && $product['product_type'] == 'downloadable' && $product['downloadable_files']): ?>
+                                    <div class="amz-order-link">
+                                        <i class="fas fa-download" aria-hidden="true"></i>
+                                        <?php foreach ($product['downloadable_files'] as $downloadable_file): ?>
+                                            <a href="<?= base_url('store/downloadable_file/'. $downloadable_file['name'] . '/' . $downloadable_file['mask']) ?>" class="amz-download-link" target="_blank">
+                                                <?= $downloadable_file['mask'] ?>
+                                            </a>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                            <td class="amz-price"><?= c_format($product['price'] + $product['variation_price']) ?></td>
+                            <td><?= $product['quantity'] ?></td>
+                            <td><?= c_format($product['coupon_discount']) ?></td>
+                            <td class="amz-price amz-price--bold"><?= c_format($product['total']) ?></td>
+                        </tr>
+                        <?php } ?>
+                        <?php foreach ($totals as $total): ?>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td><strong><?= $total['text'] ?></strong></td>
+                            <td class="amz-price amz-price--bold"><?= c_format($total['value']) ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Payment & Shipping -->
+        <div class="amz-thanks__grid">
+            <!-- Payment Info -->
+            <div class="amz-card">
+                <div class="amz-card__header">
+                    <h5><?= __('store.order_payment_info') ?></h5>
+                </div>
+                <div class="amz-table-wrap">
+                    <table class="amz-table">
+                        <thead>
+                            <tr>
+                                <th><?= __('store.mode') ?></th>
+                                <th><?= __('store.transaction_id') ?></th>
+                                <th><?= __('store.payment_status') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if($order['status'] == 0): ?>
+                            <tr>
+                                <td colspan="3" class="amz-text-muted" style="text-align:center; padding:20px;">
+                                    <?= __('store.waiting_for_payment_status') ?>
+                                </td>
+                            </tr>
+                            <?php endif; ?>
+                            <?php foreach ($payment_history as $value): ?>
+                            <tr>
+                                <td><?= str_replace("_", " ", $value['payment_mode']) ?></td>
+                                <td><?= $order['txn_id'] ?></td>
+                                <td><span class="amz-badge amz-badge--info"><?= $value['paypal_status'] ?></span></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+
+                <?php if($order['payment_method'] == 'bank_transfer'): ?>
+                    <div class="amz-card__body">
+                        <strong><?= __('store.bank_transfer_instruction') ?></strong>
+                        <pre class="amz-pre"><?= $paymentsetting['bank_transfer_instruction'] ?></pre>
+                    </div>
+                <?php endif; ?>
+
+                <?php if($order['comment']): ?>
+                    <div class="amz-card__body">
+                        <strong><?= __('store.order_view_comment') ?></strong>
+                        <pre class="amz-pre"><?= $order['comment'] ?></pre>
+                    </div>
+                <?php endif; ?>
+
+                <?php if($order['files']): ?>
+                    <div class="amz-card__footer">
+                        <strong><?= __('store.order_attechments_download') ?></strong>
+                        <div class="amz-order-attachment">
+                            <i class="fas fa-paperclip" aria-hidden="true"></i> <?= $order['files'] ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if($order['order_country']): ?>
+                    <div class="amz-card__footer">
+                        <strong><?= __('store.order_done_from') ?></strong>
+                        <span><?= $order['order_country'] ?> <?= $order['order_country_flag'] ?></span>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <?php if($order['allow_shipping']): ?>
+            <!-- Shipping Info -->
+            <div class="amz-card">
+                <div class="amz-card__header">
+                    <h5><?= __('store.shipping_details') ?></h5>
+                </div>
+                <div class="amz-table-wrap">
+                    <table class="amz-table">
+                        <tbody>
+                            <tr><td class="amz-label"><?= __('store.address') ?></td><td><?= $order['address'] ?></td></tr>
+                            <tr><td class="amz-label"><?= __('store.country') ?></td><td><?= $order['country_name'] ?></td></tr>
+                            <tr><td class="amz-label"><?= __('store.state') ?></td><td><?= $order['state_name'] ?></td></tr>
+                            <tr><td class="amz-label"><?= __('store.city') ?></td><td><?= $order['city'] ?></td></tr>
+                            <tr><td class="amz-label"><?= __('store.postal_code') ?></td><td><?= $order['zip_code'] ?></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+
+        <!-- Order Status History -->
+        <div class="amz-card">
+            <div class="amz-card__header">
+                <h5><?= __('store.update_order_status') ?></h5>
+            </div>
+            <div class="amz-table-wrap">
+                <table class="amz-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><?= __('store.status') ?></th>
+                            <th><?= __('store.comment') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if(!$order_history): ?>
+                        <tr><td colspan="3" class="amz-text-muted" style="text-align:center; padding:20px;"><?= __('store.no_any_order_status') ?></td></tr>
+                        <?php endif; ?>
+                        <?php foreach ($order_history as $key => $value): ?>
+                        <tr>
+                            <td>#<?= $key ?></td>
+                            <td><span class="amz-badge amz-badge--info"><?= $status[$value['order_status_id']] ?></span></td>
+                            <td><?= $value['comment'] ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.print-btn')?.addEventListener('click', function() {
+        window.print();
+    });
+});
+</script>
