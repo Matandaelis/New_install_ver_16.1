@@ -108,14 +108,85 @@
 }
 
 /* ════════════════════════════════════════════════════════════════
-   Dark Mode Overrides
+   Dark Mode Overrides — toggled via [data-theme="dark"]
    ════════════════════════════════════════════════════════════════ */
+[data-theme="dark"],
 [data-bs-theme="dark"] {
-  --amz-bg-page: #1A1A1A;
-  --amz-bg-card: #232323;
-  --amz-bg-hover: #2D2D2D;
-  --amz-text: #E3E3E3;
-  --amz-text-secondary: #A0A0A0;
-  --amz-border: #3A3A3A;
-  --amz-border-input: #5A5A5A;
+  /* ── Background Colors ── */
+  --amz-bg-page: #0D1117;
+  --amz-bg-card: #161B22;
+  --amz-bg-hover: #1C2128;
+  --amz-bg-input: #0D1117;
+  --amz-bg-selector: #1C2128;
+
+  /* ── Text Colors ── */
+  --amz-text: #E6EDF3;
+  --amz-text-secondary: #8B949E;
+  --amz-link: #58A6FF;
+  --amz-link-hover: #79C0FF;
+  --amz-nav-text: #E6EDF3;
+  --amz-nav-muted: #8B949E;
+
+  /* ── Border Colors ── */
+  --amz-border: #30363D;
+  --amz-border-input: #484F58;
+  --amz-border-light: #21262D;
+  --amz-border-focus: #FF9900;
+
+  /* ── Rating Colors ── */
+  --amz-star: #F0A030;
+  --amz-star-empty: #30363D;
+
+  /* ── Shadows ── */
+  --amz-shadow-card: 0 1px 3px rgba(0,0,0,0.4);
+  --amz-shadow-card-hover: 0 4px 12px rgba(0,0,0,0.5);
+  --amz-shadow-flyout: rgba(0,0,0,0.6) 0px 0px 14px 0px;
+
+  /* ── S26 Theme ── */
+  --s26-light: #161B22;
+  --s26-white: #0D1117;
+  --s26-text: #E6EDF3;
+  --s26-text-muted: #8B949E;
+  --s26-secondary: #8B949E;
+  --s26-border: #30363D;
+  --s26-border-light: #21262D;
+  --s26-surface: #161B22;
+
+  color-scheme: dark;
+}
+
+/* Dark mode body and general elements */
+[data-theme="dark"] body {
+  background-color: #0D1117;
+  color: #E6EDF3;
+}
+[data-theme="dark"] .amz-header-primary {
+  background: #161B22;
+}
+[data-theme="dark"] .amz-header-secondary {
+  background: #0D1117;
+}
+[data-theme="dark"] .amz-footer {
+  background: #161B22;
+}
+[data-theme="dark"] .amz-footer-bottom {
+  background: #0D1117;
+}
+[data-theme="dark"] .amz-product-wrapper,
+[data-theme="dark"] .amz-section {
+  background: transparent;
+}
+[data-theme="dark"] .amz-search-dropdown {
+  background: #161B22;
+  border-color: #30363D;
+}
+[data-theme="dark"] .amz-search-result-item:hover {
+  background-color: #1C2128;
+}
+[data-theme="dark"] .amz-cart-dropdown {
+  background: #161B22;
+  border-color: #30363D;
+}
+[data-theme="dark"] img {
+  opacity: 0.92;
 }

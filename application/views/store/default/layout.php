@@ -367,6 +367,13 @@
                             <span class="amz-nav-bold"><?= __('store.orders') ?: '& Orders' ?></span>
                         </a>
 
+                        <!-- Dark Mode Toggle -->
+                        <div x-data="amzTheme()">
+                            <button class="amz-theme-toggle" @click="toggle()" :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'" :title="theme === 'dark' ? 'Light mode' : 'Dark mode'">
+                                <i :class="theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
                         <!-- Cart -->
                         <a href="javascript:void(0);" class="amz-cart cart-top position-relative" aria-label="Shopping cart"
                            x-data="amzCart()" x-on:mouseenter="showCart = true" x-on:mouseleave="showCart = false">
@@ -1097,9 +1104,15 @@ document.addEventListener('DOMContentLoaded', function() {
         animation: 'fade'
     });
 });
+
+// Dark mode init — prevent FOUC
+(function() {
+    var theme = localStorage.getItem('amz_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+})();
 </script>
 
-<!-- Tippy.js Custom Theme -->
+<!-- Tippy.js Custom Theme + Micro-interactions -->
 <style>
 .tippy-box[data-theme='amz'] {
     background: #131921;
@@ -1153,8 +1166,53 @@ html {
     outline: 2px solid var(--amz-orange);
     outline-offset: 2px;
 }
+/* Dark mode toggle button */
+.amz-theme-toggle {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+.amz-theme-toggle:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.4);
+}
 </style>
+
+<!-- ═══════════ ALPINE.JS COMPONENTS ═══════════ -->
+<script>
 document.addEventListener('alpine:init', function() {
+    // Dark mode toggle component
+    Alpine.data('amzTheme', () => ({
+        theme: localStorage.getItem('amz_theme') || 'light',
+        init() {
+            this.apply();
+            // Listen for system preference changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem('amz_theme')) {
+                    this.theme = e.matches ? 'dark' : 'light';
+                    this.apply();
+                }
+            });
+        },
+        toggle() {
+            this.theme = this.theme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('amz_theme', this.theme);
+            this.apply();
+        },
+        apply() {
+            document.documentElement.setAttribute('data-theme', this.theme);
+        }
+    }));
+    
     // Cart dropdown component
     Alpine.data('amzCart', () => ({
         showCart: false,

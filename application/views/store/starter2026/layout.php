@@ -416,6 +416,13 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                 </a>
                 <?php endif; ?>
 
+                <!-- Dark Mode Toggle -->
+                <div class="amz-nav-item d-none d-lg-block" x-data="amzTheme()">
+                    <button class="amz-theme-toggle" @click="toggle()" :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'" :title="theme === 'dark' ? 'Light mode' : 'Dark mode'">
+                        <i :class="theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'" aria-hidden="true"></i>
+                    </button>
+                </div>
+
                 <!-- Cart -->
                 <div class="amz-cart position-relative cart-top" style="cursor:pointer" aria-label="Shopping cart"
                      x-data="amzCart()" x-on:mouseenter="showCart = true" x-on:mouseleave="showCart = false">
@@ -1342,7 +1349,39 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
         outline-offset: 2px;
     }
     </style>
+
+    <!-- Dark mode init — prevent FOUC -->
+    <script>
+    (function() {
+        var theme = localStorage.getItem('amz_theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+    })();
+    </script>
+
+    <script>
     document.addEventListener('alpine:init', function() {
+        // Dark mode toggle component
+        Alpine.data('amzTheme', () => ({
+            theme: localStorage.getItem('amz_theme') || 'light',
+            init() {
+                this.apply();
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                    if (!localStorage.getItem('amz_theme')) {
+                        this.theme = e.matches ? 'dark' : 'light';
+                        this.apply();
+                    }
+                });
+            },
+            toggle() {
+                this.theme = this.theme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('amz_theme', this.theme);
+                this.apply();
+            },
+            apply() {
+                document.documentElement.setAttribute('data-theme', this.theme);
+            }
+        }));
+        
         // Cart dropdown component
         Alpine.data('amzCart', () => ({
             showCart: false,
