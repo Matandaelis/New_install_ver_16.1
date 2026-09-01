@@ -21,203 +21,50 @@
 <script id="product-list-template" type="text/html">
 	{{^products}}
 	{{^show_dummy}}
-	<?php for ($i=0; $i < 2; $i++) { ?>
-	<div class="product-wrapper">
-	  <div class="product-img position-relative">
-	    <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/product1.png" class="img-fluid primg" />
-	    <div class="cn-flag position-absolute">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/flag.png" /> Belgium, Provincie
-	      Brabant
-	    </div>
+	<?php for ($i=0; $i < 4; $i++) { ?>
+	<div class="amz-product-wrapper">
+	  <div class="amz-product-img">
+	    <div class="amz-skeleton"></div>
 	  </div>
-
-	  <div class="pr-content">
-	    <div class="price">$659.00</div>
-	    <div class="rating-row d-flex justify-space-center">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	    </div>
-	    <h3>Lorem Ipsum</h3>
-	    <p>What is Lorem Ipsum?</p>
-	    <div class="product-buttons d-flex">
-	      <a href="#" class="btn btn-product bg-main2 text-white"
-	        ><?= __('store.details') ?></a
-	      >
-	    </div>
-	  </div>
-	</div>
-	<div class="product-wrapper">
-	  <div class="product-img position-relative">
-	    <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/car1.png" class="img-fluid primg" />
-	    <div class="cn-flag position-absolute">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/flag.png" /> Belgium, Provincie
-	      Brabant
-	    </div>
-	  </div>
-
-	  <div class="pr-content">
-	    <div class="price">$659.00</div>
-	    <div class="rating-row d-flex justify-space-center">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	    </div>
-	    <h3>Lorem Ipsum</h3>
-	    <p>What is Lorem Ipsum?</p>
-	    <div class="product-buttons d-flex">
-	      <a href="#" class="btn btn-product bg-main2 text-white"
-	        ><?= __('store.details') ?></a
-	      >
-	    </div>
-	  </div>
-	</div>
-	<div class="product-wrapper">
-	  <div class="product-img position-relative">
-	    <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/car2.png" class="img-fluid primg" />
-	    <div class="cn-flag position-absolute">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/flag.png" /> Belgium, Provincie
-	      Brabant
-	    </div>
-	  </div>
-
-	  <div class="pr-content">
-	    <div class="price">$659.00</div>
-	    <div class="rating-row d-flex justify-space-center">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	    </div>
-	    <h3>Lorem Ipsum</h3>
-	    <p>What is Lorem Ipsum?</p>
-	    <div class="product-buttons d-flex">
-	      <a href="#" class="btn btn-product bg-main2 text-white"
-	        ><?= __('store.details') ?></a
-	      >
-	    </div>
-	  </div>
-	</div>
-	<div class="product-wrapper">
-	  <div class="product-img position-relative">
-	    <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/car3.png" class="img-fluid primg" />
-	    <div class="cn-flag position-absolute">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/flag.png" /> Belgium, Provincie
-	      Brabant
-	    </div>
-	  </div>
-
-	  <div class="pr-content">
-	    <div class="price">$659.00</div>
-	    <div class="rating-row d-flex justify-space-center">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	    </div>
-	    <h3>Lorem Ipsum</h3>
-	    <p>What is Lorem Ipsum?</p>
-	    <div class="product-buttons d-flex">
-	      <a href="#" class="btn btn-product bg-main2 text-white"
-	        ><?= __('store.details') ?></a
-	      >
-	    </div>
-	  </div>
-	</div>
-	<div class="product-wrapper">
-	  <div class="product-img position-relative">
-	    <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/car4.png" class="img-fluid primg" />
-	    <div class="cn-flag position-absolute">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/flag.png" /> Belgium, Provincie
-	      Brabant
-	    </div>
-	  </div>
-
-	  <div class="pr-content">
-	    <div class="price">$659.00</div>
-	    <div class="rating-row d-flex justify-space-center">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	    </div>
-	    <h3>Lorem Ipsum</h3>
-	    <p>What is Lorem Ipsum?</p>
-	    <div class="product-buttons d-flex">
-	      <a href="#" class="btn btn-product bg-main2 text-white"
-	        ><?= __('store.details') ?></a
-	      >
-	    </div>
-	  </div>
-	</div>
-	<div class="product-wrapper">
-	  <div class="product-img position-relative">
-	    <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/car5.png" class="img-fluid primg" />
-	    <div class="cn-flag position-absolute">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/flag.png" /> Belgium, Provincie
-	      Brabant
-	    </div>
-	  </div>
-
-	  <div class="pr-content">
-	    <div class="price">$659.00</div>
-	    <div class="rating-row d-flex justify-space-center">
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	      <img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/') ?>img/st1.png" />
-	    </div>
-	    <h3>Lorem Ipsum</h3>
-	    <p>What is Lorem Ipsum?</p>
-	    <div class="product-buttons d-flex">
-	      <a href="#" class="btn btn-product bg-main2 text-white"
-	        ><?= __('store.details') ?></a
-	      >
-	    </div>
+	  <div class="amz-product-info">
+	    <div class="amz-skeleton amz-skeleton--text" style="width:70%"></div>
+	    <div class="amz-skeleton amz-skeleton--text" style="width:50%;margin-top:8px"></div>
+	    <div class="amz-skeleton amz-skeleton--text" style="width:90%;margin-top:12px"></div>
+	    <div class="amz-skeleton amz-skeleton--text" style="width:40%;margin-top:12px"></div>
 	  </div>
 	</div>
 	<?php } ?>
 	{{/show_dummy}}
 	{{#show_dummy}}
-	<div class="card w-100">
-		<div class="card-body py-4">
-			<div class="row w-100">
-				<div class="col-12 text-danger">
-					<h3 class="text-center"><?= __('store.no_products_available') ?></h3>
-				</div>
-			</div>
+	<div class="amz-product-wrapper amz-product-wrapper--empty">
+		<div class="amz-product-info amz-product-info--center">
+			<p class="amz-text-muted"><?= __('store.no_products_available') ?></p>
 		</div>
 	</div>
 	{{/show_dummy}}
 	{{/products}}
 
 {{#products}}
-<div class="product-wrapper">
-    <div class="product-img position-relative mb-2">
-        <a href="{{product_details_href}}"><img alt="<?= __('store.image') ?>" src="{{product_image_src}}" class="img-fluid primg" onerror="this.src='<?= base_url('assets/store/default/img/no-image.png')?>';"/></a>
-        {{#country_code}}
-        <div class="cn-flag position-absolute">
-            <img alt="<?= __('store.image') ?>" src="{{country_flag_src}}" /> {{country_name}}, {{state_name}}
+<div class="amz-product-wrapper">
+    <div class="amz-product-img">
+        <a href="{{product_details_href}}">
+            <img alt="{{product_name}}" src="{{product_image_src}}" class="amz-product-img__el" loading="lazy" onerror="this.src='<?= base_url('assets/store/default/img/no-image.png') ?>';"/>
+        </a>
+        {{#old_price}}
+        <span class="amz-product-badge amz-product-badge--sale"><?= __('store.sale') ?: 'Sale' ?></span>
+        {{/old_price}}
+    </div>
+    <div class="amz-product-info">
+        <a href="{{product_details_href}}" class="amz-product-name">{{product_name}}</a>
+        <div class="amz-product-price">
+            {{#old_price}}<span class="amz-product-price__old">{{old_price}}</span>{{/old_price}}
+            <span class="amz-product-price__current">{{product_price}}</span>
         </div>
-        {{/country_code}}
-    </div>
-
-    <div class="pr-content">
-        <div class="price">{{product_price}}</div>
-        <div class="rating-row d-flex justify-content-center">{{{product_avg_rating_stars}}}</div>
-        <h3>{{product_name}}</h3>
-        <p>{{product_short_description}}</p>
-    </div>
-    <div class="product-buttons d-flex">
-        <a href="{{product_details_href}}" class="btn btn-product bg-main2 text-white"><?= __('store.details') ?></a>
+        <div class="amz-product-rating">{{{product_avg_rating_stars}}}</div>
+        {{#product_short_description}}
+        <p class="amz-product-desc">{{product_short_description}}</p>
+        {{/product_short_description}}
+        <a href="{{product_details_href}}" class="amz-btn amz-btn-details"><?= __('store.details') ?></a>
     </div>
 </div>
 {{/products}}
