@@ -1113,6 +1113,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                     if ($('#cart-sub-total').length) {
                         $('#cart-sub-total').text(json['sub_total']);
                     }
+                    window.dispatchEvent(new CustomEvent('cart-synced', { detail: json }));
                 }
             }
         });
@@ -1388,7 +1389,18 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
             cartItems: [],
             cartCount: 0,
             init() {
-                this.loadCart();
+                window.addEventListener('cart-synced', (e) => {
+                    const json = e.detail || {};
+                    const products = json.products || [];
+                    this.cartItems = products.map(p => ({
+                        id: p.product_id || p.id,
+                        name: p.product_name || p.name,
+                        price: p.price,
+                        image: p.image,
+                        qty: p.qty || 1
+                    }));
+                    this.cartCount = parseInt(json.total) || this.cartItems.length;
+                });
                 window.addEventListener('cart-updated', () => this.loadCart());
             },
             loadCart() {
