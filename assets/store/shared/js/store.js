@@ -17,6 +17,8 @@
     function initInstantSearch() {
         var searchInput = document.querySelector('.store-search-input, input[name="search"], #store-search');
         if (!searchInput) return;
+        // Avoid double fetch when Alpine amzSearch owns this input (fixed in #1)
+        if (searchInput.closest('[x-data="amzSearch"]') || searchInput.hasAttribute('x-model')) return;
 
         var wrapper = searchInput.closest('.instant-search-wrapper') || searchInput.parentElement;
         wrapper.style.position = 'relative';

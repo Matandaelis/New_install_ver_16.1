@@ -398,5 +398,14 @@ function load_Product(search, postData) {
             }
         }
     });
+    // Mirror home.php observer — refresh ScrollTrigger after AJAX injects .product-list cards
+    if (typeof MutationObserver !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        var _catObserver = new MutationObserver(function() { ScrollTrigger.refresh(); });
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.product-list').forEach(function(el) {
+                _catObserver.observe(el, { childList: true });
+            });
+        });
+    }
 }
 </script>

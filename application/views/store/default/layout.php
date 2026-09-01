@@ -78,7 +78,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/template/css/sweetalert2.min.css') ?>?v=<?= av() ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/store/shared/css/nouislider.css') ?>?v=<?= av() ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/store/default/css/style.css') ?>?v=<?= av() ?>" />
-    <link rel="stylesheet" href="<?= base_url('assets/store/default/css/thankyou.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/store/default/css/thankyou.css') ?>?v=<?= av() ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/store/default/css/responsive.css') ?>?v=<?= av() ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/store/default/css/v14-modern.css') ?>?v=<?= av() ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/template/css/bootstrap-icons.css') ?>" />

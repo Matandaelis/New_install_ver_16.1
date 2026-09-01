@@ -22,8 +22,7 @@
             <div class="amz-order-details__sidebar">
                 <h5 class="amz-order-details__sidebar-title"><?= __('store.video_playlist') ?></h5>
                 <div class="amz-order-details__playlist">
-                    <?php foreach ($products as $product) {
-                        foreach ($product['downloadable_files'] as $downloadable_file) {
+                    <?php foreach ($products as $product): foreach ($product['downloadable_files'] as $downloadable_file):
                             $imageURL = $Title = $type = $video_id = "";
                             if ($product['product_type'] === 'videolink') {
                                 $videoInfo = get_video_info($downloadable_file['videotext']);
@@ -43,8 +42,7 @@
                                 <img src="<?= $imageURL ?>" alt="<?= $Title ?>" class="amz-playlist-item__thumb" loading="lazy">
                                 <span class="amz-playlist-item__title"><?= $Title ?></span>
                             </a>
-                            <?php endif; ?>
-                        } } ?>
+                            <?php endif; endforeach; endforeach; ?>
                 </div>
             </div>
         </div>
