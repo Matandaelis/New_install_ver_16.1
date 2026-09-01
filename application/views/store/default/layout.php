@@ -346,15 +346,38 @@
                         </a>
 
                         <!-- Cart -->
-                        <a href="javascript:void(0);" class="amz-cart cart-top position-relative" aria-label="Shopping cart">
-                            <span class="amz-cart-count cart-count">0</span>
+                        <a href="javascript:void(0);" class="amz-cart cart-top position-relative" aria-label="Shopping cart"
+                           x-data="amzCart()" x-on:mouseenter="showCart = true" x-on:mouseleave="showCart = false">
+                            <span class="amz-cart-count cart-count" x-text="cartCount">0</span>
                             <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                             <span class="amz-cart-text"><?= __('store.cart') ?: 'Cart' ?></span>
-                            <div class="cart-dropdown amz-cart-dropdown">
-                                <div class="cart-empty">
-                                    <img src="<?= base_url('assets/store/default/'); ?>img/cart-icon-empty.png" alt="<?= __('store.icon') ?>">
-                                    <p><?= __('store.cart_is_blank') ?></p>
-                                </div>
+                            <div class="cart-dropdown amz-cart-dropdown" x-show="showCart" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="showCart = false">
+                                <template x-if="cartItems.length === 0">
+                                    <div class="cart-empty">
+                                        <img src="<?= base_url('assets/store/default/'); ?>img/cart-icon-empty.png" alt="<?= __('store.icon') ?>">
+                                        <p><?= __('store.cart_is_blank') ?></p>
+                                    </div>
+                                </template>
+                                <template x-if="cartItems.length > 0">
+                                    <div class="amz-cart-dropdown-inner">
+                                        <div class="amz-cart-dropdown-title"><?= __('store.your_cart_items') ?: 'Your Cart Items' ?></div>
+                                        <template x-for="item in cartItems" :key="item.id">
+                                            <div class="amz-cart-dropdown-item">
+                                                <img :src="item.image" :alt="item.name" class="amz-cart-dropdown-img">
+                                                <div class="amz-cart-dropdown-info">
+                                                    <div class="amz-cart-dropdown-name" x-text="item.name"></div>
+                                                    <div class="amz-cart-dropdown-price" x-text="item.price"></div>
+                                                </div>
+                                                <button class="amz-cart-dropdown-remove" @click="removeItem(item.id)" aria-label="Remove item">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </template>
+                                        <div class="amz-cart-dropdown-footer">
+                                            <a href="<?= $base_url ?>cart" class="amz-btn amz-btn-cart-dropdown"><?= __('store.view_cart') ?: 'View Cart' ?></a>
+                                        </div>
+                                    </div>
+                                </template>
                             </div>
                         </a>
                     </div>
@@ -1018,6 +1041,86 @@ window.storeConfig = {
 };
 </script>
 <script src="<?= base_url('assets/store/shared/js/store.js') ?>?v=<?= av() ?>"></script>
+
+<!-- ═══════════ ALPINE.JS COMPONENTS ═══════════ -->
+<script>
+document.addEventListener('alpine:init', function() {
+    // Cart dropdown component
+    Alpine.data('amzCart', () => ({
+        showCart: false,
+        cartItems: [],
+        cartCount: 0,
+        init() {
+            this.loadCart();
+            window.addEventListener('cart-updated', () => this.loadCart());
+        },
+        loadCart() {
+            try {
+                const cart = JSON.parse(localStorage.getItem('amz_cart') || '[]');
+                this.cartItems = cart;
+                this.cartCount = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+            } catch(e) {
+                this.cartItems = [];
+                this.cartCount = 0;
+            }
+        },
+        removeItem(id) {
+            this.cartItems = this.cartItems.filter(item => item.id !== id);
+            this.cartCount = this.cartItems.reduce((sum, item) => sum + (item.qty || 1), 0);
+            localStorage.setItem('amz_cart', JSON.stringify(this.cartItems));
+        }
+    }));
+    
+    // Product quantity stepper component
+    Alpine.data('amzQty', () => ({
+        qty: 1,
+        min: 1,
+        max: 999,
+        disabled: false,
+        inc() {
+            if (this.qty < this.max) this.qty++;
+            this.$dispatch('qty-change', { qty: this.qty });
+        },
+        dec() {
+            if (this.qty > this.min) this.qty--;
+            this.$dispatch('qty-change', { qty: this.qty });
+        },
+        validate() {
+            let val = parseInt(this.qty) || 1;
+            this.qty = Math.max(this.min, Math.min(this.max, val));
+            this.$dispatch('qty-change', { qty: this.qty });
+        }
+    }));
+    
+    // Search with live suggestions
+    Alpine.data('amzSearch', () => ({
+        query: '',
+        results: [],
+        loading: false,
+        showResults: false,
+        async search() {
+            if (this.query.length < 2) {
+                this.results = [];
+                this.showResults = false;
+                return;
+            }
+            this.loading = true;
+            try {
+                const resp = await fetch('<?= base_url("store/api/v1/search") ?>?q=' + encodeURIComponent(this.query));
+                const data = await resp.json();
+                this.results = (data.products || []).slice(0, 5);
+                this.showResults = true;
+            } catch(e) {
+                this.results = [];
+            }
+            this.loading = false;
+        },
+        close() {
+            setTimeout(() => { this.showResults = false; }, 200);
+        }
+    }));
+});
+</script>
 
 <?php
 include __DIR__ . "/cookies_consent.php";

@@ -376,14 +376,14 @@ $review_list = $review_list ?? [];
 
 
                     <!-- ── Quantity + Add to Cart ─────────────────── -->
-                    <div class="s26-add-to-cart">
+                    <div class="s26-add-to-cart" x-data="amzQty()">
                         <!-- Quantity Selector -->
                         <div class="s26-quantity-selector" id="field1">
-                            <button type="button" id="sub" class="sub" <?= $is_digital ? 'disabled' : '' ?>>
+                            <button type="button" class="sub" @click="dec()" <?= $is_digital ? 'disabled' : '' ?>>
                                 <i class="fas fa-minus" style="font-size:12px"></i>
                             </button>
-                            <input type="text" id="product-quantity" min="1" name="quantity" value="1" <?= $is_digital ? 'disabled' : '' ?>>
-                            <button type="button" id="add" class="add" <?= $is_digital ? 'disabled' : '' ?>>
+                            <input type="text" id="product-quantity" min="1" name="quantity" x-model.number="qty" @change="validate()" value="1" <?= $is_digital ? 'disabled' : '' ?>>
+                            <button type="button" class="add" @click="inc()" <?= $is_digital ? 'disabled' : '' ?>>
                                 <i class="fas fa-plus" style="font-size:12px"></i>
                             </button>
                         </div>

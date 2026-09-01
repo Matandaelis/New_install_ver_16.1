@@ -394,19 +394,39 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
                 <?php endif; ?>
 
                 <!-- Cart -->
-                <div class="amz-cart position-relative cart-top" style="cursor:pointer" aria-label="Shopping cart">
+                <div class="amz-cart position-relative cart-top" style="cursor:pointer" aria-label="Shopping cart"
+                     x-data="amzCart()" x-on:mouseenter="showCart = true" x-on:mouseleave="showCart = false">
                     <div class="amz-cart-count">
-                        <span class="cart-count" style="display:none">0</span>
+                        <span class="cart-count" style="display:none" x-text="cartCount">0</span>
                         <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                     </div>
                     <strong><?= __('store.cart') ?? 'Cart' ?></strong>
                     <small id="cart-sub-total" class="d-none"></small>
                     <!-- Cart Dropdown -->
-                    <div class="cart-dropdown amz-dropdown-menu" style="display:none;right:0;left:auto;min-width:320px">
-                        <div class="cart-empty text-center py-4">
-                            <i class="fas fa-shopping-cart" style="font-size:36px;color:var(--amz-border-input);margin-bottom:12px;display:block" aria-hidden="true"></i>
-                            <p class="text-muted mb-0"><?= __('store.cart_is_blank') ?></p>
-                        </div>
+                    <div class="cart-dropdown amz-dropdown-menu" x-show="showCart" x-transition x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="showCart = false" style="right:0;left:auto;min-width:320px">
+                        <template x-if="cartItems.length === 0">
+                            <div class="cart-empty text-center py-4">
+                                <i class="fas fa-shopping-cart" style="font-size:36px;color:var(--amz-border-input);margin-bottom:12px;display:block" aria-hidden="true"></i>
+                                <p class="text-muted mb-0"><?= __('store.cart_is_blank') ?></p>
+                            </div>
+                        </template>
+                        <template x-if="cartItems.length > 0">
+                            <div class="amz-cart-dropdown-inner p-3">
+                                <template x-for="item in cartItems" :key="item.id">
+                                    <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
+                                        <img :src="item.image" :alt="item.name" style="width:48px;height:48px;object-fit:cover;border-radius:6px">
+                                        <div class="flex-grow-1">
+                                            <div class="fw-medium" style="font-size:13px" x-text="item.name"></div>
+                                            <div class="text-primary fw-bold" x-text="item.price"></div>
+                                        </div>
+                                        <button class="btn-close btn-close-sm" @click="removeItem(item.id)" aria-label="Remove item" style="font-size:11px"></button>
+                                    </div>
+                                </template>
+                                <a href="<?= $base_url ?>cart" class="s26-btn-hero-primary w-100 text-center mt-2" style="display:block;padding:10px;border-radius:8px;text-decoration:none">
+                                    <?= __('store.view_cart') ?? 'View Cart' ?>
+                                </a>
+                            </div>
+                        </template>
                     </div>
                 </div>
 
@@ -1216,6 +1236,58 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
             $(this).find('.amz-dropdown-menu').stop(true, true).fadeOut(150);
         });
     })();
+    </script>
+
+    <!-- ═══════════ ALPINE.JS COMPONENTS ═══════════ -->
+    <script>
+    document.addEventListener('alpine:init', function() {
+        // Cart dropdown component
+        Alpine.data('amzCart', () => ({
+            showCart: false,
+            cartItems: [],
+            cartCount: 0,
+            init() {
+                this.loadCart();
+                window.addEventListener('cart-updated', () => this.loadCart());
+            },
+            loadCart() {
+                try {
+                    const cart = JSON.parse(localStorage.getItem('amz_cart') || '[]');
+                    this.cartItems = cart;
+                    this.cartCount = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+                } catch(e) {
+                    this.cartItems = [];
+                    this.cartCount = 0;
+                }
+            },
+            removeItem(id) {
+                this.cartItems = this.cartItems.filter(item => item.id !== id);
+                this.cartCount = this.cartItems.reduce((sum, item) => sum + (item.qty || 1), 0);
+                localStorage.setItem('amz_cart', JSON.stringify(this.cartItems));
+            }
+        }));
+        
+        // Product quantity stepper component
+        Alpine.data('amzQty', () => ({
+            qty: 1,
+            min: 1,
+            max: 999,
+            disabled: false,
+            inc() {
+                if (this.qty < this.max) this.qty++;
+                this.$dispatch('qty-change', { qty: this.qty });
+            },
+            dec() {
+                if (this.qty > this.min) this.qty--;
+                this.$dispatch('qty-change', { qty: this.qty });
+            },
+            validate() {
+                let val = parseInt(this.qty) || 1;
+                this.qty = Math.max(this.min, Math.min(this.max, val));
+                this.$dispatch('qty-change', { qty: this.qty });
+            }
+        }));
+    });
     </script>
 
 <?php include APPPATH . 'views/store/includes/store_img_error_fallback.php'; ?>

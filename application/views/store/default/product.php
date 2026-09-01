@@ -102,9 +102,9 @@ $inStock = ((int)($product['product_quantity'] ?? 0) > 0 || (int)($product['prod
     <div class="amz-product-main">
 
       <!-- LEFT: Image Gallery -->
-      <div class="amz-product-gallery">
+      <div class="amz-product-gallery" x-data="amzGallery()">
         <div class="amz-gallery-thumbs" id="amzThumbs">
-          <div class="amz-thumb active" data-index="0">
+          <div class="amz-thumb active" data-index="0" @click="setActive(0)">
             <img src="<?= $product_featured_image ?>" alt="<?= __('store.featured_image') ?>" onerror="this.src='<?= base_url('assets/store/default/img/no-image.png') ?>'">
           </div>
           <?php $i = 1; foreach ($allimages as $images): ?>
@@ -112,13 +112,13 @@ $inStock = ((int)($product['product_quantity'] ?? 0) > 0 || (int)($product['prod
               $imgPath = $images['product_media_upload_path'];
               $img = (preg_match("/^(http:\/\/|https:\/\/|s3:\/\/).*/", $imgPath)) ? $imgPath : base_url('assets/images/product/upload/thumb/'.$imgPath);
             ?>
-            <div class="amz-thumb" data-index="<?= $i ?>">
+            <div class="amz-thumb" data-index="<?= $i ?>" @click="setActive(<?= $i ?>)">
               <img src="<?= $img ?>" alt="<?= __('store.product_image') ?> <?= $i ?>" onerror="this.src='<?= base_url('assets/store/default/img/no-image.png') ?>'">
             </div>
           <?php $i++; endforeach; ?>
           <?php foreach ($allvideo as $videos): ?>
             <?php $thumbImg = !empty($videos['product_media_upload_video_image']) ? base_url('assets/images/product/upload/thumb/'.$videos['product_media_upload_video_image']) : base_url('assets/store/default/img/pr-img.png'); ?>
-            <div class="amz-thumb" data-index="<?= $i ?>" data-video="<?= $videos['product_media_upload_path'] ?>">
+            <div class="amz-thumb" data-index="<?= $i ?>" data-video="<?= $videos['product_media_upload_path'] ?>" @click="setActive(<?= $i ?>)">
               <img src="<?= $thumbImg ?>" alt="<?= __('store.product_video_image') ?> <?= $i ?>" onerror="this.src='<?= base_url('assets/store/default/img/no-image.png') ?>'">
             </div>
           <?php $i++; endforeach; ?>
@@ -126,7 +126,9 @@ $inStock = ((int)($product['product_quantity'] ?? 0) > 0 || (int)($product['prod
 
         <div class="amz-gallery-main">
           <div class="amz-main-image" id="amzMainImage">
-            <img src="<?= $product_featured_image ?>" alt="<?= htmlspecialchars($product['product_name']) ?>" onerror="this.src='<?= base_url('assets/store/default/img/no-image.png') ?>'">
+            <a href="<?= $product_featured_image ?>" class="glightbox" data-gallery="product-gallery">
+              <img src="<?= $product_featured_image ?>" alt="<?= htmlspecialchars($product['product_name']) ?>" onerror="this.src='<?= base_url('assets/store/default/img/no-image.png') ?>'">
+            </a>
           </div>
         </div>
       </div>
@@ -230,12 +232,12 @@ $inStock = ((int)($product['product_quantity'] ?? 0) > 0 || (int)($product['prod
           <span class="amz-price" data-price="<?= $product['product_price'] ?>"><?= !empty($product['product_price']) ? c_format($product['product_price']) : '' ?></span>
         </div>
 
-        <div class="amz-qty-row">
+        <div class="amz-qty-row" x-data="amzQty()">
           <label><?= __('store.quantity') ?? 'Qty' ?></label>
           <div class="amz-qty-selector">
-            <button type="button" class="amz-qty-btn amz-qty-sub" <?= ($product['product_type'] == 'video' || $product['product_type'] == 'videolink' || $product['product_type'] == 'downloadable') ? 'disabled' : '' ?>><i class="fa fa-minus"></i></button>
-            <input type="text" id="product-quantity" name="quantity" value="1" min="1" <?= ($product['product_type'] == 'video' || $product['product_type'] == 'videolink' || $product['product_type'] == 'downloadable') ? 'disabled' : '' ?>>
-            <button type="button" class="amz-qty-btn amz-qty-add" <?= ($product['product_type'] == 'video' || $product['product_type'] == 'videolink' || $product['product_type'] == 'downloadable') ? 'disabled' : '' ?>><i class="fa fa-plus"></i></button>
+            <button type="button" class="amz-qty-btn amz-qty-sub" @click="dec()" <?= ($product['product_type'] == 'video' || $product['product_type'] == 'videolink' || $product['product_type'] == 'downloadable') ? 'disabled' : '' ?>><i class="fa fa-minus"></i></button>
+            <input type="text" id="product-quantity" name="quantity" x-model.number="qty" @change="validate()" value="1" min="1" <?= ($product['product_type'] == 'video' || $product['product_type'] == 'videolink' || $product['product_type'] == 'downloadable') ? 'disabled' : '' ?>>
+            <button type="button" class="amz-qty-btn amz-qty-add" @click="inc()" <?= ($product['product_type'] == 'video' || $product['product_type'] == 'videolink' || $product['product_type'] == 'downloadable') ? 'disabled' : '' ?>><i class="fa fa-plus"></i></button>
           </div>
         </div>
 
@@ -588,3 +590,29 @@ function display_price_changes() {
     </div>
   </div>
 </div>
+
+<!-- ═══════════ ALPINE.JS + GLIGHTBOX INIT ═══════════ -->
+<script>
+document.addEventListener('alpine:init', function() {
+    // Image gallery with GLightbox
+    Alpine.data('amzGallery', () => ({
+        activeIndex: 0,
+        lightbox: null,
+        init() {
+            this.lightbox = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                autoplayVideos: true
+            });
+        },
+        setActive(index) {
+            this.activeIndex = index;
+            // Update active thumb
+            document.querySelectorAll('.amz-thumb').forEach((t, i) => {
+                t.classList.toggle('active', i === index);
+            });
+        }
+    }));
+});
+</script>
