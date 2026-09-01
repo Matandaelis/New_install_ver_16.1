@@ -1589,6 +1589,51 @@ table.table tbody tr:hover td { background: rgba(var(--s26-primary-rgb), 0.02); 
     width: 24px; border-radius: 4px; background: #fff;
 }
 
+/* ── Swiper Hero Integration ───────────────────────────────── */
+.s26-hero-swiper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.s26-hero-swiper .swiper-slide {
+    opacity: 0 !important;
+    transition: opacity 0.8s ease !important;
+}
+.s26-hero-swiper .swiper-slide-active {
+    opacity: 1 !important;
+}
+.s26-hero-swiper .swiper-slide .s26-hero__slide {
+    height: var(--s26-hero-h, clamp(420px, 56vw, 560px));
+}
+.s26-hero-pagination {
+    position: absolute !important;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.s26-hero-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: width 0.3s, border-radius 0.3s, background 0.3s;
+    opacity: 1;
+}
+.s26-hero-pagination .swiper-pagination-bullet-active {
+    width: 24px;
+    border-radius: 4px;
+    background: #fff;
+}
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 991.98px) {
     :root { --s26-hero-h: clamp(340px, 58vh, 500px); }

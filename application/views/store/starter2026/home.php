@@ -52,9 +52,12 @@ $store_name = $store_setting['name'] ?? 'Store';
         <div class="s26-hero__shape s26-hero__shape--3"></div>
 
         <div id="s26HeroSlider" class="s26-hero__slider">
+            <div class="swiper s26-hero-swiper" data-swiper-autoplay="6000">
+                <div class="swiper-wrapper">
 
             <?php if (empty($slider)): ?>
             <!-- ── Default hero: no slides configured in admin ── -->
+            <div class="swiper-slide">
             <div class="s26-hero__slide">
                 <div class="container">
                     <div class="row align-items-center s26-hero__row">
@@ -118,6 +121,7 @@ $store_name = $store_setting['name'] ?? 'Store';
                     </div>
                 </div>
             </div>
+            </div>
 
             <?php else: ?>
             <?php foreach ($slider as $si => $slide):
@@ -127,6 +131,7 @@ $store_name = $store_setting['name'] ?? 'Store';
                 $btn_link  = !empty($slide['button_link'])       ? $slide['button_link']       : base_url('store/category');
             ?>
             <!-- ── Slide <?= $si + 1 ?> ── -->
+            <div class="swiper-slide">
             <div class="s26-hero__slide">
                 <div class="container">
                     <div class="row align-items-center s26-hero__row"
@@ -206,66 +211,59 @@ $store_name = $store_setting['name'] ?? 'Store';
                     </div>
                 </div>
             </div>
+            </div>
             <?php endforeach; ?>
             <?php endif; ?>
 
+                </div><!-- /.swiper-wrapper -->
+                <button class="s26-hero__prev" type="button" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="s26-hero__next" type="button" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+                <div class="s26-hero__dots s26-hero-pagination"></div>
+            </div><!-- /.swiper -->
         </div><!-- /#s26HeroSlider -->
     </div><!-- /.s26-hero__canvas -->
 </section>
 <script>
-/* ── Custom lightweight hero carousel — no Slick dependency ── */
-(function($) {
-    $(document).ready(function() {
-        var $slider = $('#s26HeroSlider');
-        var $slides = $slider.children('.s26-hero__slide');
-        var total   = $slides.length;
-        if (total < 1) return;
-
-        /* Wrap slides in a scrolling track */
-        $slides.wrapAll('<div class="s26-hero__track"></div>');
-        var $track = $slider.find('.s26-hero__track');
-
-        /* Signal CSS that carousel is ready — reveals all slides in track */
-        $slider.addClass('s26-carousel-ready');
-
-        var current = 0, timer;
-
-        function goTo(n) {
-            current = ((n % total) + total) % total;
-            $track.css('transform', 'translateX(-' + (current * 100) + '%)');
-            $slider.find('.s26-hero__dots li')
-                   .removeClass('s26-hero__dot--active')
-                   .eq(current).addClass('s26-hero__dot--active');
-        }
-
-        if (total > 1) {
-            /* Inject prev / next arrows */
-            $slider.append(
-                '<button class="s26-hero__prev" type="button" aria-label="<?= addslashes(__('store.previous') ?? 'Previous') ?>"><i class="fas fa-chevron-left"></i></button>' +
-                '<button class="s26-hero__next" type="button" aria-label="<?= addslashes(__('store.next') ?? 'Next') ?>"><i class="fas fa-chevron-right"></i></button>'
-            );
-            /* Inject dot indicators */
-            var dotsHtml = '<ul class="s26-hero__dots">';
-            for (var i = 0; i < total; i++) {
-                dotsHtml += '<li' + (i === 0 ? ' class="s26-hero__dot--active"' : '') + '>' +
-                            '<button type="button" aria-label="Slide ' + (i + 1) + '"></button></li>';
+/* ── Swiper Hero Carousel ── */
+document.addEventListener('DOMContentLoaded', function() {
+    var heroSwiper = new Swiper('.s26-hero-swiper', {
+        loop: true,
+        autoplay: {
+            delay: 6000,
+            disableOnInteraction: false,
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        speed: 800,
+        navigation: {
+            nextEl: '.s26-hero__next',
+            prevEl: '.s26-hero__prev',
+        },
+        pagination: {
+            el: '.s26-hero-pagination',
+            clickable: true,
+            renderBullet: function(index, className) {
+                return '<li class="' + className + '"><button type="button" aria-label="Slide ' + (index + 1) + '"></button></li>';
             }
-            $slider.append(dotsHtml + '</ul>');
-
-            /* Controls */
-            $slider.on('click', '.s26-hero__prev', function() { stop(); goTo(current - 1); start(); });
-            $slider.on('click', '.s26-hero__next', function() { stop(); goTo(current + 1); start(); });
-            $slider.on('click', '.s26-hero__dots button', function() {
-                stop(); goTo($(this).closest('li').index()); start();
-            });
-            $slider.on('mouseenter', stop).on('mouseleave', start);
-
-            function start() { timer = setInterval(function() { goTo(current + 1); }, 6000); }
-            function stop()  { clearInterval(timer); }
-            start();
+        },
+        on: {
+            slideChangeTransitionStart: function() {
+                var activeSlide = this.slides[this.activeIndex];
+                if (activeSlide) {
+                    var content = activeSlide.querySelector('.s26-hero__content');
+                    if (content) {
+                        gsap.fromTo(content.children,
+                            { opacity: 0, y: 30 },
+                            { opacity: 1, y: 0, stagger: 0.15, duration: 0.6, ease: 'power3.out' }
+                        );
+                    }
+                }
+            }
         }
     });
-})(jQuery);
+});
 </script>
 <?php endif; /* homepage_slider_enabled */ ?>
 
@@ -763,35 +761,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 scrub: true
             }
         });
-        
-        // Hero content entrance animation
-        const heroContent = document.querySelector('.s26-hero__content');
-        if (heroContent) {
-            const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-            
-            tl.from('.s26-hero__tag', {
-                opacity: 0,
-                y: 30,
-                duration: 0.8,
-                delay: 0.2
-            })
-            .from('.s26-hero__title', {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                ease: 'power4.out'
-            }, '-=0.4')
-            .from('.s26-hero__subtitle', {
-                opacity: 0,
-                y: 30,
-                duration: 0.8
-            }, '-=0.5')
-            .from('.s26-hero__actions', {
-                opacity: 0,
-                y: 20,
-                duration: 0.6
-            }, '-=0.3');
-        }
         
         // Hero collage images
         gsap.utils.toArray('.s26-hero__collage-img').forEach((img, i) => {

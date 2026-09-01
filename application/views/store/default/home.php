@@ -25,8 +25,8 @@
 
 <?php if (($store_setting['homepage_slider_enabled'] ?? '1') !== '0'): ?>
 <section class="amz-hero-banner">
-	<div id="amzHeroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
-		<div class="carousel-inner">
+	<div class="swiper amz-hero-swiper" data-swiper-autoplay="6000">
+		<div class="swiper-wrapper">
 			<?php
 			$homepage_slider = !empty($store_setting['homepage_slider']) ? json_decode($store_setting['homepage_slider']) : [];
 			$homepage_slider = is_array($homepage_slider) ? $homepage_slider : [];
@@ -36,7 +36,7 @@
 					? base_url('assets/images/site/' . $homepage_slider[$i]->slider_background_image)
 					: base_url('assets/store/default/img/banner.png');
 			?>
-			<div class="carousel-item <?= ($i == 0) ? 'active' : '' ?>">
+			<div class="swiper-slide">
 				<div class="amz-hero-slide" style="background-image:url(<?= $slider_bg ?>)">
 					<div class="amz-hero-overlay"></div>
 					<div class="amz-hero-content">
@@ -60,7 +60,7 @@
 			<?php endfor; ?>
 
 			<?php if (!isset($homepage_slider_available)): ?>
-			<div class="carousel-item active">
+			<div class="swiper-slide">
 				<div class="amz-hero-slide" style="background-image:url(<?= base_url('assets/store/default/img/demo-slide-1.jpg') ?>)">
 					<div class="amz-hero-overlay"></div>
 					<div class="amz-hero-content">
@@ -73,12 +73,13 @@
 			</div>
 			<?php endif; ?>
 		</div>
-		<button class="amz-hero-arrow amz-hero-prev" type="button" data-bs-target="#amzHeroCarousel" data-bs-slide="prev">
+		<button class="amz-hero-arrow amz-hero-prev" type="button" aria-label="Previous slide">
 			<i class="fas fa-chevron-left"></i>
 		</button>
-		<button class="amz-hero-arrow amz-hero-next" type="button" data-bs-target="#amzHeroCarousel" data-bs-slide="next">
+		<button class="amz-hero-arrow amz-hero-next" type="button" aria-label="Next slide">
 			<i class="fas fa-chevron-right"></i>
 		</button>
+		<div class="amz-hero-pagination"></div>
 	</div>
 </section>
 <?php endif; ?>
@@ -348,7 +349,44 @@ document.addEventListener('DOMContentLoaded', function() {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
     
-    // ═══ HERO SECTION — Parallax + Text Animation ═══
+    // ═══ SWIPER HERO INIT ═══
+    const heroSwiper = new Swiper('.amz-hero-swiper', {
+        loop: true,
+        autoplay: {
+            delay: 6000,
+            disableOnInteraction: false,
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        speed: 800,
+        navigation: {
+            nextEl: '.amz-hero-next',
+            prevEl: '.amz-hero-prev',
+        },
+        pagination: {
+            el: '.amz-hero-pagination',
+            clickable: true,
+        },
+        on: {
+            slideChangeTransitionStart: function() {
+                // Animate content on slide change
+                const activeSlide = this.slides[this.activeIndex];
+                if (activeSlide) {
+                    const content = activeSlide.querySelector('.amz-hero-content');
+                    if (content) {
+                        gsap.fromTo(content.children, 
+                            { opacity: 0, y: 30 },
+                            { opacity: 1, y: 0, stagger: 0.15, duration: 0.6, ease: 'power3.out' }
+                        );
+                    }
+                }
+            }
+        }
+    });
+    
+    // ═══ HERO SECTION — Parallax ═══
     const heroSection = document.querySelector('.amz-hero-banner');
     if (heroSection) {
         // Hero background parallax
@@ -362,35 +400,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 scrub: true
             }
         });
-        
-        // Hero content entrance animation
-        const heroContent = document.querySelector('.amz-hero-content');
-        if (heroContent) {
-            const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-            
-            tl.from('.amz-hero-title', {
-                opacity: 0,
-                y: 60,
-                duration: 1,
-                delay: 0.3
-            })
-            .from('.amz-hero-subtitle', {
-                opacity: 0,
-                y: 40,
-                duration: 0.8
-            }, '-=0.5')
-            .from('.amz-hero-desc', {
-                opacity: 0,
-                y: 30,
-                duration: 0.8
-            }, '-=0.4')
-            .from('.amz-hero-cta', {
-                opacity: 0,
-                y: 20,
-                scale: 0.9,
-                duration: 0.6
-            }, '-=0.3');
-        }
     }
     
     // ═══ CATEGORY STRIP — Stagger Animation ═══
