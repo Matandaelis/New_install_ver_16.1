@@ -1240,6 +1240,85 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
 
     <!-- ═══════════ ALPINE.JS COMPONENTS ═══════════ -->
     <script>
+    // Initialize Tippy.js tooltips
+    document.addEventListener('DOMContentLoaded', function() {
+        tippy('[data-tippy-content]', {
+            placement: 'top',
+            animation: 'fade',
+            delay: [300, 0],
+            theme: 's26'
+        });
+        
+        tippy('.s26-action-btn', {
+            content: function() {
+                return this.getAttribute('data-tippy-content') || '';
+            },
+            placement: 'top',
+            animation: 'fade'
+        });
+        
+        tippy('#btn-add-to-wishlist', {
+            content: 'Add to Wishlist',
+            placement: 'top',
+            animation: 'fade'
+        });
+    });
+    </script>
+    
+    <!-- Tippy.js Custom Theme + Micro-interactions -->
+    <style>
+    .tippy-box[data-theme='s26'] {
+        background: var(--amz-navy-dark, #1A2332);
+        color: #fff;
+        border-radius: 8px;
+        font-size: 12px;
+        padding: 6px 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .tippy-box[data-theme='s26'] .tippy-arrow {
+        color: var(--amz-navy-dark, #1A2332);
+    }
+    /* Micro-interactions */
+    .s26-product-card {
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+    }
+    .s26-product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+    .s26-product-card:hover .s26-product-img img {
+        transform: scale(1.05);
+    }
+    .s26-product-img img {
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .s26-btn-hero-primary,
+    .s26-btn-hero-ghost,
+    .s26-btn-primary {
+        transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .s26-btn-hero-primary:active,
+    .s26-btn-hero-ghost:active,
+    .s26-btn-primary:active {
+        transform: scale(0.96);
+    }
+    .s26-category-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .s26-category-card:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    /* Smooth scroll */
+    html {
+        scroll-behavior: smooth;
+    }
+    /* Focus ring */
+    *:focus-visible {
+        outline: 2px solid var(--amz-orange);
+        outline-offset: 2px;
+    }
+    </style>
     document.addEventListener('alpine:init', function() {
         // Cart dropdown component
         Alpine.data('amzCart', () => ({

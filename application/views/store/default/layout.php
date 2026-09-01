@@ -1044,6 +1044,94 @@ window.storeConfig = {
 
 <!-- ═══════════ ALPINE.JS COMPONENTS ═══════════ -->
 <script>
+// Initialize Tippy.js tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    // Wishlist button tooltips
+    tippy('[data-tippy-content]', {
+        placement: 'top',
+        animation: 'fade',
+        delay: [300, 0],
+        theme: 'amz'
+    });
+    
+    // Product card quick-view tooltips
+    tippy('.amz-product-quick-view', {
+        content: 'Quick View',
+        placement: 'top',
+        animation: 'fade'
+    });
+    
+    // Share button tooltips
+    tippy('.amz-share-btn', {
+        content: 'Share this product',
+        placement: 'top',
+        animation: 'fade'
+    });
+    
+    // Wishlist tooltip
+    tippy('#btn-add-to-wishlist', {
+        content: 'Add to Wishlist',
+        placement: 'top',
+        animation: 'fade'
+    });
+});
+</script>
+
+<!-- Tippy.js Custom Theme -->
+<style>
+.tippy-box[data-theme='amz'] {
+    background: #131921;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 6px 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.tippy-box[data-theme='amz'] .tippy-arrow {
+    color: #131921;
+}
+/* Micro-interactions */
+.amz-product-wrapper {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.amz-product-wrapper:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.amz-btn {
+    transition: all 0.2s ease;
+}
+.amz-btn:active {
+    transform: scale(0.97);
+}
+.amz-product-wrapper:hover .amz-product-img img {
+    transform: scale(1.05);
+}
+.amz-product-img img {
+    transition: transform 0.4s ease;
+}
+.amz-thumb {
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+.amz-thumb:hover {
+    border-color: var(--amz-orange);
+}
+.amz-cat-chip {
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.amz-cat-chip:hover {
+    transform: translateY(-2px);
+}
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+/* Focus ring */
+*:focus-visible {
+    outline: 2px solid var(--amz-orange);
+    outline-offset: 2px;
+}
+</style>
 document.addEventListener('alpine:init', function() {
     // Cart dropdown component
     Alpine.data('amzCart', () => ({
