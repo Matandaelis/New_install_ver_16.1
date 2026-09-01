@@ -369,3 +369,136 @@
 .tblr-fade-in { animation: tblr-fade-in 0.2s ease-in-out; }
 .tblr-slide-up { animation: tblr-slide-up 0.3s ease-out; }
 .tblr-slide-down { animation: tblr-slide-down 0.3s ease-out; }
+
+/* ════════════════════════════════════════════════════════════════
+   Modern Enhancements — Admin Panel
+   ════════════════════════════════════════════════════════════════ */
+
+/* Card hover effects */
+.tblr-card {
+    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+.tblr-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.page-card:hover,
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* Button micro-interactions */
+.btn {
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn:active {
+    transform: scale(0.97);
+}
+.btn-primary {
+    box-shadow: 0 1px 3px rgba(17, 88, 217, 0.2);
+}
+.btn-primary:hover {
+    box-shadow: 0 4px 12px rgba(17, 88, 217, 0.3);
+}
+
+/* Table row hover */
+.table tbody tr {
+    transition: background-color 0.15s ease;
+}
+.table tbody tr:hover {
+    background-color: var(--tblr-primary-lt, #e8effd);
+}
+
+/* Sidebar link transitions */
+.page-sidebar .page-sidebar-menu > li > a {
+    transition: all 0.2s ease;
+}
+.page-sidebar .page-sidebar-menu > li > a:hover {
+    background-color: rgba(255,255,255,0.08);
+}
+.page-sidebar .page-sidebar-menu > li.active > a {
+    background-color: rgba(255,255,255,0.12);
+}
+
+/* Dropdown animation */
+.dropdown-menu {
+    animation: tblr-slide-down 0.15s ease-out;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border: 1px solid var(--tblr-border-color);
+}
+.dropdown-item {
+    transition: background-color 0.15s ease;
+}
+
+/* Form input focus */
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 3px rgba(17, 88, 217, 0.15);
+    border-color: var(--tblr-primary);
+}
+
+/* Nav link transitions */
+.nav-link {
+    transition: color 0.15s ease;
+}
+
+/* Smooth page transitions */
+.page-wrapper {
+    animation: tblr-fade-in 0.2s ease-in-out;
+}
+
+/* Badge pulse animation */
+@keyframes tblr-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+.badge-pulse {
+    animation: tblr-pulse 2s ease-in-out infinite;
+}
+
+/* Notification badge bounce */
+@keyframes tblr-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+.badge-notification {
+    animation: tblr-bounce 0.3s ease;
+}
+
+/* Admin theme toggle */
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--tblr-border-color);
+    color: var(--tblr-body-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+.theme-toggle:hover {
+    background: var(--tblr-primary-lt);
+    border-color: var(--tblr-primary);
+    color: var(--tblr-primary);
+}
+
+/* Skeleton loading */
+@keyframes tblr-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.tblr-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: tblr-shimmer 1.5s infinite;
+    border-radius: var(--tblr-border-radius-sm);
+}
+
+/* Focus ring */
+*:focus-visible {
+    outline: 2px solid var(--tblr-primary);
+    outline-offset: 2px;
+}
