@@ -143,8 +143,30 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
     <link rel="stylesheet" href="<?= base_url('assets/template/css/sweetalert2.min.css') ?>?v=<?= av() ?>">
     <link rel="stylesheet" href="<?= base_url('assets/store/shared/css/nouislider.css') ?>?v=<?= av() ?>">
     <link rel="stylesheet" href="<?= base_url('assets/template/css/all.min.css') ?>?v=<?= av() ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/store/default/slick/slick.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/store/default/slick/slick-theme.css') ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ═══════════ MODERN UI LIBRARIES ═══════════ -->
+    <!-- GSAP + ScrollTrigger for animations -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    
+    <!-- Swiper for carousels -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- GLightbox for product image lightbox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    
+    <!-- Tippy.js for tooltips -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy.min.css" />
+    
+    <!-- Alpine.js for reactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+    <!-- ═══════════ END MODERN UI LIBRARIES ═══════════ -->
+    
     <link rel="stylesheet" href="<?= base_url('assets/store/starter2026/css/amazon-tokens.css') ?>?v=<?= av() ?>">
     <link rel="stylesheet" href="<?= base_url('assets/store/starter2026/css/theme.css') ?>?v=<?= av() ?>">
 
@@ -160,7 +182,6 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https'
     <script src="<?= base_url('assets/store/shared/js/nouislider.min.js') ?>"></script>
     <script src="<?= base_url('assets/template/js/sweetalert2.all.min.js') ?>?v=<?= av() ?>"></script>
     <script src="<?= base_url('assets/plugins/mustache.js') ?>"></script>
-    <script src="<?= base_url('assets/store/default/slick/slick.min.js') ?>"></script>
 
     <!-- Google Analytics (external allowed) -->
     <?php if (!empty($store_setting['google_analytics'])): ?>

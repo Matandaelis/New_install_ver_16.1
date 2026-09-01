@@ -28,10 +28,6 @@
  *   $store_setting        array   Store settings (alias of global)
  */
 ?>
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/store/default/slick/') ?>slick.css"/>
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/store/default/slick/') ?>slick-theme.css"/>
-<script type="text/javascript" src="<?= base_url('assets/store/default/slick/') ?>slick.js"></script>
-
 <?php 
 $product_featured_image = '';
 if (!empty($product['product_featured_image'])) {
