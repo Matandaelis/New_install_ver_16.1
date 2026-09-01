@@ -341,3 +341,188 @@ function load_Product(search, postData) {
 	});
 }
 </script>
+
+<!-- ═══════════ GSAP ANIMATIONS ═══════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // ═══ HERO SECTION — Parallax + Text Animation ═══
+    const heroSection = document.querySelector('.amz-hero-banner');
+    if (heroSection) {
+        // Hero background parallax
+        gsap.to('.amz-hero-slide', {
+            backgroundPositionY: '30%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.amz-hero-banner',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+        
+        // Hero content entrance animation
+        const heroContent = document.querySelector('.amz-hero-content');
+        if (heroContent) {
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+            
+            tl.from('.amz-hero-title', {
+                opacity: 0,
+                y: 60,
+                duration: 1,
+                delay: 0.3
+            })
+            .from('.amz-hero-subtitle', {
+                opacity: 0,
+                y: 40,
+                duration: 0.8
+            }, '-=0.5')
+            .from('.amz-hero-desc', {
+                opacity: 0,
+                y: 30,
+                duration: 0.8
+            }, '-=0.4')
+            .from('.amz-hero-cta', {
+                opacity: 0,
+                y: 20,
+                scale: 0.9,
+                duration: 0.6
+            }, '-=0.3');
+        }
+    }
+    
+    // ═══ CATEGORY STRIP — Stagger Animation ═══
+    gsap.utils.toArray('.amz-cat-chip').forEach((chip, i) => {
+        gsap.from(chip, {
+            opacity: 0,
+            x: -20,
+            duration: 0.4,
+            delay: i * 0.05,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.amz-category-strip',
+                start: 'top 90%'
+            }
+        });
+    });
+    
+    // ═══ PRODUCT CARDS — Stagger Reveal ═══
+    gsap.utils.toArray('.product-wrapper').forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 0.6,
+            delay: (i % 4) * 0.1,
+            ease: 'power2.out'
+        });
+    });
+    
+    // ═══ FEATURE STRIP — Slide In ═══
+    gsap.utils.toArray('.amz-feature-card').forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%'
+            },
+            opacity: 0,
+            x: -40,
+            duration: 0.5,
+            delay: i * 0.1,
+            ease: 'power2.out'
+        });
+    });
+    
+    // ═══ CATEGORY GRID — Scale Animation ═══
+    gsap.utils.toArray('.amz-category-tile').forEach((tile, i) => {
+        gsap.from(tile, {
+            scrollTrigger: {
+                trigger: tile,
+                start: 'top 90%'
+            },
+            opacity: 0,
+            scale: 0.85,
+            duration: 0.5,
+            delay: i * 0.08,
+            ease: 'back.out(1.4)'
+        });
+    });
+    
+    // ═══ PROMO BANNER — Parallax + Fade ═══
+    const promoBanner = document.querySelector('.amz-promo-card');
+    if (promoBanner) {
+        gsap.from('.amz-promo-card', {
+            scrollTrigger: {
+                trigger: '.amz-promo-banner',
+                start: 'top 80%',
+                end: 'bottom 20%',
+                scrub: 1
+            },
+            opacity: 0,
+            y: 60,
+            scale: 0.95,
+            ease: 'none'
+        });
+        
+        // Promo content stagger
+        gsap.from('.amz-promo-content > *', {
+            scrollTrigger: {
+                trigger: '.amz-promo-banner',
+                start: 'top 75%'
+            },
+            opacity: 0,
+            y: 30,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
+    
+    // ═══ SECTION HEADERS — Fade In ═══
+    gsap.utils.toArray('.amz-section-title').forEach(title => {
+        gsap.from(title, {
+            scrollTrigger: {
+                trigger: title,
+                start: 'top 85%'
+            },
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            ease: 'power2.out'
+        });
+    });
+    
+    // ═══ BOTTOM TEXT — Reveal ═══
+    const bottomText = document.querySelector('.amz-bottom-text-inner');
+    if (bottomText) {
+        gsap.from(bottomText, {
+            scrollTrigger: {
+                trigger: '.amz-bottom-text',
+                start: 'top 85%'
+            },
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            ease: 'power2.out'
+        });
+    }
+    
+    // ═══ FOOTER — Slide Up ═══
+    gsap.from('footer', {
+        scrollTrigger: {
+            trigger: 'footer',
+            start: 'top 95%'
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        ease: 'power2.out'
+    });
+});
+</script>

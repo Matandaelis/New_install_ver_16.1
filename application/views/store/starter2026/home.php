@@ -718,3 +718,213 @@ if (($store_setting['homepage_bottom_section_enabled'] ?? '1') !== '0'):
     });
 })();
 </script>
+
+<!-- ═══════════ GSAP ANIMATIONS ═══════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // ═══ HERO SECTION — Parallax + Text Animation ═══
+    const heroSection = document.querySelector('.s26-hero');
+    if (heroSection) {
+        // Hero background shapes parallax
+        gsap.to('.s26-hero__shape--1', {
+            y: -80,
+            rotation: 10,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.s26-hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+        
+        gsap.to('.s26-hero__shape--2', {
+            y: -60,
+            rotation: -8,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.s26-hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+        
+        gsap.to('.s26-hero__shape--3', {
+            y: -40,
+            scale: 1.1,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.s26-hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+        
+        // Hero content entrance animation
+        const heroContent = document.querySelector('.s26-hero__content');
+        if (heroContent) {
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+            
+            tl.from('.s26-hero__tag', {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                delay: 0.2
+            })
+            .from('.s26-hero__title', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: 'power4.out'
+            }, '-=0.4')
+            .from('.s26-hero__subtitle', {
+                opacity: 0,
+                y: 30,
+                duration: 0.8
+            }, '-=0.5')
+            .from('.s26-hero__actions', {
+                opacity: 0,
+                y: 20,
+                duration: 0.6
+            }, '-=0.3');
+        }
+        
+        // Hero collage images
+        gsap.utils.toArray('.s26-hero__collage-img').forEach((img, i) => {
+            gsap.from(img, {
+                opacity: 0,
+                scale: 0.8,
+                rotation: -5 + (i * 5),
+                duration: 0.8,
+                delay: 0.5 + (i * 0.15),
+                ease: 'back.out(1.4)'
+            });
+        });
+    }
+    
+    // ═══ PRODUCT CARDS — Stagger Reveal ═══
+    gsap.utils.toArray('.s26-product-card').forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: 60,
+            duration: 0.7,
+            delay: (i % 4) * 0.1,
+            ease: 'power3.out'
+        });
+    });
+    
+    // ═══ CATEGORY CARDS — Scale + Fade ═══
+    gsap.utils.toArray('.s26-category-card').forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 90%'
+            },
+            opacity: 0,
+            scale: 0.85,
+            y: 30,
+            duration: 0.6,
+            delay: i * 0.1,
+            ease: 'back.out(1.2)'
+        });
+    });
+    
+    // ═══ FEATURE CARDS — Slide In ═══
+    gsap.utils.toArray('.s26-feature-card').forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%'
+            },
+            opacity: 0,
+            x: i % 2 === 0 ? -50 : 50,
+            duration: 0.6,
+            delay: i * 0.1,
+            ease: 'power2.out'
+        });
+    });
+    
+    // ═══ SECTION HEADERS — Fade In ═══
+    gsap.utils.toArray('.s26-section-header').forEach(header => {
+        gsap.from(header.children, {
+            scrollTrigger: {
+                trigger: header,
+                start: 'top 85%'
+            },
+            opacity: 0,
+            y: 40,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    });
+    
+    // ═══ PROMO BANNERS — Parallax ═══
+    gsap.utils.toArray('.s26-promo-banner').forEach(banner => {
+        gsap.from(banner, {
+            scrollTrigger: {
+                trigger: banner,
+                start: 'top 80%',
+                end: 'bottom 20%',
+                scrub: 1
+            },
+            opacity: 0,
+            y: 80,
+            scale: 0.95,
+            ease: 'none'
+        });
+    });
+    
+    // ═══ TESTIMONIALS — Stagger ═══
+    gsap.utils.toArray('.s26-testimonial-card').forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%'
+            },
+            opacity: 0,
+            y: 40,
+            rotation: -2,
+            duration: 0.6,
+            delay: i * 0.12,
+            ease: 'power2.out'
+        });
+    });
+    
+    // ═══ NEWSLETTER — Scale Up ═══
+    const newsletter = document.querySelector('.s26-newsletter');
+    if (newsletter) {
+        gsap.from(newsletter, {
+            scrollTrigger: {
+                trigger: newsletter,
+                start: 'top 85%'
+            },
+            opacity: 0,
+            scale: 0.9,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
+    
+    // ═══ FOOTER — Slide Up ═══
+    gsap.from('footer', {
+        scrollTrigger: {
+            trigger: 'footer',
+            start: 'top 95%'
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.7,
+        ease: 'power2.out'
+    });
+});
+</script>
