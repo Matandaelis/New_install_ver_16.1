@@ -23,12 +23,12 @@
 	$background_image = isset($store_meta['cover_background']) && !empty($store_meta['cover_background']) ? 'assets/user_upload/vendor_store/' . $store_meta['cover_background'] : 'assets/store/default/img/ctbg.png';
 
 ?>
-<section class="single-ctg-banner" style="background-image: url(<?= base_url($background_image) ?>);">
+<section class="single-ctg-banner amz-vendor-banner" style="background-image: url(<?= base_url($background_image) ?>);">
    <div class="container">
-      <div class="banner-caption-ctg store">
-        <div class="ctg-banner-img-wrapper"><img src="<?= base_url($image) ?>" alt="<?= $category['name'] ?>" width="306" height="100%"></div>
-		<div class="text-caption" style="color:<?= isset($store_meta['cover_text_color']) ? $store_meta['cover_text_color'] : "#FFFFFF"; ?>">
-		   <h2><?= $store_details['store_name'] ?></h2>	   
+      <div class="banner-caption-ctg amz-vendor-banner__inner store">
+        <div class="ctg-banner-img-wrapper amz-vendor-banner__logo"><img src="<?= base_url($image) ?>" alt="<?= $store_details['store_name'] ?>" width="306" height="100%" loading="lazy"></div>
+		<div class="text-caption amz-vendor-banner__text" style="color:<?= isset($store_meta['cover_text_color']) ? $store_meta['cover_text_color'] : "#FFFFFF"; ?>">
+		   <h2><?= $store_details['store_name'] ?></h2>
 			<?php if(isset($store_meta['cover_show_vendor_name']) && $store_meta['cover_show_vendor_name'] == 1) { ?>
 		   <h1><?= $store_details['store_owner']  ?> </h1>
 		 <?php  } ?>
@@ -37,34 +37,33 @@
    </div>
 </section>
 
-<section class="container-fluid vendor-store-contact-section mt-2">
-	<div class="card">
-		<div class="card-body">
-			<h4><?= __('store.contact_vendor') ?></h4>
-			<div class="sidebar-vendor-store position-relative">
+<section class="container-fluid vendor-store-contact-section amz-vendor-contact mt-2">
+	<div class="amz-card card">
+		<div class="amz-card__body card-body">
+			<h4 class="amz-section-title"><?= __('store.contact_vendor') ?></h4>
+			<div class="sidebar-vendor-store amz-vendor-card position-relative">
 				<div class="vendor-profile-image">
-					<?php 
+					<?php
 							$vendor_store_image = ($store_details['avatar']) ? base_url('assets/images/users/'.$store_details['avatar']) : base_url('assets/template/images/no-image.jpg');
 						?>
-					<img src="<?= $vendor_store_image ?>" alt="<?= $store_details['store_owner'] ?>" width="100%" />
+					<img src="<?= $vendor_store_image ?>" alt="<?= $store_details['store_owner'] ?>" width="100%" loading="lazy" />
 				</div>
 				<div class="vendor-contact">
-					<p><?= $store_details['firstname'] ?></p>
-					<p><?= $store_details['lastname'] ?></p>
+					<p><?= $store_details['firstname'] ?> <?= $store_details['lastname'] ?></p>
 					<div class="vendor-country">
 						<img alt="<?= __('store.image') ?>" src="<?= getFlag($store_details['country_code']) ?>"><?= $store_details['country_name'] ?> <?= ($store_details['state_name']) ? ','.$store_details['state_name'] : '' ?>
 					</div>
-					<a href="#" data-bs-toggle="modal" data-bs-target="#vendorModal"><?= __('store.contact_me') ?></a>
+					<a href="#" class="amz-btn amz-btn-sm" data-bs-toggle="modal" data-bs-target="#vendorModal"><?= __('store.contact_me') ?></a>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
-<section class="product-category-page" style="display: none;">
+<section class="product-category-page amz-category-layout" style="display: none;">
    <div class="container" >
-   	<div class="category-row">
-			<div class="sidebar">
+   	<div class="category-row amz-category-layout__row">
+			<div class="sidebar amz-filters-sidebar">
 				
 			<div class="sidebar-block mt-4">
 			    <h2><?= __('store.contact_vendor') ?></h2>
@@ -244,18 +243,18 @@
 			
 			
 			
-			<div class="catg-property-wrapper">
+			<div class="catg-property-wrapper amz-category-main">
 				
-			<div class="inner-pages-breadcrumb">
+			<div class="inner-pages-breadcrumb amz-breadcrumb">
 				<h2><?= $store_details['store_name'] ?></h2>
 				<p><a href="<?= $home_link ?>"><?= __('store.home') ?></a> / <a href="<?= $base_url.$store_details['store_slug'] ?>"><?= $store_details['store_name'] ?></a></p>
 			</div>
 				
-			<div class="product-sort-row">
+			<div class="product-sort-row amz-sort-bar">
 				<p><span></span> <?= __('store.showing') ?> <small id="show-count">0</small> / <small id="total-count">15</small> <?= __('store.results') ?></p>
 				<div class="sort-filter">
 					<label><?= __('store.sort_by') ?>: </label>
-					<select id="sort-by">
+					<select id="sort-by" class="amz-form__input amz-form__input--sm">
 						<option value="popular" selected><?= __('store.popular_products') ?></option>
 						<option value="low-to-high"><?= __('store.price_low_to_high') ?></option>
 						<option value="high-to-low"><?= __('store.price_high_to_low') ?></option>
@@ -264,9 +263,9 @@
 				</div>
 			</div>
 				
-			<div class="product-row d-flex flex-wrap product-list">
+			<div class="product-row d-flex flex-wrap product-list amz-product-grid">
 			</div>
-			<a href="javascript:void(0);" class="see-more" data-next_page="1"><img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/'); ?>img/loading.png"><?= __('store.show_more') ?></a></div>
+			<a href="javascript:void(0);" class="see-more amz-btn amz-btn-secondary" data-next_page="1"><img alt="<?= __('store.image') ?>" src="<?= base_url('assets/store/default/'); ?>img/loading.png" loading="lazy"><?= __('store.show_more') ?></a></div>
 		</div>
 	</div>
 </section>
@@ -286,17 +285,17 @@
        		<div class="row">
        			<div class="col-12 col-md-6">
        				<div class="contact-form-wrapper">
-							 <div class="cn-main">
-							    <h2><?= __('store.contact_info') ?></h2> 
+							 <div class="cn-main amz-contact__form">
+							    <h2 class="amz-section-title"><?= __('store.contact_info') ?></h2>
 							   
-								<div class="cn-info-row">
+								<div class="cn-info-row amz-contact__details">
 								  <p><span class="cn-ifno-title"><?= __('store.phone') ?>:</span> <span><?= !empty($store_details['store_contact_number']) ? $store_details['store_contact_number'] : '';?></span></p>
 								  <p><span class="cn-ifno-title"><?= __('store.email') ?>:</span> <span><?= !empty($store_details['store_email']) ? $store_details['store_email'] : '';?></span></p>
 								  <p><span class="cn-ifno-title"><?= __('store.address') ?>:</span> <span><?= !empty($store_details['store_address']) ? $store_details['store_address'] : '';?></span></p>
 								</div>
-								<h2><?= __('store.contact_info') ?></h2>
+								<h2 class="amz-section-title"><?= __('store.send_message') ?: __('store.contact_info') ?></h2>
 								
-								<form class="form-horizontal cn-main-form p-2" action="<?= base_url('store/vendor_contact') ?>" method="post">
+								<form class="form-horizontal cn-main-form amz-form p-2" action="<?= base_url('store/vendor_contact') ?>" method="post">
 									<input type="hidden" name="vendoremail" value="<?= !empty($store_details['store_email']) ? $store_details['store_email'] : '';?>"/>
 									 <input type="hidden" name="vendor" value="<?= !empty($store_details['id']) ? $store_details['id'] : '';?>">
 									<div class="row g-2">

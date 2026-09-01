@@ -30,13 +30,13 @@ $hdr_pills = [
 include(APPPATH.'views/store/default/_account_header.php');
 ?>
 
-<section class="profile-page">
+<section class="profile-page amz-wishlist">
     <div class="container main-container">
         <div class="acc-single-col">
-            <div class="acc-form-card">
-                <div class="acc-form-card__header">
-                    <i class="fa fa-heart me-2" style="color:#ff6b8a"></i><?= __('store.wishlist') ?>
-                    <span class="acc-form-card__count"><?= $_wish_count ?></span>
+            <div class="acc-form-card amz-card">
+                <div class="acc-form-card__header amz-card__header">
+                    <i class="fa-solid fa-heart me-2" style="color:#ff6b8a" aria-hidden="true"></i><?= __('store.wishlist') ?>
+                    <span class="acc-form-card__count amz-badge amz-badge--info"><?= $_wish_count ?></span>
                 </div>
 
                 <?php if (isset($products) && count($products)): ?>
@@ -46,24 +46,24 @@ include(APPPATH.'views/store/default/_account_header.php');
                             ? base_url('assets/images/product/upload/thumb/' . $product['product_featured_image'])
                             : base_url('assets/store/default/img/product1.png');
                     ?>
-                    <div class="acc-wish-item">
-                        <div class="acc-wish-item__img">
-                            <img src="<?= $image ?>" alt="<?= htmlspecialchars($product['product_name']) ?>"
+                    <div class="acc-wish-item amz-wish-item">
+                        <div class="acc-wish-item__img amz-wish-item__img">
+                            <img src="<?= $image ?>" alt="<?= htmlspecialchars($product['product_name']) ?>" loading="lazy"
                                  onerror="this.onerror=null;this.src='<?= base_url('assets/images/no-image.png') ?>'">
                         </div>
                         <div class="acc-wish-item__info">
                             <span class="acc-wish-item__name"><?= htmlspecialchars($product['product_name']) ?></span>
                             <?php if (!empty($product['product_price'])): ?>
-                            <span class="acc-wish-item__price"><?= c_format($product['product_price']) ?></span>
+                            <span class="acc-wish-item__price amz-price"><?= c_format($product['product_price']) ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="acc-wish-item__actions">
-                            <a href="<?= $href ?>" class="btn acc-wish-btn acc-wish-btn--view">
-                                <i class="fa fa-eye"></i><?= __('store.details') ?>
+                            <a href="<?= $href ?>" class="amz-btn amz-btn-sm acc-wish-btn--view">
+                                <i class="fa-solid fa-eye" aria-hidden="true"></i> <?= __('store.details') ?>
                             </a>
-                            <button class="btn acc-wish-btn acc-wish-btn--remove btn-add-to-wishlist"
+                            <button class="amz-btn amz-btn-sm acc-wish-btn--remove btn-add-to-wishlist"
                                     data-product_id="<?= $product['product_id'] ?>">
-                                <i class="fa fa-trash"></i><?= __('store.remove') ?>
+                                <i class="fa-solid fa-trash" aria-hidden="true"></i> <?= __('store.remove') ?>
                             </button>
                         </div>
                     </div>

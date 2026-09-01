@@ -34,12 +34,12 @@
 <link rel="stylesheet" href="<?= base_url('assets/plugins/tel/css/intlTelInput.css') ?>?v=<?= av() ?>">
 <script src="<?= base_url('assets/plugins/tel/js/intlTelInput.js') ?>"></script>
 
-<section class="cart-page checkout-page1">
+<section class="amz-checkout cart-page checkout-page1">
 	<div class="container my-5">
-	    <h2 class="mb-4"><?= __('store.checkout') ?></h2>
+	    <h2 class="amz-checkout__title mb-4"><?= __('store.checkout') ?></h2>
 	    <?php if (!$is_logged) { ?>
-	        <div class="checkout-step auth-step bg-light border rounded p-3 mb-5" style="<?= !empty($is_guest_flow) ? 'display:none' : '' ?>">
-	            <div class="step-head bg-light py-3 px-4 border-start border-3 border-primary">
+	        <div class="checkout-step auth-step amz-card amz-checkout__step bg-light border rounded p-3 mb-5" style="<?= !empty($is_guest_flow) ? 'display:none' : '' ?>">
+	            <div class="step-head amz-card__header bg-light py-3 px-4 border-start border-3 border-primary">
 	                <h5 class="mb-0"><?= __('store.personal_details') ?></h5>
 	            </div>
 	            <?php // $googlerecaptcha is provided by Storeapp::view() ?>
@@ -167,12 +167,12 @@
 			</div>
 		<?php } ?>
 
-		<div class="cart-wrapper">
+		<div class="cart-wrapper amz-card amz-checkout__step">
 			<div class="checkout-setp cart-step">
-				<div class="step-head">
+				<div class="step-head amz-card__header">
 					<h2> <?= __('store.purchase_of_details') ?></h2>
 				</div>
-				<div class="step-body">
+				<div class="step-body amz-card__body">
 					<div class="cart-loader"></div>
 					<div class="cart-body"></div>
 				</div>
@@ -182,14 +182,14 @@
 
 		<div class="non-confirm mt-4">
 		<?php if(!empty($is_guest_flow) || $allow_shipping){ ?> 
-			<div class="checkout-form" <?= (!$is_logged) ? (empty($is_guest_flow) ? 'style="display:none;"' : "") : ""; ?> >
-					<h2><?php echo $allow_shipping == 1 ? __('store.billing_shipping_address') : __('store.billing_address');?></h2>
-					<div class="form-checkout-wrapper">
+			<div class="checkout-form amz-checkout__form" <?= (!$is_logged) ? (empty($is_guest_flow) ? 'style="display:none;"' : "") : ""; ?> >
+					<h2 class="amz-checkout__section-title"><?php echo $allow_shipping == 1 ? __('store.billing_shipping_address') : __('store.billing_address');?></h2>
+					<div class="form-checkout-wrapper amz-card">
 						<div class="checkout-setp shipping-step">
-							<div class="step-head">
+							<div class="step-head amz-card__header">
 								<h2></h2>
 							</div>
-							<div class="step-body">
+							<div class="step-body amz-card__body">
 							<?php if(isset($shipping_error_message) && $shipping_error_message !== ''){ ?>
 								<div class="alert alert-danger">
 									<?= htmlspecialchars($shipping_error_message) ?>
@@ -260,13 +260,13 @@
 		if($check_total_for_skip_payment>0)
 		{ 
 		?>
-			<div class="non-confirm">
-			<div class="checkout-payments" <?= (!$is_logged) ? (empty($is_guest_flow) ? 'style="display:none;"' : "") : ""; ?>>
+			<div class="non-confirm amz-checkout__payments">
+			<div class="checkout-payments amz-card" <?= (!$is_logged) ? (empty($is_guest_flow) ? 'style="display:none;"' : "") : ""; ?>>
 				<div class="checkout-setp">
-					<div class="step-head">
+					<div class="step-head amz-card__header">
 							<h2><?= __('store.payment_methods') ?></h2>
 						</div>
-						<div class="step-body">
+						<div class="step-body amz-card__body">
 							<div class="dynamic-payment"></div>
 							<br>
 
