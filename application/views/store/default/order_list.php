@@ -18,9 +18,9 @@
 ?>
 <?php if (!empty($return_to)): ?>
 <div class="container main-container mb-3">
-    <div class="alert alert-info d-flex align-items-center" role="alert">
+    <div class="amz-alert amz-alert--info" role="alert">
         <i class="fa fa-arrow-left me-2"></i>
-        <a href="<?= htmlspecialchars($return_to) ?>" class="alert-link"><?= __('store.return_to_checkout') ?? '← Return to checkout' ?></a>
+        <a href="<?= htmlspecialchars($return_to) ?>"><?= __('store.return_to_checkout') ?? 'Return to checkout' ?></a>
     </div>
 </div>
 <?php endif; ?>
@@ -37,57 +37,45 @@ $hdr_pills = [
 include(APPPATH.'views/store/default/_account_header.php');
 ?>
 
-<section class="profile-page">
-	<div class="container main-container">
-		<div class="acc-single-col">
-			<div class="my-orders">
-				<div class="cart-wrapper">
-					<ul class="cart-header">
-						<li><?= __('store.order_id') ?></li>
-						<li class="cart-item-price"><?= __('store.price') ?></li>
-						<li><?= __('store.order_status') ?></li>
-						<li><?= __('store.payment_method') ?></li>
-						<li><?= __('store.transaction') ?></li>
-						<li></li>
-					</ul>
-
-					<?php if($buyproductlist) {
-
-							$subtotal = 0;
-						
-							foreach($buyproductlist as $product){ 
-
-								$subtotal = $subtotal + (float)$product['total_sum'];
-								
-							?>
-							<ul class="cart-items-row">
-								<li><span class="my-orders-text"><?php echo $product['id'];?></span></li>
-								<li><span class="my-orders-text"><?php echo c_format($product['total_sum']); ?></span></li>
-								<li><span class="my-orders-text"><?php echo $status[$product['status']]; ?></span></li>
-								<li><span class="my-orders-text text-center"><?php echo str_replace("_", " ", $product['payment_method']);?></span></li>
-								<li><span class="my-orders-text"><?php echo $product['txn_id'];?></span></li>
-								<li><span class="my-orders-text">
-									<a href="<?= base_url('store/vieworder/'. $product['id']) ?>" class="btn btn-save-profile"><?= __('store.details') ?></a>
-								</span></li>
-							</ul>
-						<?php } ?>
-						<ul class="cart-footer-row">
-							<li>
-								<span><?= __('store.subtotal') ?></span>		 
-								<span><?php echo c_format($subtotal); ?></span>		 
-							</li>
-							<li>
-								<span><?= __('store.total') ?></span>		 
-								<span><?php echo c_format($subtotal); ?></span>		 
-							</li>
-						</ul>
-					<?php } else { ?>
-						<ul class="cart-items-row">
-							<li class="w-100"><span class="my-orders-text"><?= __('store.no_order_found') ?></span></li>		
-						</ul>
-					<?php } ?>
-				</div>
-			</div>
-		</div>
-	</div>
+<section class="amz-orders">
+    <div class="container main-container">
+        <div class="amz-table-wrap">
+            <table class="amz-table">
+                <thead>
+                    <tr>
+                        <th><?= __('store.order_id') ?></th>
+                        <th><?= __('store.price') ?></th>
+                        <th><?= __('store.order_status') ?></th>
+                        <th><?= __('store.payment_method') ?></th>
+                        <th><?= __('store.transaction') ?></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if($buyproductlist) {
+                        foreach($buyproductlist as $product) {
+                            $_status_map = [0 => 'amz-badge--pending', 1 => 'amz-badge--success', 2 => 'amz-badge--warning', 3 => 'amz-badge--muted'];
+                            $_badge = $_status_map[$product['status']] ?? 'amz-badge--muted';
+                    ?>
+                    <tr>
+                        <td><span class="amz-order-id">#<?= $product['id'] ?></span></td>
+                        <td class="amz-price"><?= c_format($product['total_sum']) ?></td>
+                        <td><span class="amz-badge <?= $_badge ?>"><?= $status[$product['status']] ?></span></td>
+                        <td><?= str_replace("_", " ", $product['payment_method']) ?></td>
+                        <td class="amz-text-muted"><?= $product['txn_id'] ?></td>
+                        <td>
+                            <a href="<?= base_url('store/vieworder/'. $product['id']) ?>" class="amz-btn amz-btn-sm"><?= __('store.details') ?></a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <?php } else { ?>
+        <div class="amz-empty-state">
+            <i class="fa fa-receipt" aria-hidden="true"></i>
+            <p><?= __('store.no_order_found') ?></p>
+        </div>
+        <?php } ?>
+    </div>
 </section>
